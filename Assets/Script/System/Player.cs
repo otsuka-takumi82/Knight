@@ -1,18 +1,103 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
     public float _playerDamage;
+    [SerializeField]
+    public float _maxHp;
+    [SerializeField]
+    public float _maxStamina;
+    [SerializeField]
+    private float _staggerPile = 1;
+    [SerializeField]
+    private float _attackCoolTime = 1;
+
+    public float _currentHp;
+    public float _currentStamina;
+    private UIManager _uiManager;
+    private EnemyHelth _enemy;
+    public bool _stagging;
+    public bool _canAttack;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _uiManager = FindFirstObjectByType<UIManager>();
+        _enemy = FindFirstObjectByType<EnemyHelth>();
+        _currentHp = _maxHp;
+        _currentStamina = _maxStamina;
+        _canAttack = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log(_canAttack);
+        if(_currentStamina  < _maxStamina)
+        {
+            _currentStamina += Time.deltaTime * 0.5f;
+            _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
+            ShowStamina();
+        }
         
+
+    }
+
+    public void PlayerModifyHelth()
+    {
+        _currentHp += _enemy._damage * _staggerPile;
+        _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
+        ShowHP();
+        if( _currentHp <= 0 )
+        {
+            Debug.Log("Dead");
+        }
+    }
+
+    public void ModifyStamina()
+    {
+
+        _currentStamina += _enemy._damage;
+        _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
+        ShowStamina();
+        if (!_stagging)
+        {
+            if (_currentStamina <= 0)
+            {
+                StartCoroutine(Stagger());
+            }
+        }
+
+    }
+
+    public void ShowHP()
+    {
+
+        _uiManager.PlayerHPUI(_currentHp, _maxHp);
+    }
+
+    public void ShowStamina()
+    {
+
+        _uiManager.PlayerStaminaUI(_currentStamina, _maxStamina);
+    }
+
+    public IEnumerator Stagger()
+    {
+        _staggerPile = 1.5f;
+        _stagging = true;
+        yield return new WaitForSeconds(5);
+        _stagging = false;
+        _staggerPile = 1;
+        _currentStamina = _maxStamina;
+        ShowStamina();
+    }
+
+    public IEnumerator AttackCoolTime()
+    {
+        _canAttack = false;
+        yield return new WaitForSeconds(_attackCoolTime);
+        _canAttack = true;
     }
 }

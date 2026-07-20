@@ -9,9 +9,11 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
 
     private float _timer;
     private EnemyHelth _enemyHelth;
+    private Player _player;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _player = FindFirstObjectByType<Player>();
         _enemyHelth = FindFirstObjectByType<EnemyHelth>();
     }
 
@@ -21,6 +23,8 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
         _timer += Time.deltaTime;
         if(TimerOver(_maxTimer))
         {
+            _player.PlayerModifyHelth();
+            _player.ModifyStamina();
             Destroy(gameObject);
         }
         
@@ -28,21 +32,26 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (TimerOver(1.5f))
+        if (!_player._stagging)
         {
-            _enemyHelth.PlayerDamage();
-            _enemyHelth.PlayerStamina();
-            Destroy(gameObject);
+            if (TimerOver(1.5f))
+            {
+                _enemyHelth.PlayerDamage();
+                _enemyHelth.PlayerStamina(2);
+                Destroy(gameObject);
+            }
+            else if (TimerOver(1f))
+            {
+                _enemyHelth.PlayerStamina();
+                Destroy(gameObject);
+            }
+            else
+            {
+
+                Destroy(gameObject);
+            }
         }
-        else if (TimerOver(1f))
-        {
-            _enemyHelth.PlayerStamina();
-            Destroy(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        
     }
 
     public bool TimerOver(float time)

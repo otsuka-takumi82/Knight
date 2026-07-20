@@ -7,14 +7,18 @@ public class EnemyHelth : MonoBehaviour
     private float _maxHp;
     private float _currentHp;
     [SerializeField]
+    public float _damage;
+    [SerializeField]
     private float _maxStamina;
     private float _currentStamina;
     [SerializeField]
     private float _staggerPile = 1;
+    
 
     private UIManager _uiManager;
     private Player _player;
-    private bool _stagging;
+    public bool _stagging;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -22,6 +26,7 @@ public class EnemyHelth : MonoBehaviour
     }
     void Start()
     {
+        
         _uiManager = FindFirstObjectByType<UIManager>();
         _player = FindFirstObjectByType<Player>();
         _currentHp = _maxHp;
@@ -32,7 +37,7 @@ public class EnemyHelth : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_staggerPile);
+
     }
 
     public void ModifyHelth(float amount)
@@ -43,7 +48,7 @@ public class EnemyHelth : MonoBehaviour
         ShowHP();
         if ( _currentHp <= 0 )
         {
-            Debug.Log("Clear");
+            
         }
     }
 
@@ -75,18 +80,18 @@ public class EnemyHelth : MonoBehaviour
         _uiManager.EnemyStaminaUI(_currentStamina, _maxStamina);
     }
 
-    public void PlayerDamage()
+    public void PlayerDamage(float pile = 1)
     {
-        ModifyHelth(_player._playerDamage);
+        ModifyHelth(_player._playerDamage * pile);
     }
-    public void PlayerStamina()
+    public void PlayerStamina(float pile = 1)
     {
-        ModifyStamina(_player._playerDamage);
+        ModifyStamina(_player._playerDamage * pile);
     }
 
     public IEnumerator Stagger()
     {
-        _staggerPile = 1.5f;
+        _staggerPile = 4f;
         _stagging = true;
         yield return new WaitForSeconds(5);
         _stagging = false;
@@ -94,4 +99,11 @@ public class EnemyHelth : MonoBehaviour
         _currentStamina = _maxStamina;
         ShowStamina();
     }
+
+    public bool Died()
+    {
+        return _currentHp <= 0;
+    }
+
+    
 }

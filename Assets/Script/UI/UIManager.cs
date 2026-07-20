@@ -7,6 +7,10 @@ public class UIManager : MonoBehaviour
     private Image _enemyHpImage;
     [SerializeField, Header("敵スタミナ画像")]
     private Image _enemyStaminaImage;
+    [SerializeField, Header("プレイヤーHP画像")]
+    private Image _playerHpImage;
+    [SerializeField, Header("プレイヤースタミナ画像")]
+    private Image _playerStaminaImage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,5 +31,15 @@ public class UIManager : MonoBehaviour
     public void EnemyStaminaUI(float stamina, float maxStamina)
     {
         _enemyStaminaImage.fillAmount = (float)stamina / maxStamina;
+    }
+
+    public void PlayerHPUI(float hp, float maxHP)
+    {
+        _playerHpImage.fillAmount = (float)hp / maxHP;
+    }
+
+    public void PlayerStaminaUI(float stamina, float maxStamina)
+    {
+        _playerStaminaImage.fillAmount = (float)stamina / maxStamina;
     }
 }
