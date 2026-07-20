@@ -2,16 +2,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HitCircle : MonoBehaviour, IPointerClickHandler
+public class HitCircle : MonoBehaviour,IPointerDownHandler
 {
     [SerializeField]
     private float _maxTimer = 2;
 
     private float _timer;
+    private EnemyHelth _enemyHelth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _enemyHelth = FindFirstObjectByType<EnemyHelth>();
     }
 
     // Update is called once per frame
@@ -25,22 +26,21 @@ public class HitCircle : MonoBehaviour, IPointerClickHandler
         
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         if (TimerOver(1.5f))
         {
-            Debug.Log("nice");
+            _enemyHelth.PlayerDamage();
+            _enemyHelth.PlayerStamina();
             Destroy(gameObject);
         }
-        else if (TimerOver(0.75f))
+        else if (TimerOver(1f))
         {
-
-            Debug.Log("oh");
+            _enemyHelth.PlayerStamina();
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("No");
             Destroy(gameObject);
         }
     }
