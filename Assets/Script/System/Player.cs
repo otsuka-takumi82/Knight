@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     private float _staggerPile = 1;
     [SerializeField]
     private float _attackCoolTime = 1;
+    
 
     public float _currentHp;
     public float _currentStamina;
@@ -34,12 +36,16 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Debug.Log(_canAttack);
-        if(_currentStamina  < _maxStamina)
+        if(! _stagging )
         {
-            _currentStamina += Time.deltaTime * 0.5f;
-            _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
-            ShowStamina();
+            if (_currentStamina < _maxStamina)
+            {
+                _currentStamina += Time.deltaTime * 0.5f;
+                _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
+                ShowStamina();
+            }
         }
+        
         
 
     }
@@ -100,4 +106,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(_attackCoolTime);
         _canAttack = true;
     }
+
+    
 }

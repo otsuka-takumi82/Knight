@@ -8,6 +8,7 @@ public class HitSponer : MonoBehaviour
     [SerializeField, UnitHeaderInspectable("円ヒットボックス")]
     private GameObject _hitSphere;
 
+    private Animator _anim;
     private Coroutine _sphereCor;
     private EnemyHelth _enemy;
     private bool _isOne;
@@ -15,6 +16,7 @@ public class HitSponer : MonoBehaviour
     void Start()
     {
         _enemy = FindFirstObjectByType<EnemyHelth>();
+        _anim = GetComponent<Animator>();
         _sphereCor = StartCoroutine(Sphere());
     }
 
@@ -43,28 +45,44 @@ public class HitSponer : MonoBehaviour
 
     public IEnumerator Sphere()
     {
+        
         while (true)
         {
             int num = Random.Range(0, 4);
+            
             if (num == 0)
             {
+                //右上
+                _anim.SetTrigger("RightUP");
                 Instantiate(_hitSphere, new Vector3(transform.position.x + 3, transform.position.y + 2, transform.position.z), Quaternion.identity);
+                
             }
             else if (num == 1)
             {
+                //左上
+                _anim.SetTrigger("LeftUP");
                 Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y + 2, transform.position.z), Quaternion.identity);
+                
             }
             else if (num == 2)
             {
+                // 右下
+                _anim.SetTrigger("RightDown");
                 Instantiate(_hitSphere, new Vector3(transform.position.x + 3, transform.position.y + -2, transform.position.z), Quaternion.identity);
             }
             else if (num == 3)
             {
+                //左下
+                _anim.SetTrigger("LeftDown");
                 Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y + -2, transform.position.z), Quaternion.identity);
             }
 
+            
             yield return new WaitForSeconds(3f);
+
         }
         
     }
+
+    
 }

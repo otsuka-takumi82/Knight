@@ -1,0 +1,1079 @@
+fileFormatVersion: 2
+guid: f35a5ff439ffe524fb67e51016b7cbf1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6402612214851387938
+    second: SorgerBattle (1)_0
+  - first:
+      213: 9118159887133729244
+    second: SorgerBattle (1)_1
+  - first:
+      213: 8664684291342601022
+    second: SorgerBattle (1)_2
+  - first:
+      213: 4230728421515122214
+    second: SorgerBattle (1)_3
+  - first:
+      213: -6503643433232284360
+    second: SorgerBattle (1)_4
+  - first:
+      213: -4940882984659098035
+    second: SorgerBattle (1)_5
+  - first:
+      213: 1310485005839670473
+    second: SorgerBattle (1)_6
+  - first:
+      213: 5578836325795624408
+    second: SorgerBattle (1)_7
+  - first:
+      213: -1261606393588163887
+    second: SorgerBattle (1)_8
+  - first:
+      213: 4137992007489890658
+    second: SorgerBattle (1)_9
+  - first:
+      213: -3768714096895562139
+    second: SorgerBattle (1)_10
+  - first:
+      213: 5283721835952803076
+    second: SorgerBattle (1)_11
+  - first:
+      213: 1659383725986373555
+    second: SorgerBattle (1)_12
+  - first:
+      213: 6148923198038841108
+    second: SorgerBattle (1)_13
+  - first:
+      213: 7562142946711893044
+    second: SorgerBattle (1)_14
+  - first:
+      213: -1937895623686263599
+    second: SorgerBattle (1)_15
+  - first:
+      213: -4943107475906018727
+    second: SorgerBattle (1)_16
+  - first:
+      213: 8041958671697726125
+    second: SorgerBattle (1)_17
+  - first:
+      213: -3527621918359580373
+    second: SorgerBattle (1)_18
+  - first:
+      213: -2746319071612782377
+    second: SorgerBattle (1)_19
+  - first:
+      213: -1590552981494303638
+    second: SorgerBattle (1)_20
+  - first:
+      213: 6015947209558376755
+    second: SorgerBattle (1)_21
+  - first:
+      213: -3280869979009157823
+    second: SorgerBattle (1)_22
+  - first:
+      213: -4701563727472773179
+    second: SorgerBattle (1)_23
+  - first:
+      213: -5956692243271119768
+    second: SorgerBattle (1)_24
+  - first:
+      213: 616899633883622376
+    second: SorgerBattle (1)_25
+  - first:
+      213: -842953794301855394
+    second: SorgerBattle (1)_26
+  - first:
+      213: 2161624591780095870
+    second: SorgerBattle (1)_27
+  - first:
+      213: -7037468211998582753
+    second: SorgerBattle (1)_28
+  - first:
+      213: 1288243110481117583
+    second: SorgerBattle (1)_29
+  - first:
+      213: -6970370769989363220
+    second: SorgerBattle (1)_30
+  - first:
+      213: -3276642551327066402
+    second: SorgerBattle (1)_31
+  - first:
+      213: -7405071215665287489
+    second: SorgerBattle (1)_32
+  - first:
+      213: -2460628404118064876
+    second: SorgerBattle (1)_33
+  - first:
+      213: -3626924882960416526
+    second: SorgerBattle (1)_34
+  - first:
+      213: 4807072684858726075
+    second: SorgerBattle (1)_35
+  - first:
+      213: 1598436039554368210
+    second: SorgerBattle (1)_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SorgerBattle (1)_0
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1023
+        width: 61
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2224bcc03e5aad850800000000000000
+      internalID: 6402612214851387938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_1
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 1023
+        width: 67
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd162d57b163a8e70800000000000000
+      internalID: 9118159887133729244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_2
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 1023
+        width: 67
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b026c94742f3870800000000000000
+      internalID: 8664684291342601022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_3
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 1023
+        width: 67
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 626de81851196ba30800000000000000
+      internalID: 4230728421515122214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 895
+        width: 67
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 835436851ca6eb5a0800000000000000
+      internalID: -6503643433232284360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_5
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 895
+        width: 67
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d466f967a157e6bb0800000000000000
+      internalID: -4940882984659098035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_6
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 895
+        width: 67
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cc9c886b27cf2210800000000000000
+      internalID: 1310485005839670473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_7
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 895
+        width: 80
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d5f71394120c6d40800000000000000
+      internalID: 5578836325795624408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_8
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 767
+        width: 97
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dad0d75bafdd7ee0800000000000000
+      internalID: -1261606393588163887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_9
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 767
+        width: 130
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26927d98ec91d6930800000000000000
+      internalID: 4137992007489890658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_10
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 785
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56e68821f76d2bbc0800000000000000
+      internalID: -3768714096895562139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_11
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 767
+        width: 134
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40d01f3f30d835940800000000000000
+      internalID: 5283721835952803076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_12
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 767
+        width: 141
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bf5b7df4b0570710800000000000000
+      internalID: 1659383725986373555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_13
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 639
+        width: 135
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 417934af11d555550800000000000000
+      internalID: 6148923198038841108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_14
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 511
+        width: 133
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 434fc7fa1f022f860800000000000000
+      internalID: 7562142946711893044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_15
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 639
+        width: 69
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dc656a92363b15e0800000000000000
+      internalID: -1937895623686263599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_16
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 511
+        width: 150
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9524b0cb0fd866bb0800000000000000
+      internalID: -4943107475906018727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_17
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 639
+        width: 81
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daa4ae4cdc6ca9f60800000000000000
+      internalID: 8041958671697726125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_18
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 511
+        width: 166
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b219b4e2e8e5b0fc0800000000000000
+      internalID: -3527621918359580373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_19
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 639
+        width: 83
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d8b3a0ea5d13e9d0800000000000000
+      internalID: -2746319071612782377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_20
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 511
+        width: 117
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a64f79d8d783de9e0800000000000000
+      internalID: -1590552981494303638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_21
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 383
+        width: 112
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 331ca3dfc10fc7350800000000000000
+      internalID: 6015947209558376755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_22
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 383
+        width: 110
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1457aea03220872d0800000000000000
+      internalID: -3280869979009157823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_23
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 383
+        width: 111
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c7bf1723b0b0ceb0800000000000000
+      internalID: -4701563727472773179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_24
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 383
+        width: 111
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c0083f6f3955da0800000000000000
+      internalID: -5956692243271119768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_25
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 255
+        width: 69
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eba3b3d2faaf8800800000000000000
+      internalID: 616899633883622376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_26
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 255
+        width: 103
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e59f1908df93d44f0800000000000000
+      internalID: -842953794301855394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_27
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 255
+        width: 109
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e772dca0d12affd10800000000000000
+      internalID: 2161624591780095870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_28
+      rect:
+        serializedVersion: 2
+        x: 816
+        y: 255
+        width: 121
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1898b182f3e55e90800000000000000
+      internalID: -7037468211998582753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_29
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 127
+        width: 122
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8142989842c0e110800000000000000
+      internalID: 1288243110481117583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_30
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 93
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce9940e17b4444f90800000000000000
+      internalID: -6970370769989363220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_31
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 127
+        width: 109
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed67830c5f60782d0800000000000000
+      internalID: -3276642551327066402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_32
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 0
+        width: 95
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbeeccd86f6eb3990800000000000000
+      internalID: -7405071215665287489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_33
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 127
+        width: 126
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4117e40e0871addd0800000000000000
+      internalID: -2460628404118064876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_34
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 0
+        width: 96
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f08e1409039aadc0800000000000000
+      internalID: -3626924882960416526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_35
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 127
+        width: 108
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb6dc7e432726b240800000000000000
+      internalID: 4807072684858726075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SorgerBattle (1)_36
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 0
+        width: 69
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d202ddeb19ce2610800000000000000
+      internalID: 1598436039554368210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SorgerBattle (1)_0: 6402612214851387938
+      SorgerBattle (1)_1: 9118159887133729244
+      SorgerBattle (1)_10: -3768714096895562139
+      SorgerBattle (1)_11: 5283721835952803076
+      SorgerBattle (1)_12: 1659383725986373555
+      SorgerBattle (1)_13: 6148923198038841108
+      SorgerBattle (1)_14: 7562142946711893044
+      SorgerBattle (1)_15: -1937895623686263599
+      SorgerBattle (1)_16: -4943107475906018727
+      SorgerBattle (1)_17: 8041958671697726125
+      SorgerBattle (1)_18: -3527621918359580373
+      SorgerBattle (1)_19: -2746319071612782377
+      SorgerBattle (1)_2: 8664684291342601022
+      SorgerBattle (1)_20: -1590552981494303638
+      SorgerBattle (1)_21: 6015947209558376755
+      SorgerBattle (1)_22: -3280869979009157823
+      SorgerBattle (1)_23: -4701563727472773179
+      SorgerBattle (1)_24: -5956692243271119768
+      SorgerBattle (1)_25: 616899633883622376
+      SorgerBattle (1)_26: -842953794301855394
+      SorgerBattle (1)_27: 2161624591780095870
+      SorgerBattle (1)_28: -7037468211998582753
+      SorgerBattle (1)_29: 1288243110481117583
+      SorgerBattle (1)_3: 4230728421515122214
+      SorgerBattle (1)_30: -6970370769989363220
+      SorgerBattle (1)_31: -3276642551327066402
+      SorgerBattle (1)_32: -7405071215665287489
+      SorgerBattle (1)_33: -2460628404118064876
+      SorgerBattle (1)_34: -3626924882960416526
+      SorgerBattle (1)_35: 4807072684858726075
+      SorgerBattle (1)_36: 1598436039554368210
+      SorgerBattle (1)_4: -6503643433232284360
+      SorgerBattle (1)_5: -4940882984659098035
+      SorgerBattle (1)_6: 1310485005839670473
+      SorgerBattle (1)_7: 5578836325795624408
+      SorgerBattle (1)_8: -1261606393588163887
+      SorgerBattle (1)_9: 4137992007489890658
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
