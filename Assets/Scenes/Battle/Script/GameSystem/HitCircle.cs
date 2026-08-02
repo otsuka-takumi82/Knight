@@ -39,6 +39,7 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
             Vector3 clickPosition = eventData.pointerPressRaycast.worldPosition;
             if (TimerOver(1.5f))
             {
+                _enemyHelth.Knock();
                 _enemyHelth.PlayerDamage();
                 _enemyHelth.PlayerStamina(2);
                 _directionAttack.Hibana(clickPosition);
@@ -46,12 +47,14 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
             }
             else if (TimerOver(1f))
             {
+                _enemyHelth.Knock();
                 _enemyHelth.PlayerStamina();
                 _player.ModifyStamina();
                 Destroy(gameObject);
             }
             else
             {
+                _enemyHelth.Knock();
                 _player.ModifyStamina();
                 Destroy(gameObject);
             }

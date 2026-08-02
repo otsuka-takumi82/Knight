@@ -18,6 +18,7 @@ public class EnemyHelth : MonoBehaviour
     private UIManager _uiManager;
     private Player _player;
     public bool _stagging;
+    private Animator _anim;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -29,6 +30,7 @@ public class EnemyHelth : MonoBehaviour
         
         _uiManager = FindFirstObjectByType<UIManager>();
         _player = FindFirstObjectByType<Player>();
+        _anim = GetComponent<Animator>();
         _currentHp = _maxHp;
         _currentStamina = _maxStamina;
         ShowHP();
@@ -103,6 +105,11 @@ public class EnemyHelth : MonoBehaviour
     public bool Died()
     {
         return _currentHp <= 0;
+    }
+
+    public void Knock()
+    {
+        _anim.SetTrigger("Knock");
     }
 
     
