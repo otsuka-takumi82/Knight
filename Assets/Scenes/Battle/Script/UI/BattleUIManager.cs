@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class BattleUIManager : MonoBehaviour
 {
     [SerializeField,Header("敵HP画像")]
     private Image _enemyHpImage;
@@ -11,6 +11,13 @@ public class UIManager : MonoBehaviour
     private Image _playerHpImage;
     [SerializeField, Header("プレイヤースタミナ画像")]
     private Image _playerStaminaImage;
+    [SerializeField, Header("ポーチ画像")]
+    private GameObject[] _porch;
+    [SerializeField, Header("薬草画像")]
+    private GameObject _harbImage;
+    [SerializeField, Header("アイテムのテキスト")]
+    private Text _itemText;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,5 +48,15 @@ public class UIManager : MonoBehaviour
     public void PlayerStaminaUI(float stamina, float maxStamina)
     {
         _playerStaminaImage.fillAmount = (float)stamina / maxStamina;
+    }
+
+    public void ChangePorch()
+    {
+        _harbImage.SetActive(true);
+    }
+
+    public void ChangeItemText(string name, int num)
+    {
+        _itemText.text = name + num;
     }
 }

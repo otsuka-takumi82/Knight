@@ -18,9 +18,9 @@ public class Player : MonoBehaviour
 
     public float _currentHp;
     public float _currentStamina;
-    private int _currentHarb;
+    public int _currentHarb;
     private int _currentHighHarb;
-    private UIManager _uiManager;
+    private BattleUIManager _uiManager;
     private EnemyHelth _enemy;
     private GameManager _gameManager;
     public bool _stagging;
@@ -28,18 +28,28 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _uiManager = FindFirstObjectByType<UIManager>();
+        _uiManager = FindFirstObjectByType<BattleUIManager>();
         _enemy = FindFirstObjectByType<EnemyHelth>();
         _gameManager = FindFirstObjectByType<GameManager>();
         _currentHp = _maxHp;
         _currentStamina = _maxStamina;
-        _currentHarb = _gameManager._harb;
-        _currentHighHarb = _gameManager._highHarb;
-        _canAttack = true;
-        if(_gameManager.State(GameManager.PlayerState.Powor))
+        if (_gameManager != null)
         {
-            _playerDamage *= 2;
+            //_currentHarb = _gameManager._harb;
+            _currentHighHarb = _gameManager._highHarb;
+            if (_gameManager.State(GameManager.PlayerState.Powor))
+            {
+                _playerDamage *= 2;
+            }
         }
+        if (_uiManager != null)
+        {
+            _uiManager.ChangePorch();
+           
+        }
+        
+        _canAttack = true;
+        
     }
 
     // Update is called once per frame
@@ -55,8 +65,6 @@ public class Player : MonoBehaviour
                 ShowStamina();
             }
         }
-        
-        
 
     }
 
@@ -117,5 +125,9 @@ public class Player : MonoBehaviour
         _canAttack = true;
     }
 
-    
+    public void AddHelth(float helth)
+    {
+            _currentHp += helth;
+            ShowHP();
+    }
 }

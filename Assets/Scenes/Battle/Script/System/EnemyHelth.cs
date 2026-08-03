@@ -15,7 +15,7 @@ public class EnemyHelth : MonoBehaviour
     private float _staggerPile = 1;
     
 
-    private UIManager _uiManager;
+    private BattleUIManager _uiManager;
     private Player _player;
     public bool _stagging;
     private Animator _anim;
@@ -28,7 +28,7 @@ public class EnemyHelth : MonoBehaviour
     void Start()
     {
         
-        _uiManager = FindFirstObjectByType<UIManager>();
+        _uiManager = FindFirstObjectByType<BattleUIManager>();
         _player = FindFirstObjectByType<Player>();
         _anim = GetComponent<Animator>();
         _currentHp = _maxHp;
