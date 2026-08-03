@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField,Header("プレイヤー攻撃力")]
     public float _playerDamage;
     [SerializeField]
     public float _maxHp;
@@ -18,8 +18,11 @@ public class Player : MonoBehaviour
 
     public float _currentHp;
     public float _currentStamina;
+    private int _currentHarb;
+    private int _currentHighHarb;
     private UIManager _uiManager;
     private EnemyHelth _enemy;
+    private GameManager _gameManager;
     public bool _stagging;
     public bool _canAttack;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,9 +30,16 @@ public class Player : MonoBehaviour
     {
         _uiManager = FindFirstObjectByType<UIManager>();
         _enemy = FindFirstObjectByType<EnemyHelth>();
+        _gameManager = FindFirstObjectByType<GameManager>();
         _currentHp = _maxHp;
         _currentStamina = _maxStamina;
+        _currentHarb = _gameManager._harb;
+        _currentHighHarb = _gameManager._highHarb;
         _canAttack = true;
+        if(_gameManager.State(GameManager.PlayerState.Powor))
+        {
+            _playerDamage *= 2;
+        }
     }
 
     // Update is called once per frame

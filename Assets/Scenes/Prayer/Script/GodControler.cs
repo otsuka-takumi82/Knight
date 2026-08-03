@@ -49,7 +49,8 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
         else
         {
-            _pray = 0;
+
+            _pray = Mathf.Max(0f,_pray - Time.deltaTime);
         }
 
         
@@ -78,14 +79,17 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         else if (num == 1)
         {
             Debug.Log("薬草");
+            GetHarb();
         }
         else if (num == 2)
         {
             Debug.Log("バフ");
+            GetBuff();
         }
         else if (num == 3)
         {
             Debug.Log("熟成薬草");
+            GetHighHarb();
         }
 
     }
@@ -96,5 +100,20 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         _itemDel[1] = Item;
         _itemDel[2] = Item;
         _itemDel[3] = Item;
+    }
+    public void GetHarb()
+    {
+        GameManager gm = FindFirstObjectByType<GameManager>();
+        gm.AddHarb(1);
+    }
+    public void GetHighHarb()
+    {
+        GameManager gm = FindFirstObjectByType<GameManager>();
+        gm.AddHighHarb(1);
+    }
+    public void GetBuff()
+    {
+        GameManager gm = FindFirstObjectByType<GameManager>();
+        gm.ChangeState(GameManager.PlayerState.Powor);
     }
 }

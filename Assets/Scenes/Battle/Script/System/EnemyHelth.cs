@@ -6,7 +6,7 @@ public class EnemyHelth : MonoBehaviour
     [SerializeField]
     private float _maxHp;
     private float _currentHp;
-    [SerializeField]
+    [SerializeField,Header("敵攻撃力")]
     public float _damage;
     [SerializeField]
     private float _maxStamina;

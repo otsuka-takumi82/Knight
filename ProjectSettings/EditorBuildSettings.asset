@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Title/TitleScene.unity
+    guid: 5908d6e1174483243aab2d77dc035bf5
+  - enabled: 1
+    path: Assets/Scenes/Prayer/PrayerScene.unity
+    guid: 904365f2e5ff2354892bda8da956fe09
+  - enabled: 1
     path: Assets/Scenes/Battle/BattleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/SodeMake/MakeScene.unity
+    guid: 03032fc6fba619941875ed5c61d056a9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
