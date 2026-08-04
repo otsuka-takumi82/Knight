@@ -3,7 +3,8 @@ using UnityEngine.EventSystems;
 
 public class ItemBase : MonoBehaviour,IPointerDownHandler
 {
-    float _currentItemNum;
+    [SerializeField]
+    public int _itemUINum;
     public virtual void Awake()
     {
 
@@ -11,7 +12,10 @@ public class ItemBase : MonoBehaviour,IPointerDownHandler
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        FindFirstObjectByType<BattleUIManager>().ChangeItemText(ItemStr(), ItemNum());
+        
+            FindFirstObjectByType<BattleUIManager>().ChangeItemText(_itemUINum,ItemStr(), ItemNum());
+            FindFirstObjectByType<BattleUIManager>().ChangePorch(ItemStr(),_itemUINum);
+
     }
 
     // Update is called once per frame
@@ -25,7 +29,7 @@ public class ItemBase : MonoBehaviour,IPointerDownHandler
         if(ItemBool(ItemNum()))
         {
             Activate();
-            FindFirstObjectByType<BattleUIManager>().ChangeItemText(ItemStr(), ItemNum());
+            FindFirstObjectByType<BattleUIManager>().ChangeItemText(_itemUINum,ItemStr(), ItemNum());
             Debug.Log("共通機能");
         }
         

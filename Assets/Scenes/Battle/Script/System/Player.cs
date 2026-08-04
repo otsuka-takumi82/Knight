@@ -42,11 +42,7 @@ public class Player : MonoBehaviour
                 _playerDamage *= 2;
             }
         }
-        if (_uiManager != null)
-        {
-            _uiManager.ChangePorch();
-           
-        }
+        
         
         _canAttack = true;
         
@@ -129,5 +125,10 @@ public class Player : MonoBehaviour
     {
             _currentHp += helth;
             ShowHP();
+    }
+    public void AddStamina(float helth)
+    {
+        _currentStamina += helth;
+        ShowStamina();
     }
 }

@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SodeMake/MakeScene.unity
     guid: 03032fc6fba619941875ed5c61d056a9
+  - enabled: 1
+    path: Assets/Scenes/Talk/TalkScene.unity
+    guid: 9f7e20da3a76ddf41851206a073d521a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

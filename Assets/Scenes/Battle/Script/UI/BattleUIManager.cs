@@ -15,8 +15,12 @@ public class BattleUIManager : MonoBehaviour
     private GameObject[] _porch;
     [SerializeField, Header("薬草画像")]
     private GameObject _harbImage;
+    [SerializeField, Header("熟成薬草画像")]
+    private GameObject _highHarbImage;
+    [SerializeField, Header("干し肉画像")]
+    private GameObject _meatImage;
     [SerializeField, Header("アイテムのテキスト")]
-    private Text _itemText;
+    private Text[] _itemText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,13 +54,25 @@ public class BattleUIManager : MonoBehaviour
         _playerStaminaImage.fillAmount = (float)stamina / maxStamina;
     }
 
-    public void ChangePorch()
+    public void ChangePorch(string item, int num)
     {
-        _harbImage.SetActive(true);
+        if(item == "薬草")
+        {
+            _harbImage.transform.position = _porch[num].transform.position;
+        }
+        else if(item == "熟成薬草")
+        {
+            _highHarbImage.transform.position = _porch[num].transform.position;
+        }
+        else if (item == "干し肉")
+        {
+            _meatImage.transform.position = _porch[num].transform.position;
+        }
+
     }
 
-    public void ChangeItemText(string name, int num)
+    public void ChangeItemText(int UInum, string name, int num)
     {
-        _itemText.text = name + num;
+        _itemText[UInum].text = name + num;
     }
 }

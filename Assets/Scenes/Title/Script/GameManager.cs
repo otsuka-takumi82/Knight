@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public int _harb;
     public int _highHarb;
+    public int _meat = 5;
     private void Awake()
     {
         if (FindObjectsByType<GameManager>(

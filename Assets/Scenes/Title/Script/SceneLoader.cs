@@ -14,6 +14,10 @@ public class SceneLoader : MonoBehaviour
     {
         
     }
+    public void LoadElseScene(string scenename)
+    {
+        SceneManager.LoadScene(scenename);
+    }
 
     public void LoadTitle()
     {

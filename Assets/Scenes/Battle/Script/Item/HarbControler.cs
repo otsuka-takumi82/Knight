@@ -1,4 +1,3 @@
-using System.ComponentModel.Design;
 using UnityEngine;
 
 public class HarbControler : ItemBase
@@ -12,6 +11,7 @@ public class HarbControler : ItemBase
     public override void Awake()
     {
        _harbNum =  FindFirstObjectByType<GameManager>()._harb;
+
     }
     public override void Activate()
     {
@@ -29,4 +29,5 @@ public class HarbControler : ItemBase
     {
         return _harbName;
     }
+
 }
