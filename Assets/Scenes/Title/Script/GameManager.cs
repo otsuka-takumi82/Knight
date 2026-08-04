@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     }
     [SerializeField, Header("プレイヤー状態")]
     public PlayerState _playerState;
+    [SerializeField]
+    public int[] _stageNum;
 
+    public int _currentTimeNum;
     public int _harb;
     public int _highHarb;
     public int _meat = 5;
@@ -34,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(_currentTimeNum);
     }
 
     public void AddHarb(int num)

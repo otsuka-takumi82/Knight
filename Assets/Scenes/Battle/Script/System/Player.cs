@@ -131,4 +131,5 @@ public class Player : MonoBehaviour
         _currentStamina += helth;
         ShowStamina();
     }
+
 }

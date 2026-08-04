@@ -1786,7 +1786,7 @@ GameObject:
   - component: {fileID: 1596931989}
   - component: {fileID: 1596931988}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: Next
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1858,7 +1858,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1101455332}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadBattle
+        m_MethodName: LoadTimeAdd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

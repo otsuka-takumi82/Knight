@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneLoader : MonoBehaviour
 {
+    GameManager _gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _gameManager = FindFirstObjectByType<GameManager>();
     }
 
     // Update is called once per frame
@@ -22,6 +24,10 @@ public class SceneLoader : MonoBehaviour
     public void LoadTitle()
     {
         SceneManager.LoadScene("TitleScene");
+    }
+    public void LoadTalk()
+    {
+        SceneManager.LoadScene("TalkScene");
     }
     public void LoadPrayer()
     {
@@ -44,5 +50,29 @@ public class SceneLoader : MonoBehaviour
     public void LoadGameOver()
     {
         SceneManager.LoadScene("GameOverScene");
+    }
+
+    public void LoadTimeAdd()
+    {
+        StartCoroutine(SceneLoad(0));
+        
+    }
+    public IEnumerator SceneLoad(int num)
+    {
+        //if (_event[num] != null)
+        //{
+        //    _event[num].Invoke();
+        //}
+
+        _gameManager._currentTimeNum++;
+        yield return new WaitForSeconds(1);
+        if (_gameManager._currentTimeNum <= 2)
+        {
+            LoadTalk();
+        }
+        else
+        {
+            LoadTitle();
+        }
     }
 }

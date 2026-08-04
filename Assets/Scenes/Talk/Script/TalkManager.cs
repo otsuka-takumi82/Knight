@@ -33,19 +33,22 @@ public class TalkManager : MonoBehaviour
 
     [SerializeField]JobType _jobType;
     private int _diaIndex;
+
+    GameManager _gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (_jobType == JobType.Prayer)
+        _gameManager = FindFirstObjectByType<GameManager>();
+        if (_gameManager._stageNum[_gameManager._currentTimeNum] == 0)
         {
             TalkStart(_sister, _sisterMessage,0);
 
         }
-        else if( _jobType == JobType.Fighter)
+        else if(_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
         {
             TalkStart(_fighter, _fighterMessage,1);
         }
-        else if(_jobType == JobType.Maker)
+        else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
         {
             TalkStart(_maker, _makerMessage,2);
         }
@@ -57,15 +60,15 @@ public class TalkManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(_jobType == JobType.Prayer)
+            if(_gameManager._stageNum[_gameManager._currentTimeNum] == 0)
             {
                 AddTalk(_sisterMessage);
             }
-            else if (_jobType == JobType.Fighter)
+            else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
             {
                 AddTalk(_fighterMessage);
             }
-            else if (_jobType == JobType.Maker)
+            else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
             {
                 AddTalk(_makerMessage);
             }

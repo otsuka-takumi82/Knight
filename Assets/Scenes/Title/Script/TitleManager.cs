@@ -19,7 +19,7 @@ public class TitleManager : MonoBehaviour
     }
     public void StartScene()
     {
-        StartCoroutine(SceneLoad("TalkScene", 0));
+        StartCoroutine(SceneLoad("RoomScene", 0));
     }
     public IEnumerator SceneLoad(string scenename, int num)
     {

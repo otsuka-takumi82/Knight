@@ -791,6 +791,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerState: 0
+  _stageNum: 000000000000000000000000
+  _currentTimeNum: 0
   _harb: 0
   _highHarb: 0
   _meat: 5
