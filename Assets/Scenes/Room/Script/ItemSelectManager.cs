@@ -6,6 +6,9 @@ public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandle
 {
     [SerializeField]
     int _porchIndex;
+    [SerializeField]
+    GameManager.Item _itemSel;
+
 
     RectTransform _rectTransform;
     GameManager _gameManager;
@@ -36,7 +39,18 @@ public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandle
         {
             if (gameObject.CompareTag("Porch1"))
             {
-                FindFirstObjectByType<GameManager>().ChangeItem(GameManager.Item.Harb, 0);
+                transform.position = gameObject.transform.position;
+                FindFirstObjectByType<GameManager>().ChangeItem(_itemSel, 1);
+            }
+            if (gameObject.CompareTag("Porch2"))
+            {
+                transform.position = gameObject.transform.position;
+                FindFirstObjectByType<GameManager>().ChangeItem(_itemSel, 2);
+            }
+            if (gameObject.CompareTag("Porch3"))
+            {
+                transform.position = gameObject.transform.position;
+                FindFirstObjectByType<GameManager>().ChangeItem(_itemSel, 3);
             }
             GetComponent<CanvasGroup>().blocksRaycasts = true; // 当たり判定を透過させて後ろのポーチに届くようにする！
         }
@@ -47,7 +61,7 @@ public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandle
     }
     public void ItemChange()
     {
-        _gameManager.ChangeItem(GameManager.Item.Harb, _porchIndex);
+        _gameManager.ChangeItem(_itemSel, _porchIndex);
     }
 
 

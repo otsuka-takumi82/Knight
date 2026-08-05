@@ -5,16 +5,28 @@ public class ItemBase : MonoBehaviour,IPointerDownHandler
 {
     [SerializeField]
     public int _itemUINum;
+    [SerializeField]
+    GameManager.Item _itemType;
+
+    public GameManager _gameManager;
     public virtual void Awake()
     {
-
+        
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-            FindFirstObjectByType<BattleUIManager>().ChangeItemText(_itemUINum,ItemStr(), ItemNum());
-            FindFirstObjectByType<BattleUIManager>().ChangePorch(ItemStr(),_itemUINum);
+        _gameManager = FindFirstObjectByType<GameManager>();
+        for (int i = 1; i < 4; i++)
+        {
+            if (_gameManager._item[i] == _itemType)
+            {
+                Debug.Log(_itemUINum);
+                _itemUINum = i;
+            }
+        }
+        FindFirstObjectByType<BattleUIManager>().ChangeItemText(_itemUINum, ItemStr(), ItemNum());
+        FindFirstObjectByType<BattleUIManager>().ChangePorch(ItemStr(), _itemUINum);
 
     }
 

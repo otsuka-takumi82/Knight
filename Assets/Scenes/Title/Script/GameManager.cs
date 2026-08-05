@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(_currentTimeNum);
+        //Debug.Log(_item[0]);
     }
 
     public void AddHarb(int num)
