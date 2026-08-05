@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public int _harb;
     public int _highHarb;
     public int _meat = 5;
+    public Vector3 _defaultTransform;
     private void Awake()
     {
         if (FindObjectsByType<GameManager>(
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(_item[0]);
+        //Debug.Log(_stageNum[1]);
     }
 
     public void AddHarb(int num)

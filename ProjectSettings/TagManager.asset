@@ -9,6 +9,7 @@ TagManager:
   - Porch1
   - Porch2
   - Porch3
+  - Strage
   layers:
   - Default
   - TransparentFX

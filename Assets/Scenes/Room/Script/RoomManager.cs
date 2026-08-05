@@ -66,14 +66,13 @@ public class RoomManager : MonoBehaviour
     }
     public void ChangeStage(int num)
     {
-        if(4 > _gameManager._stageNum[num])
-        {
-            _gameManager._stageNum[num]++;
-        }
-        else if (_gameManager._stageNum[num] == 4)
+        
+        _gameManager._stageNum[num]++;
+        if (_gameManager._stageNum[num] == 4)
         {
             _gameManager._stageNum[num] = 1;
         }
+      
         CheckStage(num);
         
     }
