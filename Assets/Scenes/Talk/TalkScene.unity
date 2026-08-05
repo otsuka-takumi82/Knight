@@ -1110,6 +1110,7 @@ MonoBehaviour:
   _fighter: {fileID: 446890987}
   _maker: {fileID: 1199115078}
   _button:
+  - {fileID: 0}
   - {fileID: 2026499686}
   - {fileID: 843467078}
   - {fileID: 683012882}

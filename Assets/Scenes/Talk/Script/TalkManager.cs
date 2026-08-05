@@ -39,18 +39,18 @@ public class TalkManager : MonoBehaviour
     void Start()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
-        if (_gameManager._stageNum[_gameManager._currentTimeNum] == 0)
+        if (_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
         {
-            TalkStart(_sister, _sisterMessage,0);
+            TalkStart(_sister, _sisterMessage,1);
 
         }
-        else if(_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
+        else if(_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
         {
-            TalkStart(_fighter, _fighterMessage,1);
+            TalkStart(_fighter, _fighterMessage,2);
         }
-        else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
+        else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 3)
         {
-            TalkStart(_maker, _makerMessage,2);
+            TalkStart(_maker, _makerMessage,3);
         }
     }
 
@@ -60,15 +60,15 @@ public class TalkManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(_gameManager._stageNum[_gameManager._currentTimeNum] == 0)
+            if(_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
             {
                 AddTalk(_sisterMessage);
             }
-            else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
+            else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
             {
                 AddTalk(_fighterMessage);
             }
-            else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
+            else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 3)
             {
                 AddTalk(_makerMessage);
             }

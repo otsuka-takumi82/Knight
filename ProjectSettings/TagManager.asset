@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Hit
   - God
+  - Porch1
+  - Porch2
+  - Porch3
   layers:
   - Default
   - TransparentFX

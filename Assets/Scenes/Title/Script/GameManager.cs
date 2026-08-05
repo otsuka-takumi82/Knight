@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,10 +10,19 @@ public class GameManager : MonoBehaviour
         Powor,
         Guald
     }
+    public enum Item
+    {
+        None,
+        Harb,
+        HighHarb,
+        Meat
+    }
     [SerializeField, Header("プレイヤー状態")]
     public PlayerState _playerState;
     [SerializeField]
-    public int[] _stageNum;
+    public List<int> _stageNum;
+    [SerializeField]
+    public Item[] _item;
 
     public int _currentTimeNum;
     public int _harb;
@@ -37,7 +47,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_currentTimeNum);
+        //Debug.Log(_currentTimeNum);
     }
 
     public void AddHarb(int num)
@@ -51,6 +61,10 @@ public class GameManager : MonoBehaviour
     public void ChangeState(PlayerState buff)
     {
         _playerState = buff;
+    }
+    public void ChangeItem(Item item, int num)
+    {
+        _item[num] = item;
     }
     public bool State(PlayerState state)
     {

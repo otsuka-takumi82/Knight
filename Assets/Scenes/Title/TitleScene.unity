@@ -791,7 +791,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerState: 0
-  _stageNum: 000000000000000000000000
+  _stageNum: 0100000001000000010000000100000001000000
+  _item: 000000000000000000000000
   _currentTimeNum: 0
   _harb: 0
   _highHarb: 0

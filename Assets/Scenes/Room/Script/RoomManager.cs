@@ -7,13 +7,20 @@ public class RoomManager : MonoBehaviour
     int _stageNum;
     [SerializeField]
     Text[] _stageName;
+    [SerializeField]
+    GameObject _stageSelect;
+    [SerializeField]
+    GameObject _itemSelect;
 
     GameManager _gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
-        _gameManager._currentTimeNum = 0;
+        if (_gameManager._currentTimeNum == 5)
+        {
+            _gameManager._currentTimeNum = 0;
+        }
         AllCheck();
     }
 
@@ -22,28 +29,50 @@ public class RoomManager : MonoBehaviour
     {
         
     }
+    public void OnStageSelect()
+    {
+        if(_stageSelect.activeSelf)
+        {
+            _stageSelect.SetActive(false);
+        }
+        else
+        {
+            _stageSelect.SetActive(true);
+        }
+    }
+    public void OnItemSelect()
+    {
+        if (_itemSelect.activeSelf)
+        {
+            _itemSelect.SetActive(false);
+        }
+        else
+        {
+            _itemSelect.SetActive(true);
+        }
+    }
     public void ChangeMorning()
     {
-        ChangeStage(0);
+        ChangeStage(1);
         
     }
     public void ChangeAfterNoon()
     {
-        ChangeStage(1);
+        ChangeStage(2);
     }
     public void ChangeEvening()
     {
-        ChangeStage(2);
+        ChangeStage(3);
     }
     public void ChangeStage(int num)
     {
-        if(3 > _gameManager._stageNum[num])
+        if(4 > _gameManager._stageNum[num])
         {
             _gameManager._stageNum[num]++;
         }
-        else if (_gameManager._stageNum[num] == 3)
+        else if (_gameManager._stageNum[num] == 4)
         {
-            _gameManager._stageNum[num] = 0;
+            _gameManager._stageNum[num] = 1;
         }
         CheckStage(num);
         
@@ -51,15 +80,15 @@ public class RoomManager : MonoBehaviour
 
     public void CheckStage(int num)
     {
-        if (_gameManager._stageNum[num] == 0)
+        if (_gameManager._stageNum[num] == 1)
         {
             _stageName[num].text = "祈り";
         }
-        else if (_gameManager._stageNum[num] == 1)
+        else if (_gameManager._stageNum[num] == 2)
         {
             _stageName[num].text = "戦闘";
         }
-        else if (_gameManager._stageNum[num] == 2)
+        else if (_gameManager._stageNum[num] == 3)
         {
             _stageName[num].text = "鍛冶";
         }
@@ -67,8 +96,8 @@ public class RoomManager : MonoBehaviour
 
     public void AllCheck()
     {
-        CheckStage(0);
         CheckStage(1);
         CheckStage(2);
+        CheckStage(3);
     }
 }

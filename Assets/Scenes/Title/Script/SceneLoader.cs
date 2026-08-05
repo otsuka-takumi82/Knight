@@ -25,6 +25,10 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("TitleScene");
     }
+    public void LoadRoom()
+    {
+        SceneManager.LoadScene("RoomScene");
+    }
     public void LoadTalk()
     {
         SceneManager.LoadScene("TalkScene");
@@ -66,13 +70,13 @@ public class SceneLoader : MonoBehaviour
 
         _gameManager._currentTimeNum++;
         yield return new WaitForSeconds(1);
-        if (_gameManager._currentTimeNum <= 2)
+        if (_gameManager._currentTimeNum <= 3)
         {
             LoadTalk();
         }
         else
         {
-            LoadTitle();
+            LoadRoom();
         }
     }
 }
