@@ -36,14 +36,14 @@ public class SwordControler : MonoBehaviour
 
     public void Out()
     {
-        _currentBarn += 2;
+        _currentBarn += 1;
         CheckBarn();
         CheckPal();
     }
 
     public void Hit()
     {
-        _currentBarn++;
+        _currentBarn += 1;
         _currentPal++;
         CheckBarn();
         CheckPal();

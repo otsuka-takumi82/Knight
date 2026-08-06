@@ -3,15 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+//StartとUpdateのなかにsummaryの指示に従って入れればいい
 public class TalkManager : MonoBehaviour
 {
     [SerializeField]
     UnityEvent[] _event;
-    [SerializeField]
+    [SerializeField,Header("シスターのゲームオブジェクト")]
     GameObject _sister;
-    [SerializeField]
+    [SerializeField, Header("ファイターのゲームオブジェクト")]
     GameObject _fighter;
-    [SerializeField]
+    [SerializeField, Header("鍛冶屋のゲームオブジェクト")]
     GameObject _maker;
     [SerializeField]
     GameObject[] _button;
@@ -75,18 +76,20 @@ public class TalkManager : MonoBehaviour
 
         }
     }
-    //public void PrayTalkStart()
-    //{
-    //    _sister.SetActive(true);
-    //    _diaText.text = _sisterMessage[_diaIndex];
-    //}
+    ///<summary>
+    ///第一:NPCのゲームオブジェクト
+    ///第二:NPCのメッセージ配列
+    ///第三:ボタンの配列(0飛ばし)
+    ///</summary>
     public void TalkStart(GameObject character, string[] messageType,int num)
     {
         _button[num].SetActive(true);
         character.SetActive(true);
         _diaText.text = messageType[_diaIndex];
     }
-
+    ///<summary>
+    ///第一:NPCのメッセージ配列入れればいいだけ
+    ///</summary>
     public void AddTalk(string[] messageType)
     {
         if (messageType.Length <= _diaIndex + 1)
@@ -101,6 +104,7 @@ public class TalkManager : MonoBehaviour
         
 
     }
+    #region 次シーンボタンにアタッチするメソッド
     public void PrayScene()
     {
         NextScene("PrayerScene", 0);
@@ -113,7 +117,7 @@ public class TalkManager : MonoBehaviour
     {
         NextScene("MakeScene", 0);
     }
-
+    #endregion
     public void NextScene(string scenename, int num)
     {
         StartCoroutine(SceneLoad(scenename, num));

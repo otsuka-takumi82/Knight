@@ -790,6 +790,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5201e66037c908647b167654a078d087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultSword:
+    _weponState: 0
+    isCrafted: 1
+    _repairPal: 0
   _playerState: 0
   _stageNum: 0100000001000000010000000100000001000000
   _item: 00000000000000000000000000000000
@@ -797,6 +801,7 @@ MonoBehaviour:
   _harb: 0
   _highHarb: 0
   _meat: 5
+  _defaultTransform: {x: 0, y: 0, z: 0}
 --- !u!4 &1428211636
 Transform:
   m_ObjectHideFlags: 0

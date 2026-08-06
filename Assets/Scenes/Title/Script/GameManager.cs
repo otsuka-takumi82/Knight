@@ -1,9 +1,25 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections.Generic;
-
+using System;
+#region 武器構造体
+public enum Wepon
+{
+    DefautSword,
+    Sword,
+    Mace
+}
+[Serializable]
+public struct DefaultSword
+{
+    public Wepon _weponState;
+    public bool isCrafted;
+    public int _repairPal;
+}
+#endregion
 public class GameManager : MonoBehaviour
 {
+    public DefaultSword _defaultSword;
     public enum PlayerState
     { 
         Nomal,
@@ -19,11 +35,18 @@ public class GameManager : MonoBehaviour
     }
     [SerializeField, Header("プレイヤー状態")]
     public PlayerState _playerState;
+    /// <summary>
+    /// １～のステージ番号。
+    /// １には祈り、２には戦闘、３には鍛冶が入ってる
+    /// </summary>
     [SerializeField]
     public List<int> _stageNum;
     [SerializeField]
     public Item[] _item;
 
+    /// <summary>
+    /// １～の時間指定変数
+    /// </summary>
     public int _currentTimeNum;
     public int _harb;
     public int _highHarb;
@@ -51,6 +74,11 @@ public class GameManager : MonoBehaviour
         //Debug.Log(_stageNum[1]);
     }
 
+    #region アイテム追加。多態性アイテム作るときにここも
+    public void AddItem(int addItem, int num)
+    {
+        addItem += num;
+    }
     public void AddHarb(int num)
     {
         _harb += num;
@@ -59,10 +87,16 @@ public class GameManager : MonoBehaviour
     {
         _highHarb += num;
     }
+    #endregion
     public void ChangeState(PlayerState buff)
     {
         _playerState = buff;
     }
+    /// <summary>
+    /// アイテムポーチ変更メソッド
+    /// </summary>
+    /// <param name="item">変更するアイテムの種類</param>
+    /// <param name="num">アイテムポーチの番号（１から）</param>
     public void ChangeItem(Item item, int num)
     {
         _item[num] = item;
