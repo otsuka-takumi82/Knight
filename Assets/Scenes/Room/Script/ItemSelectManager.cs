@@ -19,6 +19,7 @@ public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandle
     {
         _canvas = FindFirstObjectByType<Canvas>();
         _gameManager = FindFirstObjectByType<GameManager>();
+        OriginalGet();
     }
 
     // Update is called once per frame

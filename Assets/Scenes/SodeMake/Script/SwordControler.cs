@@ -8,7 +8,7 @@ public class SwordControler : MonoBehaviour
     private int _maxBarn;
     [SerializeField, Header("完成度")]
     private int _maxSordPal;
-    [SerializeField, Header("完成度")]
+    [SerializeField, Header("鍛冶イベント")]
     UnityEvent[] _events;
 
     bool _swordActive = true;

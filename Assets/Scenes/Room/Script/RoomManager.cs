@@ -11,6 +11,10 @@ public class RoomManager : MonoBehaviour
     GameObject _stageSelect;
     [SerializeField]
     GameObject _itemSelect;
+    [SerializeField]
+    GameObject _equipmentSelect;
+    [SerializeField]
+    GameObject[] _equipment;
 
     GameManager _gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,6 +53,28 @@ public class RoomManager : MonoBehaviour
         else
         {
             _itemSelect.SetActive(true);
+        }
+    }
+    public void OnEquipmentSelect()
+    {
+        if (_equipmentSelect.activeSelf)
+        {
+            _equipmentSelect.SetActive(false);
+        }
+        else
+        {
+            _equipmentSelect.SetActive(true);
+        }
+    }
+    public void OnEquipmentSword()
+    {
+        if (_equipment[0].activeSelf)
+        {
+            _equipment[0].SetActive(false);
+        }
+        else
+        {
+            _equipment[0].SetActive(true);
         }
     }
     public void ChangeMorning()

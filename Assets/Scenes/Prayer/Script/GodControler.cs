@@ -114,6 +114,6 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public void GetBuff()
     {
         GameManager gm = FindFirstObjectByType<GameManager>();
-        gm.ChangeState(GameManager.PlayerState.Powor);
+        gm.ChangeState(GameManager.PlayerState.Power);
     }
 }

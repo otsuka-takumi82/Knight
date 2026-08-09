@@ -3,27 +3,28 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 #region 武器構造体
-public enum Wepon
+public enum WeponEnum
 {
     DefautSword,
     Sword,
     Mace
 }
 [Serializable]
-public struct DefaultSword
+public struct Wepon
 {
-    public Wepon _weponState;
-    public bool isCrafted;
+    public WeponEnum _weponState;
+    public float _weponPower;
+    public bool _isCrafted;
     public int _repairPal;
 }
 #endregion
 public class GameManager : MonoBehaviour
 {
-    public DefaultSword _defaultSword;
+    public List<Wepon> _wepon;
     public enum PlayerState
     { 
         Nomal,
-        Powor,
+        Power,
         Guald
     }
     public enum Item
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
     /// １～の時間指定変数
     /// </summary>
     public int _currentTimeNum;
+    public int _currentEquipped = 0;
     public int _harb;
     public int _highHarb;
     public int _meat = 5;
@@ -88,6 +90,13 @@ public class GameManager : MonoBehaviour
         _highHarb += num;
     }
     #endregion
+    public Wepon GetWepon
+    {
+        get
+        {
+            return _wepon[_currentEquipped];
+        }
+    }
     public void ChangeState(PlayerState buff)
     {
         _playerState = buff;

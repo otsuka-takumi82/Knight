@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         {
             //_currentHarb = _gameManager._harb;
             _currentHighHarb = _gameManager._highHarb;
-            if (_gameManager.State(GameManager.PlayerState.Powor))
+            if (_gameManager.State(GameManager.PlayerState.Power))
             {
                 _playerDamage *= 2;
             }
