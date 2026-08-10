@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 #region 武器構造体
@@ -45,11 +46,14 @@ public class GameManager : MonoBehaviour
     public List<int> _stageNum;
     [SerializeField]
     public Item[] _item;
+    //[SerializeField]
+    //public Text _dayNum;
 
     /// <summary>
     /// １～の時間指定変数
     /// </summary>
     public int _currentTimeNum;
+    public int _currentDayNum;
     public int _currentEquipped = 0;
     public int _currentMake = 0;
     public int _harb;
@@ -123,4 +127,5 @@ public class GameManager : MonoBehaviour
     {
         return _playerState == state;
     }
+    
 }

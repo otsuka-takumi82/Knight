@@ -8,6 +8,8 @@ public class RoomManager : MonoBehaviour
     [SerializeField]
     Text[] _stageName;
     [SerializeField]
+    Text _dayText;
+    [SerializeField]
     GameObject _stageSelect;
     [SerializeField]
     GameObject _itemSelect;
@@ -17,16 +19,33 @@ public class RoomManager : MonoBehaviour
     GameObject[] _equipment;
 
     GameManager _gameManager;
+    public bool _isNight;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
         _gameManager.ChangeState(GameManager.PlayerState.Nomal);
+        DayUI();
         if (_gameManager._currentTimeNum == 5)
         {
             _gameManager._currentTimeNum = 0;
         }
+        if (_gameManager._currentTimeNum == 4)
+        {
+            _isNight = true;
+        }
+        else
+        {
+            _isNight= false;
+        }
         AllCheck();
+    }
+    private void OnDestroy()
+    {
+        if(_isNight)
+        {
+            _gameManager._currentDayNum++;
+        }
     }
 
     // Update is called once per frame
@@ -125,5 +144,9 @@ public class RoomManager : MonoBehaviour
         CheckStage(1);
         CheckStage(2);
         CheckStage(3);
+    }
+    public void DayUI()
+    {
+        _dayText.text = "日数：" + _gameManager._currentDayNum;
     }
 }

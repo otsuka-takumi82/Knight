@@ -13,9 +13,11 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     public float _pray;
     public bool _isPray;
     public bool[] _itemDel;
+    PrayUIManager _uiManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _uiManager = FindFirstObjectByType<PrayUIManager>();
         AllItemSetBool(true);
     }
 
@@ -26,6 +28,7 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         if (_isPray)
         {
             _pray += Time.deltaTime;
+            _uiManager.GageControl(_pray, _prayMax);
             if (_pray > 0 && _itemDel[0])
             {
 
