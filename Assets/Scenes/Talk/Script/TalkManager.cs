@@ -24,6 +24,8 @@ public class TalkManager : MonoBehaviour
     private string[] _fighterMessage;
     [SerializeField]
     private string[] _makerMessage;
+    [SerializeField]
+    GameObject _makeWepon;
 
     enum JobType
     {
@@ -74,6 +76,31 @@ public class TalkManager : MonoBehaviour
                 AddTalk(_makerMessage);
             }
 
+        }
+    }
+    #region 武器のボタンの数字戻り値
+    public void NumDefaultSword()
+    {
+        _gameManager._currentMake = 0;
+    }
+    public void NumSword()
+    {
+        _gameManager._currentMake = 1;
+    }
+    public void NumMace()
+    {
+        _gameManager._currentMake = 2;
+    }
+    #endregion
+    public void OnWeponSelect()
+    {
+        if (_makeWepon.activeSelf)
+        {
+            _makeWepon.SetActive(false);
+        }
+        else
+        {
+            _makeWepon.SetActive(true);
         }
     }
     ///<summary>

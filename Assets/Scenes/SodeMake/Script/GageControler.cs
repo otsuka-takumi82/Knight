@@ -15,8 +15,8 @@ public class GageControler : MonoBehaviour
     HummerControler _hm;
     bool _isBottom;
     bool _isHit;
-    bool _isHummed = false;
-    public bool _isMoved = false;
+    bool _isHummed = true;
+    public bool _isMoved = true;
     float _myTime;
     float _defaultSpeed; 
     private Vector3 _startPos;
@@ -34,6 +34,7 @@ public class GageControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_isMoved);
         if(_isMoved)
         {
             _myTime += Time.deltaTime * _speed;

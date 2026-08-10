@@ -25,7 +25,7 @@ public class SwordControler : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _gameManager = FindFirstObjectByType<GameManager>();
-        
+        StartDefaultSword(_gameManager._currentMake);
         //_currentBarn = _maxBarn;
         //CheckBarn();
         //CheckPal();
@@ -66,30 +66,7 @@ public class SwordControler : MonoBehaviour
             CheckPal();
         }
     }
-    #region 武器のボタンの数字戻り値
-    public void NumDefaultSword()
-    {
-        _swordActive = true;
-        _currentBarn = 0;
-        _weponNum = 0;
-        StartDefaultSword(_weponNum);
-    }
-    public void NumSword()
-    {
-        _swordActive = true;
-        _currentBarn = 0;
-        _weponNum = 1;
-        StartDefaultSword(_weponNum);
-    }
-    public void NumMace()
-    {
-        _swordActive = true;
-        _currentBarn = 0;
-        _weponNum = 2;
-        StartDefaultSword(_weponNum);
-    }
-    #endregion
-
+   
     public void Out()
     {
         _currentBarn += 1;

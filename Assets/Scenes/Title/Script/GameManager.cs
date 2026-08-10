@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public int _currentTimeNum;
     public int _currentEquipped = 0;
+    public int _currentMake = 0;
     public int _harb;
     public int _highHarb;
     public int _meat = 5;

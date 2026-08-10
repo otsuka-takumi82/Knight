@@ -1254,7 +1254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &686444569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   _hit: {fileID: 70516627}
   _hibana: {fileID: 1208615338619834777, guid: 6a74dd0af42819149b8b4b2ac3ba0331, type: 3}
   _hummer: {fileID: 1914025720}
-  _isMoved: 0
+  _isMoved: 1
 --- !u!1 &1080927073
 GameObject:
   m_ObjectHideFlags: 0
