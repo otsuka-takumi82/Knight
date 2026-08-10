@@ -15,7 +15,8 @@ public class GageControler : MonoBehaviour
     HummerControler _hm;
     bool _isBottom;
     bool _isHit;
-    bool _isHummed = true;
+    bool _isHummed = false;
+    public bool _isMoved = false;
     float _myTime;
     float _defaultSpeed; 
     private Vector3 _startPos;
@@ -33,31 +34,35 @@ public class GageControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _myTime += Time.deltaTime * _speed;
-        float newY = Mathf.PingPong(_myTime, _height);
-
-        transform.position = new Vector3(_startPos.x, _startPos.y + newY, _startPos.z);
-
-        if (transform.position.y >= 3.9f && !_isBottom)
+        if(_isMoved)
         {
-            Debug.Log("a");
-            _sw.Out();
-            _speed *= 0.75f;
-            _isHummed = true;
-            _isBottom = true; // 判定済みにする（連続実行を防止）
-        }
-        // ゲージが少し上に上がったら（0.1以上）、フラグをリセットして次の折り返しに備える
-        else if (transform.position.y < 3.9f)
-        {
-            _isBottom = false;
+            _myTime += Time.deltaTime * _speed;
+            float newY = Mathf.PingPong(_myTime, _height);
+
+            transform.position = new Vector3(_startPos.x, _startPos.y + newY, _startPos.z);
+
+            if (transform.position.y >= 3.9f && !_isBottom)
+            {
+                Debug.Log("a");
+                _sw.Out();
+                _speed *= 0.75f;
+                _isHummed = true;
+                _isBottom = true; // 判定済みにする（連続実行を防止）
+            }
+            // ゲージが少し上に上がったら（0.1以上）、フラグをリセットして次の折り返しに備える
+            else if (transform.position.y < 3.9f)
+            {
+                _isBottom = false;
+            }
+
+            if (transform.position.y <= _startPos.y + 0.1f)
+            {
+                _isHummed = true;
+            }
+            // ゲージが少し上に上がったら（0.1以上）、フラグをリセットして次の折り返しに備える
         }
 
-        if (transform.position.y <= _startPos.y + 0.1f)
-        {
-            _isHummed = true;
-        }
-        // ゲージが少し上に上がったら（0.1以上）、フラグをリセットして次の折り返しに備える
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,6 +80,19 @@ public class GageControler : MonoBehaviour
         {
             _isHit = false;
         }
+    }
+    public void MoveReset()
+    {
+        if(_isMoved)
+        {
+            _isMoved = false;
+            transform.position = _startPos;
+        }
+        else
+        {
+            _isMoved = true;
+        }
+
     }
 
     public void Hit()

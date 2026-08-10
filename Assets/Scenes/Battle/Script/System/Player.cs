@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public float _currentStamina;
     public int _currentHarb;
     private int _currentHighHarb;
+    private Wepon _wepon;
     private BattleUIManager _uiManager;
     private EnemyHelth _enemy;
     private GameManager _gameManager;
@@ -35,6 +36,17 @@ public class Player : MonoBehaviour
         _currentStamina = _maxStamina;
         if (_gameManager != null)
         {
+            _wepon = _gameManager.CurrentWepon;
+            _playerDamage = _wepon._weponPower;
+            if (_wepon._repairPal == 0)
+            {
+                _playerDamage *= 0.5f;
+            }
+            else if (_wepon._repairPal == 2)
+            {
+                _playerDamage *= 2;
+            }
+           
             //_currentHarb = _gameManager._harb;
             _currentHighHarb = _gameManager._highHarb;
             if (_gameManager.State(GameManager.PlayerState.Power))
@@ -52,7 +64,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Debug.Log(_canAttack);
-        if(! _stagging )
+        if (! _stagging )
         {
             if (_currentStamina < _maxStamina)
             {
@@ -62,6 +74,10 @@ public class Player : MonoBehaviour
             }
         }
 
+    }
+    private void OnDestroy()
+    {
+        _gameManager.AddRepair(-1);
     }
 
     public void PlayerModifyHelth()

@@ -21,7 +21,6 @@ public class ItemBase : MonoBehaviour,IPointerDownHandler
         {
             if (_gameManager._item[i] == _itemType)
             {
-                Debug.Log(_itemUINum);
                 _itemUINum = i;
             }
         }

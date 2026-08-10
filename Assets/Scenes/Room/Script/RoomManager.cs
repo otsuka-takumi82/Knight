@@ -21,6 +21,7 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
+        _gameManager.ChangeState(GameManager.PlayerState.Nomal);
         if (_gameManager._currentTimeNum == 5)
         {
             _gameManager._currentTimeNum = 0;

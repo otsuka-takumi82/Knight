@@ -26,4 +26,16 @@ public class EquipmentManager : MonoBehaviour
             Debug.LogWarningFormat("まだ作成していない！");
         }
     }
+    public void EquipSword()
+    {
+
+        if (_gameManager._wepon[1]._isCrafted)
+        {
+            _gameManager._currentEquipped = 1;
+        }
+        else
+        {
+            Debug.LogWarningFormat("まだ作成していない！");
+        }
+    }
 }

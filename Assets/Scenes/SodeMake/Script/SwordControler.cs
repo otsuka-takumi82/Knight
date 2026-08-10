@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -14,6 +16,8 @@ public class SwordControler : MonoBehaviour
     bool _swordActive = true;
     private int _currentBarn;
     private int _currentPal;
+    private Wepon _currentWepon;
+    private int _weponNum;
     private GameManager _gameManager;
     SpriteRenderer _spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,18 +25,70 @@ public class SwordControler : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _gameManager = FindFirstObjectByType<GameManager>();
-
+        
         //_currentBarn = _maxBarn;
-        CheckBarn();
-        CheckPal();
+        //CheckBarn();
+        //CheckPal();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+    public void StartDefaultSword(int num)
+    {
+        _weponNum = num;
+        _currentWepon = _gameManager._wepon[num];
+        if (!_currentWepon._isCrafted)
+        {
+            _currentPal = 0;
+            CheckBarn();
+            CheckPal();
+        }
+        else if (_currentWepon._isCrafted)
+        {
+            if (_currentWepon._repairPal == 0)
+            {
+                _currentPal = 5;
+            }
+            else if (_currentWepon._repairPal == 1)
+            {
+                _currentPal = 7;
+            }
+            else if (_currentWepon._repairPal == 2)
+            {
+                _currentPal = _maxSordPal;
+                Debug.Log("完璧だ");
+            }
+            CheckBarn();
+            CheckPal();
+        }
+    }
+    #region 武器のボタンの数字戻り値
+    public void NumDefaultSword()
+    {
+        _swordActive = true;
+        _currentBarn = 0;
+        _weponNum = 0;
+        StartDefaultSword(_weponNum);
+    }
+    public void NumSword()
+    {
+        _swordActive = true;
+        _currentBarn = 0;
+        _weponNum = 1;
+        StartDefaultSword(_weponNum);
+    }
+    public void NumMace()
+    {
+        _swordActive = true;
+        _currentBarn = 0;
+        _weponNum = 2;
+        StartDefaultSword(_weponNum);
+    }
+    #endregion
 
     public void Out()
     {
@@ -51,33 +107,36 @@ public class SwordControler : MonoBehaviour
 
     public void CheckBarn()
     {
-        if( _currentBarn >= _maxBarn )
+        if (_swordActive)
         {
-            //黒
-            Debug.Log("黒");
-            _spriteRenderer.color = Color.black;
-            _swordActive = false;
-            
+            if (_currentBarn >= _maxBarn)
+            {
+                //黒
+                Debug.Log("黒");
+                _spriteRenderer.color = Color.black;
+                _swordActive = false;
+
+            }
+            else if (_currentBarn >= _maxBarn * 0.75f)
+            {
+                //赤
+                Debug.Log("赤");
+                _spriteRenderer.color = Color.red;
+            }
+            else if (_currentBarn >= _maxBarn * 0.5f)
+            {
+                //オレンジ
+                Debug.Log("オレンジ");
+                _spriteRenderer.color = Color.yellow;
+            }
+            else
+            {
+                //黄色
+                Debug.Log("黄色");
+                _spriteRenderer.color = Color.white;
+            }
         }
-        else if (_currentBarn >= _maxBarn * 0.75f)
-        {
-            //赤
-            Debug.Log("赤");
-            _spriteRenderer.color = Color.red;
-        }
-        else if (_currentBarn >= _maxBarn * 0.5f)
-        {
-            //オレンジ
-            Debug.Log("オレンジ");
-            _spriteRenderer.color = Color.yellow;
-        }
-        else
-        {
-            //黄色
-            Debug.Log("黄色");
-            _spriteRenderer.color = Color.white;
-            
-        }
+        
         
 
     }
@@ -89,15 +148,22 @@ public class SwordControler : MonoBehaviour
             {
                 //黒
                 Debug.Log("完成！");
+                _currentWepon._repairPal = 2;
                 _events[3].Invoke();
+                if (!_currentWepon._isCrafted)
+                {
+                    _currentWepon._isCrafted = true;
+                    _currentWepon._repairPal = 2;
+                }
             }
-            else if (_currentPal >= _maxSordPal * 0.75f)
+            else if (_currentPal >= 7)
             {
                 //赤
                 Debug.Log("あと少し！");
+                _currentWepon._repairPal = 1;
                 _events[2].Invoke();
             }
-            else if (_currentPal >= _maxSordPal * 0.5f)
+            else if (_currentPal >= 5)
             {
                 //オレンジ
                 Debug.Log("まだまだ！！");
@@ -115,6 +181,6 @@ public class SwordControler : MonoBehaviour
         {
             Debug.Log("失敗！");
         }
-
+        _gameManager._wepon[_weponNum] = _currentWepon;
     }
 }

@@ -12,6 +12,7 @@ public enum WeponEnum
 [Serializable]
 public struct Wepon
 {
+    public string _name;
     public WeponEnum _weponState;
     public float _weponPower;
     public bool _isCrafted;
@@ -73,7 +74,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(_stageNum[1]);
+        //Debug.Log(_wepon[_currentEquipped]._repairPal);
     }
 
     #region アイテム追加。多態性アイテム作るときにここも
@@ -90,12 +91,19 @@ public class GameManager : MonoBehaviour
         _highHarb += num;
     }
     #endregion
-    public Wepon GetWepon
+    public Wepon CurrentWepon
     {
         get
         {
             return _wepon[_currentEquipped];
         }
+    }
+    public void AddRepair(int num)
+    {
+        Wepon wepon;
+        wepon = _wepon[_currentEquipped];
+        wepon._repairPal =  Mathf.Clamp(wepon._repairPal + num,0,2);
+        _wepon[_currentEquipped] = wepon;
     }
     public void ChangeState(PlayerState buff)
     {

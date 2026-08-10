@@ -791,15 +791,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wepon:
-  - _weponState: 0
-    _weponPower: 1
+  - _name: "\u521D\u671F\u6B66\u5668"
+    _weponState: 0
+    _weponPower: -1
     _isCrafted: 1
-    _repairPal: 0
-  - _weponState: 0
-    _weponPower: 0
+    _repairPal: 1
+  - _name: "\u5263"
+    _weponState: 1
+    _weponPower: -3
     _isCrafted: 0
     _repairPal: 0
-  - _weponState: 0
+  - _name: 
+    _weponState: 0
     _weponPower: 0
     _isCrafted: 0
     _repairPal: 0
