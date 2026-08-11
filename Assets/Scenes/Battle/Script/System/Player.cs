@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField,Header("プレイヤー攻撃力")]
     public float _playerDamage;
+    [SerializeField, Header("プレイヤー剣")]
+    public SpriteRenderer _currentWepon;
     [SerializeField]
     public float _maxHp;
     [SerializeField]
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
                 _playerDamage *= 2;
             }
         }
+        _currentWepon.sprite = _gameManager._swordImage[_gameManager._currentEquipped];
         
         
         _canAttack = true;

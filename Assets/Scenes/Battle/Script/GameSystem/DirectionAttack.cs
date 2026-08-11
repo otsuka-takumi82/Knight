@@ -48,20 +48,27 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
             //_enemyHelth.PlayerStamina();
             if (_attackType == AttackType.RightUp)
             {
-                RightUP(new Vector3(clickPosition.x, clickPosition.y - 1.5f, clickPosition.z));
+                AttackMove(new Vector3(clickPosition.x, clickPosition.y - 1.5f, clickPosition.z));
             }
             if (_attackType == AttackType.RightDown)
             {
-                RightUP(new Vector3(clickPosition.x, clickPosition.y + 1f, clickPosition.z));
+                AttackMove(new Vector3(clickPosition.x, clickPosition.y + 1f, clickPosition.z));
             }
-
+            if (_attackType == AttackType.LeftUp)
+            {
+                AttackMove(new Vector3(clickPosition.x, clickPosition.y + 0, clickPosition.z));
+            }
+            if (_attackType == AttackType.LeftDown)
+            {
+                AttackMove(new Vector3(clickPosition.x, clickPosition.y + 0, clickPosition.z));
+            }
             StartCoroutine(_player.AttackCoolTime());
         }
 
 
     }
 
-    public void RightUP(Vector3 pos)
+    public void AttackMove(Vector3 pos)
     {
         _arm.transform.position = pos;
         _events[0].Invoke();
