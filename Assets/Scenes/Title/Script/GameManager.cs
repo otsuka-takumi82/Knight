@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     public List<int> _stageNum;
+    [SerializeField, Header("武器画像")]
+    public Sprite[] _swordImage;
     [SerializeField]
     public Item[] _item;
     //[SerializeField]

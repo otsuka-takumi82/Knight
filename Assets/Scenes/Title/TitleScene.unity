@@ -989,8 +989,10 @@ MonoBehaviour:
     _repairPal: 0
   _playerState: 0
   _stageNum: 0100000001000000010000000100000001000000
+  _swordImage:
+  - {fileID: 2217347060541463350, guid: fc052c64c75ae2f4b8bc1a842bb4397a, type: 3}
+  - {fileID: -8956817273431171950, guid: fc052c64c75ae2f4b8bc1a842bb4397a, type: 3}
   _item: 00000000000000000000000000000000
-  _dayNum: {fileID: 1012205384}
   _currentTimeNum: 0
   _currentDayNum: 0
   _currentEquipped: 0
