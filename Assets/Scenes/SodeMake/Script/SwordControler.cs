@@ -12,6 +12,8 @@ public class SwordControler : MonoBehaviour
     private int _maxSordPal;
     [SerializeField, Header("鍛冶イベント")]
     UnityEvent[] _events;
+    [SerializeField, Header("作った武器")]
+    GameObject[] _makeWepon;
 
     bool _swordActive = true;
     private int _currentBarn;
@@ -132,6 +134,8 @@ public class SwordControler : MonoBehaviour
                     _currentWepon._isCrafted = true;
                     _currentWepon._repairPal = 2;
                 }
+                FindFirstObjectByType<GageControler>().MoveReset();
+                _makeWepon[_weponNum].SetActive(true);
             }
             else if (_currentPal >= 7)
             {

@@ -50,7 +50,7 @@ public class EnemyHelth : MonoBehaviour
         ShowHP();
         if ( _currentHp <= 0 )
         {
-            
+            _anim.Play("Died");
         }
     }
 
