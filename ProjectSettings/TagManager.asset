@@ -10,6 +10,10 @@ TagManager:
   - Porch2
   - Porch3
   - Strage
+  - Hit1
+  - Hit2
+  - RightUp
+  - EnemyHit
   layers:
   - Default
   - TransparentFX
@@ -19,7 +23,7 @@ TagManager:
   - UI
   - God
   - AllUI
-  - 
+  - NoneClick
   - 
   - 
   - 

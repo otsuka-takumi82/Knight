@@ -23,47 +23,69 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
     void Update()
     {
         _timer += Time.deltaTime;
-        if(TimerOver(_maxTimer))
+        if (TimerOver(_maxTimer))
         {
             _player.PlayerModifyHelth();
             _player.ModifyStamina();
             Destroy(gameObject);
         }
-        
+        if (!_player._stagging)
+        {
+            if (TimerOver(1.5f))
+            {
+                TagChange2();
+            }
+            else if (TimerOver(1f))
+            {
+                TagChange1();
+            }
+
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!_player._stagging)
-        {
-            Vector3 clickPosition = eventData.pointerPressRaycast.worldPosition;
-            if (TimerOver(1.5f))
-            {
-                _enemyHelth.Knock();
-                _enemyHelth.PlayerDamage();
-                _enemyHelth.PlayerStamina(2);
-                _directionAttack.Hibana(clickPosition);
-                Destroy(gameObject);
-            }
-            else if (TimerOver(1f))
-            {
-                _enemyHelth.Knock();
-                _enemyHelth.PlayerStamina();
-                _player.ModifyStamina();
-                Destroy(gameObject);
-            }
-            else
-            {
-                _enemyHelth.Knock();
-                _player.ModifyStamina();
-                Destroy(gameObject);
-            }
-        }
-        
+
+
+        //if (!_player._stagging)
+        //{
+        //    Vector3 clickPosition = eventData.pointerPressRaycast.worldPosition;
+        //    if (TimerOver(1.5f))
+        //    {
+        //        _enemyHelth.Knock();
+        //        _enemyHelth.PlayerDamage();
+        //        _enemyHelth.PlayerStamina(2);
+        //        _directionAttack.Hibana(clickPosition);
+        //        Destroy(gameObject);
+        //    }
+        //    else if (TimerOver(1f))
+        //    {
+        //        _enemyHelth.Knock();
+        //        _enemyHelth.PlayerStamina();
+        //        _player.ModifyStamina();
+        //        Destroy(gameObject);
+        //    }
+        //    else
+        //    {
+        //        _enemyHelth.Knock();
+        //        _player.ModifyStamina();
+        //        Destroy(gameObject);
+        //    }
+        //}
+
     }
 
     public bool TimerOver(float time)
     {
         return _timer > time;
+    }
+
+    public void TagChange1()
+    {
+        gameObject.tag = "Hit1";
+    }
+    public void TagChange2()
+    {
+        gameObject.tag = "Hit2";
     }
 }

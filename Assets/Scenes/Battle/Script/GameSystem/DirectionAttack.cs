@@ -1,13 +1,18 @@
+
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class DirectionAttack : MonoBehaviour, IPointerDownHandler
 {
+    [SerializeField, Header("右上攻撃")]
+    UnityEvent[] _events;
     private EnemyHelth _enemyHelth;
     private Player _player;
-    [SerializeField, UnitHeaderInspectable("火花")]
-    private GameObject _hibana;
+    [SerializeField, Header("右上攻撃")]
+    private GameObject _arm;
+    
     private enum AttackType
     {
         RightUp,
@@ -18,7 +23,7 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
     }
     [SerializeField]
     private AttackType _attackType;
-    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,27 +35,37 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(!_player._stagging && _player._canAttack)
+        if (!_player._stagging && _player._canAttack)
         {
             Vector3 clickPosition = eventData.pointerPressRaycast.worldPosition;
 
-            _enemyHelth.PlayerDamage();
-            _enemyHelth.PlayerStamina();
-            Hibana(clickPosition);
+            //_enemyHelth.PlayerDamage();
+            //_enemyHelth.PlayerStamina();
+            if (_attackType == AttackType.RightUp)
+            {
+                RightUP(new Vector3(clickPosition.x, clickPosition.y - 1.5f, clickPosition.z));
+            }
+            if (_attackType == AttackType.RightDown)
+            {
+                RightUP(new Vector3(clickPosition.x, clickPosition.y + 1f, clickPosition.z));
+            }
+
             StartCoroutine(_player.AttackCoolTime());
         }
-           
-          
+
+
     }
 
-    public void Hibana(Vector3 hibanapos)
+    public void RightUP(Vector3 pos)
     {
-        Instantiate(_hibana, hibanapos, Quaternion.identity);
+        _arm.transform.position = pos;
+        _events[0].Invoke();
     }
-
+    
 }
+
