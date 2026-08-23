@@ -13,7 +13,11 @@ public class EnemyHelth : MonoBehaviour
     private float _currentStamina;
     [SerializeField]
     private float _staggerPile = 1;
-    
+    [SerializeField]
+    public float _enemyScore = 10;
+    [SerializeField]
+    private GameObject _result;
+
 
     private BattleUIManager _uiManager;
     private Player _player;
@@ -23,11 +27,6 @@ public class EnemyHelth : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        
-    }
-    void Start()
-    {
-        
         _uiManager = FindFirstObjectByType<BattleUIManager>();
         _player = FindFirstObjectByType<Player>();
         _anim = GetComponent<Animator>();
@@ -35,6 +34,11 @@ public class EnemyHelth : MonoBehaviour
         _currentStamina = _maxStamina;
         ShowHP();
         ShowStamina();
+    }
+    void Start()
+    {
+        
+        
     }
 
     private void Update()
@@ -51,6 +55,7 @@ public class EnemyHelth : MonoBehaviour
         if ( _currentHp <= 0 )
         {
             _anim.Play("Died");
+            _result.SetActive(true);
         }
     }
 

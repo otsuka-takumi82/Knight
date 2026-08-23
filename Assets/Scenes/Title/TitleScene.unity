@@ -988,7 +988,7 @@ MonoBehaviour:
     _isCrafted: 0
     _repairPal: 0
   _playerState: 0
-  _stageNum: 0100000001000000010000000100000001000000
+  _stageNum: 0100000002000000020000000200000001000000
   _swordImage:
   - {fileID: 2217347060541463350, guid: fc052c64c75ae2f4b8bc1a842bb4397a, type: 3}
   - {fileID: -8956817273431171950, guid: fc052c64c75ae2f4b8bc1a842bb4397a, type: 3}
@@ -997,6 +997,7 @@ MonoBehaviour:
   _currentDayNum: 0
   _currentEquipped: 0
   _currentMake: 0
+  _currentFight: 0
   _harb: 0
   _highHarb: 0
   _meat: 5

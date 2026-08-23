@@ -29,7 +29,6 @@ public class SwordEffect : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("RightUp"))
         {
-            Debug.Log("a");
             _enemyHelth.PlayerDamage();
             _enemyHelth.PlayerStamina();
             Hibana(transform.position);

@@ -27,6 +27,10 @@ public class TalkManager : MonoBehaviour
     [SerializeField]
     GameObject _makeWepon;
     [SerializeField]
+    GameObject _equipBox;
+    [SerializeField]
+    GameObject _swordBox;
+    [SerializeField]
     GameObject _fighterButton;
 
     enum JobType
@@ -117,6 +121,28 @@ public class TalkManager : MonoBehaviour
         else
         {
             _makeWepon.SetActive(true);
+        }
+    }
+    public void OnEquipSelect()
+    {
+        if (_equipBox.activeSelf)
+        {
+            _equipBox.SetActive(false);
+        }
+        else
+        {
+            _equipBox.SetActive(true);
+        }
+    }
+    public void WeponSelect()
+    {
+        if (_swordBox.activeSelf)
+        {
+            _swordBox.SetActive(false);
+        }
+        else
+        {
+            _swordBox.SetActive(true);
         }
     }
     public void OnFighterSelect()
