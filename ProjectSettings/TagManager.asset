@@ -15,6 +15,7 @@ TagManager:
   - RightUp
   - EnemyHit
   - Result
+  - Canvas
   layers:
   - Default
   - TransparentFX

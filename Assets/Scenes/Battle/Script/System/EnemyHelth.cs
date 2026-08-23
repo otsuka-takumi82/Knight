@@ -17,7 +17,8 @@ public class EnemyHelth : MonoBehaviour
     public float _enemyScore = 10;
     [SerializeField]
     private GameObject _result;
-
+    [SerializeField]
+    public Sprite _enemyImage;
 
     private BattleUIManager _uiManager;
     private Player _player;

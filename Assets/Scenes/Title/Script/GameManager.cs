@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
     public Sprite[] _swordImage;
     [SerializeField]
     public Item[] _item;
+    [SerializeField, Header("未作成エラー")]
+    public GameObject[] _allUI;
     //[SerializeField]
     //public Text _dayNum;
 
@@ -129,6 +131,23 @@ public class GameManager : MonoBehaviour
     public bool State(PlayerState state)
     {
         return _playerState == state;
+    }
+    public void AllUI(GameObject gameObject)
+    {
+        GameObject gb = GameObject.FindGameObjectWithTag("Canvas");
+        Canvas cv = gb.GetComponent<Canvas>();
+        gb = Instantiate(gameObject,new Vector3(transform.position.x, transform.position.y, transform.position.z),Quaternion.identity);
+        gb.transform.SetParent(cv.transform, false);
+    }
+
+    public void UnCreated()
+    {
+        AllUI(_allUI[0]);
+    }
+
+    public void EquipUI()
+    {
+        AllUI(_allUI[1]);
     }
     
 }

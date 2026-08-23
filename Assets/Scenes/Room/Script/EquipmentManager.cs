@@ -20,10 +20,12 @@ public class EquipmentManager : MonoBehaviour
         if (_gameManager._wepon[0]._isCrafted)
         {
             _gameManager._currentEquipped = 0;
+            _gameManager.EquipUI();
         }
         else
         {
             Debug.LogWarningFormat("まだ作成していない！");
+            _gameManager.UnCreated();
         }
     }
     public void EquipSword()
@@ -32,10 +34,12 @@ public class EquipmentManager : MonoBehaviour
         if (_gameManager._wepon[1]._isCrafted)
         {
             _gameManager._currentEquipped = 1;
+            _gameManager .EquipUI();
         }
         else
         {
             Debug.LogWarningFormat("まだ作成していない！");
+            _gameManager.UnCreated();
         }
     }
 }
