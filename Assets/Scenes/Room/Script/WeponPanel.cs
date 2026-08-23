@@ -9,6 +9,7 @@ public class WeponPanel : MonoBehaviour
     Text _weponPower;
     [SerializeField]
     Text _weonRepair;
+    float _savePower;
 
     string[] _repairStr =
     {
@@ -21,6 +22,26 @@ public class WeponPanel : MonoBehaviour
     void Start()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
+        _savePower = _gameManager._wepon[_weponNum]._weponPower;
+        if (_gameManager._wepon[_weponNum]._isCrafted)
+        {
+            if (_gameManager._wepon[_weponNum]._repairPal == 0)
+            {
+                _savePower *= 0.5f;
+            }
+            else if (_gameManager._wepon[_weponNum]._repairPal == 1)
+            {
+                _savePower *= 1;
+            }
+            else if (_gameManager._wepon[_weponNum]._repairPal == 2)
+            {
+                _savePower *= 1.5f;
+            }
+        }
+        else
+        {
+            _savePower *= 1;
+        }
         CheckWepon();
     }
 
@@ -32,7 +53,7 @@ public class WeponPanel : MonoBehaviour
 
     public void CheckWepon()
     {
-        _weponPower.text = "攻撃力: " + Mathf.Abs(_gameManager._wepon[_weponNum]._weponPower).ToString("0") ;
+        _weponPower.text = "攻撃力: " + Mathf.Abs(_savePower).ToString("0.0") ;
         if (_gameManager._wepon[_weponNum]._isCrafted)
         {
             if (_gameManager._wepon[_weponNum]._repairPal == 0)

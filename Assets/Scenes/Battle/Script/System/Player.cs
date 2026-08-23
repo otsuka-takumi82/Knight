@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
             }
             else if (_wepon._repairPal == 2)
             {
-                _playerDamage *= 2;
+                _playerDamage *= 1.5f;
             }
            
             //_currentHarb = _gameManager._harb;
