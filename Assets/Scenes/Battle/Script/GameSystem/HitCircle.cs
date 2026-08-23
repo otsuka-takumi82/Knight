@@ -6,6 +6,9 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
 {
     [SerializeField]
     private float _maxTimer = 2;
+    Animator _anim;
+    [SerializeField]
+    string _name;
 
     private float _timer;
     private EnemyHelth _enemyHelth;
@@ -17,6 +20,11 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
         _player = FindFirstObjectByType<Player>();
         _enemyHelth = FindFirstObjectByType<EnemyHelth>();
         _directionAttack = FindFirstObjectByType<DirectionAttack>();
+        _anim = GetComponent<Animator>();
+        if(_name != null)
+        {
+            _anim.Play(_name);
+        }
     }
 
     // Update is called once per frame
@@ -31,11 +39,11 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
         }
         if (!_player._stagging)
         {
-            if (TimerOver(1.5f))
+            if (TimerOver(_maxTimer * 0.75f))
             {
                 TagChange2();
             }
-            else if (TimerOver(1f))
+            else if (TimerOver(_maxTimer * 0.5f))
             {
                 TagChange1();
             }

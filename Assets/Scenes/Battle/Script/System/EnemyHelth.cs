@@ -93,11 +93,11 @@ public class EnemyHelth : MonoBehaviour
 
     public IEnumerator Stagger()
     {
-        _staggerPile = 4f;
+        _staggerPile *= 4f;
         _stagging = true;
         yield return new WaitForSeconds(5);
         _stagging = false;
-        _staggerPile = 1;
+        _staggerPile /= 4;
         _currentStamina = _maxStamina;
         ShowStamina();
     }

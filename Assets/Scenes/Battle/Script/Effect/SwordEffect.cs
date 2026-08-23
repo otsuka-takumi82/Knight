@@ -15,6 +15,10 @@ public class SwordEffect : MonoBehaviour
         _player = FindFirstObjectByType<Player>();
     }
 
+    private void OnDestroy()
+    {
+        Debug.Log("破壊");
+    }
     // Update is called once per frame
     void Update()
     {
