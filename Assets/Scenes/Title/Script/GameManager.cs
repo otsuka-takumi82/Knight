@@ -46,10 +46,16 @@ public class GameManager : MonoBehaviour
     public List<int> _stageNum;
     [SerializeField, Header("武器画像")]
     public Sprite[] _swordImage;
+    [SerializeField, Header("ステージ画像")]
+    public Sprite[] _stageImage;
+    [SerializeField, Header("アイテム画像")]
+    public Sprite[] _itemImage;
     [SerializeField]
     public Item[] _item;
     [SerializeField, Header("未作成エラー")]
     public GameObject[] _allUI;
+    [SerializeField, Header("設定パネル")]
+    public GameObject _settingPanel;
     //[SerializeField]
     //public Text _dayNum;
 
@@ -65,6 +71,10 @@ public class GameManager : MonoBehaviour
     public int _highHarb;
     public int _meat = 5;
     public Vector3 _defaultTransform;
+
+    public delegate void Pause(bool paused);
+    Pause _pauseReseum = default;
+    bool _isPaused;
     private void Awake()
     {
         if (FindObjectsByType<GameManager>(
@@ -84,7 +94,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(_wepon[_currentEquipped]._repairPal);
+        Debug.Log(_currentTimeNum);
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseReseum();
+        }
     }
 
     #region アイテム追加。多態性アイテム作るときにここも
@@ -139,6 +153,21 @@ public class GameManager : MonoBehaviour
         gb = Instantiate(gameObject,new Vector3(transform.position.x, transform.position.y, transform.position.z),Quaternion.identity);
         gb.transform.SetParent(cv.transform, false);
     }
+    public void AllUISet(GameObject gameObject)
+    {
+        GameObject gb = GameObject.FindGameObjectWithTag("Canvas");
+        Canvas cv = gb.GetComponent<Canvas>();
+        
+            if (gameObject.activeSelf)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                gameObject.SetActive(true);
+            }
+        gameObject.transform.SetParent(cv.transform, false);
+    }
 
     public void UnCreated()
     {
@@ -149,5 +178,31 @@ public class GameManager : MonoBehaviour
     {
         AllUI(_allUI[1]);
     }
-    
+    public void SettingUI()
+    {
+        AllUI(_allUI[2]);
+    }
+    public void BrackOut()
+    {
+        AllUI(_allUI[3]);
+    }
+    public void SettingPanel()
+    {
+        AllUISet(_settingPanel);
+    }
+    public void PauseReseum()
+    {
+        SettingPanel();
+        //_isPaused = !_isPaused;
+        //_pauseReseum(_isPaused);
+    }
+
+    public void SetMyPearent(GameObject child)
+    {
+        child.transform.SetParent(gameObject.transform, false);
+    }
+    public void SetSetting()
+    {
+        SetMyPearent(_settingPanel);
+    }
 }

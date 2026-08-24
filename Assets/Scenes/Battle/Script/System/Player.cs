@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private GameManager _gameManager;
     public bool _stagging;
     public bool _canAttack;
+    public bool _isDead;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -90,7 +91,12 @@ public class Player : MonoBehaviour
         ShowHP();
         if( _currentHp <= 0 )
         {
-            Debug.Log("Dead");
+            if(!_isDead)
+            {
+                FindFirstObjectByType<SceneLoader>().LoadTimeAdd();
+                _isDead = true;
+            }
+            
         }
     }
 
@@ -104,6 +110,7 @@ public class Player : MonoBehaviour
         {
             if (_currentStamina <= 0)
             {
+                
                 StartCoroutine(Stagger());
             }
         }

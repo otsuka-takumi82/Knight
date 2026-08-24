@@ -1005,6 +1005,85 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!1 &497349496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497349497}
+  - component: {fileID: 497349499}
+  - component: {fileID: 497349498}
+  m_Layer: 5
+  m_Name: Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &497349497
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497349496}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.18999, y: 0.30998, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1702153706}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -18.6, y: -28.7}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &497349498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497349496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 31202f1cda4b8454c89a57edadba47cb, type: 3}
+    m_FontSize: 27
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &497349499
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497349496}
+  m_CullTransparentMesh: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,6 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee5ff1d8d764d64fa05fdbe9a7626ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Teacher
   _maxHp: 75
   _damage: -5
   _maxStamina: 30
@@ -2873,6 +2953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee5ff1d8d764d64fa05fdbe9a7626ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: TeacherG
   _maxHp: 200
   _damage: -5
   _maxStamina: 50
@@ -3067,6 +3148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bee5ff1d8d764d64fa05fdbe9a7626ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Muscle
   _maxHp: 100
   _damage: -10
   _maxStamina: 20
@@ -3776,7 +3858,7 @@ GameObject:
   - component: {fileID: 1456987167}
   - component: {fileID: 1456987166}
   m_Layer: 5
-  m_Name: EnemyBrake
+  m_Name: EnemyBrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4317,6 +4399,7 @@ RectTransform:
   m_Children:
   - {fileID: 1442883388}
   - {fileID: 1456987165}
+  - {fileID: 497349497}
   - {fileID: 640982080}
   - {fileID: 1615595547}
   - {fileID: 220630508}
@@ -4378,6 +4461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _score: {fileID: 1615595548}
+  _name: {fileID: 497349498}
   _enemy: {fileID: 1141185115}
 --- !u!1 &1784995633
 GameObject:
@@ -4718,7 +4802,7 @@ GameObject:
   - component: {fileID: 2054811746}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

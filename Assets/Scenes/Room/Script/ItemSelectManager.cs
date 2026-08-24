@@ -8,6 +8,7 @@ public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandle
     int _porchIndex;
     [SerializeField]
     GameManager.Item _itemSel;
+    GameObject[] _porch = new GameObject[4];
     Canvas _canvas;
     Transform _originalParent;
     Vector3 _defaultTransform;
@@ -20,6 +21,22 @@ public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandle
         _canvas = FindFirstObjectByType<Canvas>();
         _gameManager = FindFirstObjectByType<GameManager>();
         OriginalGet();
+        _porch[1] = GameObject.FindGameObjectWithTag("Porch1");
+        _porch[2] = GameObject.FindGameObjectWithTag("Porch2");
+        _porch[3] = GameObject.FindGameObjectWithTag("Porch3");
+        
+        for (int i = 1; i <= 3; i++)
+        {
+            if(_gameManager._item[i] != GameManager.Item.None)
+            {
+                Debug.Log("a");
+                if (_gameManager._item[i] == _itemSel)
+                {
+                    Debug.Log("b");
+                    ElseSet(_porch[i]);
+                }
+            }
+        }
     }
 
     // Update is called once per frame
@@ -113,6 +130,11 @@ public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandle
     {
         transform.SetParent(_originalParent, false);
         transform.position = _defaultTransform;
+    }
+    public void ElseSet(GameObject gameObject)
+    {
+        transform.SetParent(gameObject.transform, false);
+        transform.localPosition = Vector3.zero;
     }
 
 

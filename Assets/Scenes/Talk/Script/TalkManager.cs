@@ -85,31 +85,41 @@ public class TalkManager : MonoBehaviour
         }
     }
     #region 武器のボタンの数字戻り値
+    public void NumWepon(int num)
+    {
+        _gameManager._currentMake = num;
+        _gameManager.SettingUI();
+    }
     public void NumDefaultSword()
     {
-        _gameManager._currentMake = 0;
+        NumWepon(0);
     }
     public void NumSword()
     {
-        _gameManager._currentMake = 1;
+        NumWepon(1);
     }
     public void NumMace()
     {
-        _gameManager._currentMake = 2;
+        NumWepon(2);
     }
     #endregion
     #region 敵のボタンの数字戻り値
-    public void Enemy()
+    public void Enemy(int num)
     {
-        _gameManager._currentFight = 0;
+        _gameManager._currentFight = num;
+        _gameManager.SettingUI();
+    }
+    public void Enemy0()
+    {
+        Enemy(0);
     }
     public void Enemy1()
     {
-        _gameManager._currentFight = 1;
+        Enemy(1);
     }
     public void Enemy2()
     {
-        _gameManager._currentFight = 2;
+        Enemy(2);
     }
     #endregion
     public void OnWeponSelect()
@@ -205,11 +215,13 @@ public class TalkManager : MonoBehaviour
 
     public IEnumerator SceneLoad(string scenename, int num)
     {
+        _gameManager.BrackOut();
         if (_event[num] != null)
         {
             _event[num].Invoke();
         }
         yield return new WaitForSeconds(1);
+        _gameManager.SetSetting();
         FindFirstObjectByType<SceneLoader>().LoadElseScene(scenename);
     }
 }

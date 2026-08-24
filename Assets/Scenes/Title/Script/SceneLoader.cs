@@ -18,42 +18,43 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadElseScene(string scenename)
     {
+        _gameManager.SetSetting();
         SceneManager.LoadScene(scenename);
     }
 
     public void LoadTitle()
     {
-        SceneManager.LoadScene("TitleScene");
+       LoadElseScene("TitleScene");
     }
     public void LoadRoom()
     {
-        SceneManager.LoadScene("RoomScene");
+        LoadElseScene("RoomScene");
     }
     public void LoadTalk()
     {
-        SceneManager.LoadScene("TalkScene");
+        LoadElseScene("TalkScene");
     }
     public void LoadPrayer()
     {
-        SceneManager.LoadScene("PrayerScene");
+        LoadElseScene("PrayerScene");
     }
 
     public void LoadBattle()
     {
-        SceneManager.LoadScene("BattleScene");
+        LoadElseScene("BattleScene");
     }
 
     public void LoadSwordMake()
     {
-        SceneManager.LoadScene("MakeScene");
+        LoadElseScene("MakeScene");
     }
     public void LoadClear()
     {
-        SceneManager.LoadScene("ClearScene");
+        LoadElseScene("ClearScene");
     }
     public void LoadGameOver()
     {
-        SceneManager.LoadScene("GameOverScene");
+        LoadElseScene("GameOverScene");
     }
 
     public void LoadTimeAdd()
@@ -67,7 +68,8 @@ public class SceneLoader : MonoBehaviour
         //{
         //    _event[num].Invoke();
         //}
-
+        _gameManager.BrackOut();
+        
         _gameManager._currentTimeNum++;
         yield return new WaitForSeconds(1);
         if (_gameManager._currentTimeNum <= 3)

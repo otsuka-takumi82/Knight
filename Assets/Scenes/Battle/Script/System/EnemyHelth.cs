@@ -4,6 +4,8 @@ using UnityEngine;
 public class EnemyHelth : MonoBehaviour
 {
     [SerializeField]
+    public string _name;
+    [SerializeField]
     private float _maxHp;
     private float _currentHp;
     [SerializeField,Header("敵攻撃力")]
@@ -56,7 +58,11 @@ public class EnemyHelth : MonoBehaviour
         if ( _currentHp <= 0 )
         {
             _anim.Play("Died");
-            _result.SetActive(true);
+            StartCoroutine(StartResult());
+        }
+        else if(_player._isDead)
+        {
+
         }
     }
 
@@ -106,6 +112,12 @@ public class EnemyHelth : MonoBehaviour
         _staggerPile /= 4;
         _currentStamina = _maxStamina;
         ShowStamina();
+    }
+    public IEnumerator StartResult()
+    {
+        yield return new WaitForSeconds(1);
+        _result.SetActive(true);
+
     }
 
     public bool Died()

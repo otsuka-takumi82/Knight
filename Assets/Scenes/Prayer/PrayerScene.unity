@@ -404,6 +404,7 @@ MonoBehaviour:
   _itemBox: {fileID: 777441288}
   _pray: 0
   _isPray: 0
+  _isMax: 0
   _itemDel: 00000000
 --- !u!61 &109960588
 BoxCollider2D:
@@ -1937,7 +1938,7 @@ GameObject:
   - component: {fileID: 1291377692}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
