@@ -6,7 +6,7 @@ public class Enemy1Hit : HitSponer
     
     public override IEnumerator Sphere()
     {
-
+        yield return new WaitForSeconds(_waitNum);
         while (true)
         {
             int num = Random.Range(0, 3);
@@ -39,7 +39,15 @@ public class Enemy1Hit : HitSponer
             }
 
 
-            yield return new WaitForSeconds(3);
+            float waitNum = 3f;
+            _waitNum = waitNum;
+            yield return new WaitForSeconds(waitNum);
+
+            if (_isPause)
+            {
+                yield return null;
+                continue;
+            }
 
         }
     }

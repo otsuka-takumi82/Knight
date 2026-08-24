@@ -6,11 +6,11 @@ public class Enemy2Hit : HitSponer
     [SerializeField] float _diley;
     public override IEnumerator Sphere()
     {
-
+        yield return new WaitForSeconds(_waitNum);
         while (true)
         {
             int num = Random.Range(0, 3);
-            _anim.speed = 3;
+            _anim.speed = _animSpeed;
             if (num == 0)
             {
                 //右上
@@ -51,7 +51,15 @@ public class Enemy2Hit : HitSponer
             {
                 _diley = 2;
             }
-            yield return new WaitForSeconds(_diley);
+            float waitNum = _diley;
+            _waitNum = waitNum;
+            yield return new WaitForSeconds(waitNum);
+
+            if (_isPause)
+            {
+                yield return null;
+                continue;
+            }
 
         }
     }

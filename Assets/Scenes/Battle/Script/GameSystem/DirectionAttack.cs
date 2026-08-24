@@ -13,6 +13,7 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
     [SerializeField, Header("右上攻撃")]
     private GameObject _arm;
     
+    
     private enum AttackType
     {
         RightUp,
@@ -23,8 +24,7 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
     }
     [SerializeField]
     private AttackType _attackType;
-
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -73,6 +73,7 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
         _arm.transform.position = pos;
         _events[0].Invoke();
     }
+   
     
 }
 

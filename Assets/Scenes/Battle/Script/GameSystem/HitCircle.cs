@@ -14,7 +14,14 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
     private EnemyHelth _enemyHelth;
     private Player _player;
     private DirectionAttack _directionAttack;
+    bool _paused;
+
+    GameManager _gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        _gameManager = FindFirstObjectByType<GameManager>();
+    }
     void Start()
     {
         _player = FindFirstObjectByType<Player>();
@@ -26,11 +33,22 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
             _anim.Play(_name);
         }
     }
+    void OnEnable()
+    {
+        _gameManager._pauseReseum += PauseResume;
+    }
+    void OnDisable()
+    {
+        _gameManager._pauseReseum -= PauseResume;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        _timer += Time.deltaTime;
+        if (!_paused)
+        {
+            _timer += Time.deltaTime;
+        }
         if (TimerOver(_maxTimer))
         {
             _player.PlayerModifyHelth();
@@ -53,34 +71,7 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
-
-        //if (!_player._stagging)
-        //{
-        //    Vector3 clickPosition = eventData.pointerPressRaycast.worldPosition;
-        //    if (TimerOver(1.5f))
-        //    {
-        //        _enemyHelth.Knock();
-        //        _enemyHelth.PlayerDamage();
-        //        _enemyHelth.PlayerStamina(2);
-        //        _directionAttack.Hibana(clickPosition);
-        //        Destroy(gameObject);
-        //    }
-        //    else if (TimerOver(1f))
-        //    {
-        //        _enemyHelth.Knock();
-        //        _enemyHelth.PlayerStamina();
-        //        _player.ModifyStamina();
-        //        Destroy(gameObject);
-        //    }
-        //    else
-        //    {
-        //        _enemyHelth.Knock();
-        //        _player.ModifyStamina();
-        //        Destroy(gameObject);
-        //    }
-        //}
-
+        
     }
 
     public bool TimerOver(float time)
@@ -95,5 +86,18 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
     public void TagChange2()
     {
         gameObject.tag = "Hit2";
+    }
+    public void PauseResume(bool pause)
+    {
+        if(pause)
+        {
+            _paused = true;
+            _anim.speed = 0;
+        }
+        else
+        {
+            _paused = false;
+            _anim.speed = 1;
+        }
     }
 }

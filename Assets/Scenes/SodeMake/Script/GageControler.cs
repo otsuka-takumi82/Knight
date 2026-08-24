@@ -17,10 +17,16 @@ public class GageControler : MonoBehaviour
     bool _isHit;
     bool _isHummed = true;
     public bool _isMoved = true;
+    public bool _paused;
     float _myTime;
     float _defaultSpeed; 
     private Vector3 _startPos;
+    GameManager _gameManager;
 
+    private void Awake()
+    {
+        _gameManager = FindFirstObjectByType<GameManager>();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +36,14 @@ public class GageControler : MonoBehaviour
         _startPos = transform.position;
         _defaultSpeed = _speed;
     }
+    void OnEnable()
+    {
+        _gameManager._pauseReseum += PauseReseum;
+    }
+    void OnDisable()
+    {
+        _gameManager._pauseReseum -= PauseReseum;
+    }
 
     // Update is called once per frame
     void Update()
@@ -37,7 +51,10 @@ public class GageControler : MonoBehaviour
         Debug.Log(_isMoved);
         if(_isMoved)
         {
-            _myTime += Time.deltaTime * _speed;
+            if(!_paused)
+            {
+                _myTime += Time.deltaTime * _speed;
+            }
             float newY = Mathf.PingPong(_myTime, _height);
 
             transform.position = new Vector3(_startPos.x, _startPos.y + newY, _startPos.z);
@@ -122,5 +139,16 @@ public class GageControler : MonoBehaviour
             }
         }
 
+    }
+    public void PauseReseum(bool pause)
+    {
+        if(pause)
+        {
+            _paused = true;
+        }
+        else
+        {
+            _paused = false;
+        }
     }
 }

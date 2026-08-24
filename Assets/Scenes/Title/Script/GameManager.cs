@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     public Vector3 _defaultTransform;
 
     public delegate void Pause(bool paused);
-    Pause _pauseReseum = default;
+    public Pause _pauseReseum = default;
     bool _isPaused;
     private void Awake()
     {
@@ -94,7 +94,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_currentTimeNum);
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             PauseReseum();
@@ -193,8 +192,19 @@ public class GameManager : MonoBehaviour
     public void PauseReseum()
     {
         SettingPanel();
-        //_isPaused = !_isPaused;
-        //_pauseReseum(_isPaused);
+        //if(!_isPaused)
+        //{
+        //    _isPaused = true;
+        //}
+        //else
+        //{
+        //    _isPaused = false;
+        //}
+        _isPaused = !_isPaused;
+        if(_pauseReseum != null)
+        {
+            _pauseReseum(_isPaused);
+        }
     }
 
     public void SetMyPearent(GameObject child)

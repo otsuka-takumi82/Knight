@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using static GameManager;
 
 public class Player : MonoBehaviour
 {
@@ -29,12 +30,18 @@ public class Player : MonoBehaviour
     public bool _stagging;
     public bool _canAttack;
     public bool _isDead;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    bool _paused;
+    Animator _anim;
+    private void Awake()
     {
         _uiManager = FindFirstObjectByType<BattleUIManager>();
         _enemy = FindFirstObjectByType<EnemyHelth>();
         _gameManager = FindFirstObjectByType<GameManager>();
+        _anim = GetComponentInChildren<Animator>();
+    }
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
         _currentHp = _maxHp;
         _currentStamina = _maxStamina;
         if (_gameManager != null)
@@ -62,6 +69,14 @@ public class Player : MonoBehaviour
         
         _canAttack = true;
         
+    }
+    void OnEnable()
+    {
+        _gameManager._pauseReseum += PauseReseum;
+    }
+    void OnDisable()
+    {
+        _gameManager._pauseReseum -= PauseReseum;
     }
 
     // Update is called once per frame
@@ -156,6 +171,18 @@ public class Player : MonoBehaviour
     {
         _currentStamina += helth;
         ShowStamina();
+    }
+    public void PauseReseum(bool paused)
+    {
+        if (paused)
+        {
+            _anim.speed = 0;
+        }
+        else
+        {
+            _anim.speed = 1;
+        }
+
     }
 
 }

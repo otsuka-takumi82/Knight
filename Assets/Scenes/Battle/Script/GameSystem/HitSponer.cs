@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,12 +10,19 @@ public class HitSponer : MonoBehaviour
     public GameObject _hitSphere;
     [SerializeField]private int _enemyNum;
     public Animator _anim;
+    public float _animSpeed = 1;
     private Coroutine _sphereCor;
     private EnemyHelth _enemy;
+    public float _waitNum = 3;
     private bool _isOne;
+    public bool _isPause;
+    private GameManager _gm;
     private void Awake()
     {
-        if (FindFirstObjectByType<GameManager>()._currentFight != _enemyNum)
+        _gm = FindFirstObjectByType<GameManager>();
+        _enemy = FindFirstObjectByType<EnemyHelth>();
+        _anim = GetComponent<Animator>();
+        if (_gm._currentFight != _enemyNum)
         {
             gameObject.SetActive(false);
         }
@@ -23,40 +31,53 @@ public class HitSponer : MonoBehaviour
     void Start()
     {
         
-        _enemy = FindFirstObjectByType<EnemyHelth>();
-        _anim = GetComponent<Animator>();
         _sphereCor = StartCoroutine(Sphere());
         
+    }
+    private void OnEnable()
+    {
+        _gm._pauseReseum += PauseReseum;
+    }
+    private void OnDisable()
+    {
+        _gm._pauseReseum -= PauseReseum;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_enemy._stagging || _enemy.Died())
+        Debug.Log(_sphereCor);
+        if(!_isPause)
         {
-            if(_sphereCor != null )
+            if (_enemy._stagging || _enemy.Died())
             {
-                StopCoroutine( _sphereCor );
-                _sphereCor = null;
+                if (_sphereCor != null)
+                {
+                    StopCoroutine(_sphereCor);
+                    _sphereCor = null;
+                }
+                _isOne = true;
             }
-            _isOne = true;
-        }
-        else 
-        {
-            if( _isOne)
+            else
             {
-                _sphereCor = StartCoroutine(Sphere());
-                _isOne = false;
+                if (_isOne)
+                {
+
+                    _sphereCor = StartCoroutine(Sphere());
+                    _isOne = false;
+                }
+
             }
-            
         }
+          
     }
 
     public virtual IEnumerator Sphere()
     {
-        
+        yield return new WaitForSeconds(_waitNum);
         while (true)
         {
+            
             int num = Random.Range(0, 4);
 
             if (num == 0)
@@ -86,13 +107,39 @@ public class HitSponer : MonoBehaviour
                 Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y + -2, transform.position.z), Quaternion.identity);
             }
 
+            float waitNum = Random.Range(3, 6f);
+            _waitNum = waitNum;
+            yield return new WaitForSeconds(waitNum);
 
-            yield return new WaitForSeconds(Random.Range(3, 6f));
+            if (_isPause)
+            {
+                yield return null;
+                continue;
+            }
 
-            
+
         }
         
     }
 
-    
+    public void PauseReseum(bool paused)
+    {
+        if(paused)
+        {
+            _isPause = true;
+            if (_sphereCor != null)
+            {
+                _isPause = true;
+                StopCoroutine(_sphereCor);
+                if (_anim != null) _anim.speed = 0f;
+                _isOne = false;
+            }
+        }
+        else
+        {
+            _isPause = false;
+            if (_anim != null) _anim.speed = _animSpeed;
+            _isOne = true;
+        }
+    }
 }

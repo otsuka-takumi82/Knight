@@ -253,6 +253,9 @@ MonoBehaviour:
   _hitSphere: {fileID: 8344789267005540934, guid: 5a93362a57dbbf74f838c4204d346aa1, type: 3}
   _enemyNum: 0
   _anim: {fileID: 0}
+  _animSpeed: 1
+  _waitNum: 3
+  _isPause: 0
 --- !u!1 &190315547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,6 +1282,7 @@ MonoBehaviour:
   _currentHarb: 0
   _stagging: 0
   _canAttack: 0
+  _isDead: 0
 --- !u!4 &588080052
 Transform:
   m_ObjectHideFlags: 0
@@ -1291,7 +1295,8 @@ Transform:
   m_LocalPosition: {x: 823.40857, y: 296.12485, z: -1.4372529}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 667997488}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &588080053
@@ -1511,13 +1516,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667997487}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.09, y: 0.88, z: -0.102145344}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -823.31854, y: -295.24484, z: 1.3351076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 310443972}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 588080052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683819526
 GameObject:
@@ -1668,6 +1673,9 @@ MonoBehaviour:
   _hitSphere: {fileID: 8344789267005540934, guid: 5a93362a57dbbf74f838c4204d346aa1, type: 3}
   _enemyNum: 0
   _anim: {fileID: 0}
+  _animSpeed: 1
+  _waitNum: 3
+  _isPause: 0
 --- !u!61 &683819532
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2872,6 +2880,9 @@ MonoBehaviour:
   _hitSphere: {fileID: 4391123265094694012, guid: eac00c23bb4aa914b9258e3c8557a51c, type: 3}
   _enemyNum: 2
   _anim: {fileID: 0}
+  _animSpeed: 3
+  _waitNum: 3
+  _isPause: 0
   _diley: 0
 --- !u!61 &1127087736
 BoxCollider2D:
@@ -3068,6 +3079,9 @@ MonoBehaviour:
   _hitSphere: {fileID: 8344789267005540934, guid: 5a93362a57dbbf74f838c4204d346aa1, type: 3}
   _enemyNum: 1
   _anim: {fileID: 0}
+  _animSpeed: 1
+  _waitNum: 3
+  _isPause: 0
 --- !u!61 &1134711920
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5555,4 +5569,3 @@ SceneRoots:
   - {fileID: 588080052}
   - {fileID: 7814000715226974255}
   - {fileID: 1526332828}
-  - {fileID: 667997488}
