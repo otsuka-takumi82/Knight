@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
@@ -48,6 +49,10 @@ public class GameManager : MonoBehaviour
     public Sprite[] _swordImage;
     [SerializeField, Header("ステージ画像")]
     public Sprite[] _stageImage;
+    [SerializeField, Header("時間の画像")]
+    Sprite[] _daySprite;
+    [SerializeField, Header("時間による背景")]
+    SpriteRenderer _dayBack;
     [SerializeField, Header("アイテム画像")]
     public Sprite[] _itemImage;
     [SerializeField]
@@ -88,7 +93,15 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
+    }
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += CheckTime;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= CheckTime;
     }
 
     // Update is called once per frame
@@ -214,5 +227,20 @@ public class GameManager : MonoBehaviour
     public void SetSetting()
     {
         SetMyPearent(_settingPanel);
+    }
+    public void CheckTime(Scene scene, LoadSceneMode node)
+    {
+        if(_currentTimeNum <= 1 || _currentTimeNum == 5)
+        {
+            _dayBack.sprite = _daySprite[0];
+        }
+        else if( _currentTimeNum == 2)
+        {
+            _dayBack.sprite = _daySprite[1];
+        }
+        else if (_currentTimeNum >= 3 || _currentTimeNum < 5)
+        {
+            _dayBack.sprite = _daySprite[2];
+        }
     }
 }

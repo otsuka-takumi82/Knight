@@ -50,14 +50,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
+  - name: DayBack
+    uniqueID: 2762819879
     locked: 0
   - name: BackGround
     uniqueID: 621764115
     locked: 0
   - name: Enemy
     uniqueID: 1111954591
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Player
     uniqueID: 3520214101

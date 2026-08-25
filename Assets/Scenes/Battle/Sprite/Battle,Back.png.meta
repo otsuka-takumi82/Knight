@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ea24cdb90ae22804ca1664db94d95d8d
+guid: e249c1d50374ef64c9226be00f49905b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 962366666261310098
-    second: Pray,Back_0
+      213: -8977066349258539033
+    second: Battle,Back_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pray,Back_0
+      name: Battle,Back_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 128
-        height: 64
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29aae2652630b5d00800000000000000
-      internalID: 962366666261310098
+      spriteID: 7eff457c7bd0b6380800000000000000
+      internalID: -8977066349258539033
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Pray,Back_0: 962366666261310098
+      Battle,Back_0: -8977066349258539033
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

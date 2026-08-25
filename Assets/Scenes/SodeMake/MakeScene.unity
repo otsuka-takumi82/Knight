@@ -1513,7 +1513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &619394801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2391,6 +2391,7 @@ MonoBehaviour:
   _hibana: {fileID: 1208615338619834777, guid: 6a74dd0af42819149b8b4b2ac3ba0331, type: 3}
   _hummer: {fileID: 1914025720}
   _isMoved: 1
+  _paused: 0
 --- !u!1 &1080927073
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,11 +3594,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 621764115
+  m_SortingLayer: -2
   m_SortingOrder: -99
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.645283, g: 0.645283, b: 0.645283, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4efa9e71d7e22384a9fe1dbf8f2eb2b1, type: 3}
+  m_Color: {r: 0.7509433, g: 0.7509433, b: 0.7509433, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3616,8 +3617,8 @@ Transform:
   m_GameObject: {fileID: 1958702477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14, y: 0.24, z: 0}
-  m_LocalScale: {x: 18.47936, y: 10.697694, z: 8.8418}
+  m_LocalPosition: {x: -0.04, y: -0.24, z: 0}
+  m_LocalScale: {x: 18.47936, y: 22.31753, z: 8.8418}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

@@ -9,6 +9,7 @@ public class RoomManager : MonoBehaviour
     Text[] _stageName;
     [SerializeField]
     Text _dayText;
+    
     [SerializeField]
     GameObject _stageSelect;
     [SerializeField]
