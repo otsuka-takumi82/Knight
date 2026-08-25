@@ -17,10 +17,15 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
     bool _paused;
 
     GameManager _gameManager;
+    SpriteRenderer _spriteRenderer;
+    Collider2D _collider;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<Collider2D>();
+        _collider.enabled = false;
     }
     void Start()
     {
@@ -28,10 +33,13 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
         _enemyHelth = FindFirstObjectByType<EnemyHelth>();
         _directionAttack = FindFirstObjectByType<DirectionAttack>();
         _anim = GetComponent<Animator>();
+        Color color = _spriteRenderer.color;
         if(_name != null)
         {
             _anim.Play(_name);
         }
+        color = new Color(0f, 0f, 0f, 0f);
+        _spriteRenderer.color = color;
     }
     void OnEnable()
     {
@@ -55,17 +63,18 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
             _player.ModifyStamina();
             Destroy(gameObject);
         }
-        if (!_player._stagging)
-        {
             if (TimerOver(_maxTimer * 0.75f))
             {
-                TagChange2();
+            _spriteRenderer.color = Color.red;
+            TagChange2();
+                
             }
-            else if (TimerOver(_maxTimer * 0.5f))
+            else if (TimerOver(_maxTimer * 0.5f) && _timer < _maxTimer * 0.75f)
             {
+                _collider.enabled = true;
                 TagChange1();
-            }
-
+               
+            _spriteRenderer.color = Color.yellow;
         }
     }
 

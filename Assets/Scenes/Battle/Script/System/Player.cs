@@ -54,14 +54,14 @@ public class Player : MonoBehaviour
             }
             else if (_wepon._repairPal == 2)
             {
-                _playerDamage *= 1.5f;
+                _playerDamage *= 1.2f;
             }
            
             //_currentHarb = _gameManager._harb;
             _currentHighHarb = _gameManager._highHarb;
             if (_gameManager.State(GameManager.PlayerState.Power))
             {
-                _playerDamage *= 2;
+                _playerDamage *= 1.2f;
             }
         }
         _currentWepon.sprite = _gameManager._swordImage[_gameManager._currentEquipped];

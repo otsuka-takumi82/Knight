@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9049505002935333286}
   - component: {fileID: 1250612268337478441}
   - component: {fileID: 2972195088841987759}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Equiped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83f96b2d3cbf6c4bbb752fc9d792fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyTime: 1
 --- !u!1 &5768370531647876660
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ GameObject:
   - component: {fileID: 7206385364389996623}
   - component: {fileID: 8452950730538773300}
   - component: {fileID: 2925617403801889931}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

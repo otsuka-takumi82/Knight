@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 919151107874534724}
   - component: {fileID: 2749721823812337343}
   - component: {fileID: 2082878800242358134}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6058723890066397986}
   - component: {fileID: 6468225934087792351}
   - component: {fileID: 8928448116643525013}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Setting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,3 +191,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83f96b2d3cbf6c4bbb752fc9d792fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyTime: 1

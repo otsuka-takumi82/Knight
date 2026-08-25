@@ -35,7 +35,7 @@ public class WeponPanel : MonoBehaviour
             }
             else if (_gameManager._wepon[_weponNum]._repairPal == 2)
             {
-                _savePower *= 1.5f;
+                _savePower *= 1.2f;
             }
         }
         else

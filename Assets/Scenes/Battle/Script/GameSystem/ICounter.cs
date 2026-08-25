@@ -1,0 +1,6 @@
+
+interface ICounter
+{
+    void CounterAttack();
+
+}

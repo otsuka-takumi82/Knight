@@ -54,6 +54,15 @@ public class SwordEffect : MonoBehaviour
             _player.ModifyStamina();
             Destroy(collision.gameObject);
         }
+        else if(collision.gameObject.CompareTag("HitCounter"))
+        {
+            HitSponer sponer = FindFirstObjectByType<HitSponer>();
+            if (sponer is ICounter counter)
+            {
+                counter.CounterAttack();
+            }
+            Destroy(collision.gameObject);
+        }
     }
     public void Hibana(Vector3 hibanapos)
     {

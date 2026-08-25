@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4728987942248911232}
   - component: {fileID: 3543481263010914291}
   - component: {fileID: 1198035020390405235}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: UnCreatedUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a83f96b2d3cbf6c4bbb752fc9d792fc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyTime: 1
 --- !u!1 &8618060137419729620
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ GameObject:
   - component: {fileID: 1428861781094040531}
   - component: {fileID: 1449138718603283041}
   - component: {fileID: 3011196058470859949}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

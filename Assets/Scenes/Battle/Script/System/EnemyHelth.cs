@@ -105,6 +105,8 @@ public class EnemyHelth : MonoBehaviour
 
     public IEnumerator Stagger()
     {
+        
+        _anim.SetTrigger("Stagger");
         _staggerPile *= 4f;
         _stagging = true;
         yield return new WaitForSeconds(5);

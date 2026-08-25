@@ -16,6 +16,7 @@ TagManager:
   - EnemyHit
   - Result
   - Canvas
+  - HitCounter
   layers:
   - Default
   - TransparentFX
