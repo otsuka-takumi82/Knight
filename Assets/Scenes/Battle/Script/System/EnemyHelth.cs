@@ -6,8 +6,8 @@ public class EnemyHelth : MonoBehaviour
     [SerializeField]
     public string _name;
     [SerializeField]
-    private float _maxHp;
-    private float _currentHp;
+    public float _maxHp;
+    public float _currentHp;
     [SerializeField,Header("敵攻撃力")]
     public float _damage;
     [SerializeField]
@@ -25,6 +25,7 @@ public class EnemyHelth : MonoBehaviour
     private BattleUIManager _uiManager;
     private Player _player;
     public bool _stagging;
+   
     private Animator _anim;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created

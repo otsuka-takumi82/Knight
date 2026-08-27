@@ -9,16 +9,18 @@ public class HitCircle : MonoBehaviour, IPointerDownHandler
     Animator _anim;
     [SerializeField]
     string _name;
+    [SerializeField]
+    public float _hp;
 
     private float _timer;
     private EnemyHelth _enemyHelth;
-    private Player _player;
+    public Player _player;
     private DirectionAttack _directionAttack;
     bool _paused;
     
 GameManager _gameManager;
     SpriteRenderer _spriteRenderer;
-    Collider2D _collider;
+    public Collider2D _collider;
     HitSponer _hs;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -26,21 +28,28 @@ GameManager _gameManager;
         _gameManager = FindFirstObjectByType<GameManager>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
-        _collider.enabled = false;
-    }
-    void Start()
-    {
         _player = FindFirstObjectByType<Player>();
         _enemyHelth = FindFirstObjectByType<EnemyHelth>();
         _directionAttack = FindFirstObjectByType<DirectionAttack>();
         _anim = GetComponent<Animator>();
         _hs = FindFirstObjectByType<HitSponer>();
+        _collider.enabled = false;
+        _anim.Play(_name);
+    }
+    public virtual void Start()
+    {
+        
         Color color = _spriteRenderer.color;
         if(_name != null)
         {
-            _anim.Play(_name);
+            
+            if(_name != "HitBig")
+            {
+                color = new Color(0f, 0f, 0f, 0f);
+            }
         }
-        color = new Color(0f, 0f, 0f, 0f);
+        
+       
         _spriteRenderer.color = color;
     }
     void OnEnable()
@@ -60,12 +69,13 @@ GameManager _gameManager;
         {
             _timer += Time.deltaTime;
         }
-        if (_player._isDead || _enemyHelth._stagging)
+        if (_player._isDead || _enemyHelth._stagging || _hs._isBraff)
         {
             Destroy(gameObject);
         }
         if (TimerOver(_maxTimer))
         {
+            TimeOver();
             if(_hs._attack == HitSponer.AttackState.Nomal)
             {
                 _player.PlayerModifyHelth();
@@ -110,13 +120,17 @@ GameManager _gameManager;
         return _timer > time;
     }
 
-    public void TagChange1()
+    public virtual void TagChange1()
     {
         gameObject.tag = "Hit1";
     }
-    public void TagChange2()
+    public virtual void TagChange2()
     {
         gameObject.tag = "Hit2";
+    }
+    public virtual void TimeOver()
+    {
+        
     }
     public void PauseResume(bool pause)
     {

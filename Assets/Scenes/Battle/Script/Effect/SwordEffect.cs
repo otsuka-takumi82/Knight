@@ -63,6 +63,23 @@ public class SwordEffect : MonoBehaviour
             }
             Destroy(collision.gameObject);
         }
+        else if(collision.gameObject.CompareTag("HitBig"))
+        {
+            _enemyHelth.PlayerDamage();
+            _enemyHelth.PlayerStamina(2);
+            if (collision.gameObject.TryGetComponent<HItBigCircle>(out HItBigCircle circle))
+            {
+                circle._hp += _player._playerDamage;
+                Debug.Log(circle._hp);
+                if (circle._hp <= 0)
+                {
+                    _enemyHelth.Stagger();
+                    Destroy(collision.gameObject);
+                }
+            }
+           
+            
+        }
     }
     public void Hibana(Vector3 hibanapos)
     {

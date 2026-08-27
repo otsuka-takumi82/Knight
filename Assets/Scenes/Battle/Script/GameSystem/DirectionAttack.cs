@@ -48,7 +48,6 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
     {
         if(collision.gameObject.CompareTag("Cousle"))
         {
-            Debug.Log("a");
             _bUI.ChangeCursleDirection(_attackType);
         }
     }
@@ -60,7 +59,6 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
             Vector3 clickPosition = eventData.pointerPressRaycast.worldPosition;
             if(_player._playerAttackType == _attackType)
             {
-                Debug.Log("atteru");
                 _player._currentCoolTime = 0;
             }
 

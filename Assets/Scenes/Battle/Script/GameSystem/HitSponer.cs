@@ -19,13 +19,16 @@ public class HitSponer : MonoBehaviour
     public Animator _anim;
     public float _animSpeed = 1;
     private Coroutine _sphereCor;
-    private EnemyHelth _enemy;
+    public EnemyHelth _enemy;
+    public Player _player;
     public float _waitNum = 3;
     private bool _isOne;
     public bool _isPause;
+    public bool _isBraff;
     private GameManager _gm;
     private void Awake()
     {
+        _player = FindFirstObjectByType<Player>();
         _gm = FindFirstObjectByType<GameManager>();
         _enemy = FindFirstObjectByType<EnemyHelth>();
         _anim = GetComponent<Animator>();

@@ -85,7 +85,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_playerAttackType);
         if (! _stagging )
         {
             if (_currentStamina < _maxStamina)
