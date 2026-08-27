@@ -15,6 +15,7 @@ public class Enemy3Hit : HitSponer, ICounter
             if (num == 0)
             {
                 //右上
+                _attack = AttackState.Stamina;
                 _anim.SetTrigger("RightUp");
                 Instantiate(_hitSphere, new Vector3(transform.position.x + 3, transform.position.y + 2, transform.position.z), Quaternion.identity);
 
@@ -23,13 +24,14 @@ public class Enemy3Hit : HitSponer, ICounter
             {
                 //左上
                 _anim.SetTrigger("LeftUp");
-                Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y + 2, transform.position.z), Quaternion.identity);
+                Instantiate(_hitSphere, new Vector3(transform.position.x + -1, transform.position.y + 1, transform.position.z), Quaternion.identity);
 
             }
             else if (num == 2)
             {
                 // 右下
                 _anim.SetTrigger("RightDown");
+                _attack = AttackState.Stamina;
                 Instantiate(_hitSphere, new Vector3(transform.position.x + 3, transform.position.y + -2, transform.position.z), Quaternion.identity);
             }
             else if (num == 3)

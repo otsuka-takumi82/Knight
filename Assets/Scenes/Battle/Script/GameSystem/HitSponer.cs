@@ -9,6 +9,13 @@ public class HitSponer : MonoBehaviour
     [SerializeField, UnitHeaderInspectable("円ヒットボックス")]
     public GameObject _hitSphere;
     [SerializeField]private int _enemyNum;
+    public enum AttackState
+    {
+        Nomal,
+        Stamina,
+        Damage
+    };
+    public AttackState _attack = AttackState.Nomal;
     public Animator _anim;
     public float _animSpeed = 1;
     private Coroutine _sphereCor;

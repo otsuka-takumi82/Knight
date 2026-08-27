@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3184397256680853649}
   - component: {fileID: 4106770593872408558}
   - component: {fileID: 1395266002689856939}
-  m_Layer: 8
+  m_Layer: 2
   m_Name: Circlefast
   m_TagString: Hit
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1111954591
-  m_SortingLayer: 2
+  m_SortingLayer: -1
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.97708035, b: 0, a: 1}

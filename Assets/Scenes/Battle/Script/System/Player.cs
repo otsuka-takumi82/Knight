@@ -16,7 +16,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _staggerPile = 1;
     [SerializeField]
-    private float _attackCoolTime = 1;
+    public float _attackCoolTime = 0.5f;
+    [SerializeField]
+    public float _currentCoolTime = 0.5f;
+    public DirectionAttack.AttackType _playerAttackType = DirectionAttack.AttackType.RightUp;
     
 
     public float _currentHp;
@@ -66,8 +69,8 @@ public class Player : MonoBehaviour
         }
         _currentWepon.sprite = _gameManager._swordImage[_gameManager._currentEquipped];
         
+            _canAttack = true;
         
-        _canAttack = true;
         
     }
     void OnEnable()
@@ -82,7 +85,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(_canAttack);
+        Debug.Log(_playerAttackType);
         if (! _stagging )
         {
             if (_currentStamina < _maxStamina)
@@ -99,26 +102,27 @@ public class Player : MonoBehaviour
         _gameManager.AddRepair(-1);
     }
 
-    public void PlayerModifyHelth()
+    public void PlayerModifyHelth(float pile = 1)
     {
-        _currentHp += _enemy._damage * _staggerPile;
+        _currentHp += _enemy._damage * pile * _staggerPile;
         _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
         ShowHP();
         if( _currentHp <= 0 )
         {
-            if(!_isDead)
+            _isDead = true;
+            if(_isDead)
             {
                 FindFirstObjectByType<SceneLoader>().LoadTimeAdd();
-                _isDead = true;
+                //_isDead = false;
             }
             
         }
     }
 
-    public void ModifyStamina()
+    public void ModifyStamina(float num = 1)
     {
 
-        _currentStamina += _enemy._damage;
+        _currentStamina += _enemy._damage * num;
         _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
         ShowStamina();
         if (!_stagging)
@@ -155,11 +159,12 @@ public class Player : MonoBehaviour
         ShowStamina();
     }
 
-    public IEnumerator AttackCoolTime()
+    public IEnumerator AttackCoolTime(float coolPile = 1f)
     {
         _canAttack = false;
-        yield return new WaitForSeconds(_attackCoolTime);
+        yield return new WaitForSeconds(_currentCoolTime * coolPile);
         _canAttack = true;
+        _currentCoolTime = _attackCoolTime;
     }
 
     public void AddHelth(float helth)

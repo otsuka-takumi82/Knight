@@ -17,6 +17,7 @@ TagManager:
   - Result
   - Canvas
   - HitCounter
+  - Cousle
   layers:
   - Default
   - TransparentFX

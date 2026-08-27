@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HitCircle : MonoBehaviour,IPointerDownHandler
+public class HitCircle : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField]
     private float _maxTimer = 2;
@@ -15,10 +15,11 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
     private Player _player;
     private DirectionAttack _directionAttack;
     bool _paused;
-
-    GameManager _gameManager;
+    
+GameManager _gameManager;
     SpriteRenderer _spriteRenderer;
     Collider2D _collider;
+    HitSponer _hs;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -33,6 +34,7 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
         _enemyHelth = FindFirstObjectByType<EnemyHelth>();
         _directionAttack = FindFirstObjectByType<DirectionAttack>();
         _anim = GetComponent<Animator>();
+        _hs = FindFirstObjectByType<HitSponer>();
         Color color = _spriteRenderer.color;
         if(_name != null)
         {
@@ -53,14 +55,34 @@ public class HitCircle : MonoBehaviour,IPointerDownHandler
     // Update is called once per frame
     void Update()
     {
+        
         if (!_paused)
         {
             _timer += Time.deltaTime;
         }
+        if (_player._isDead || _enemyHelth._stagging)
+        {
+            Destroy(gameObject);
+        }
         if (TimerOver(_maxTimer))
         {
-            _player.PlayerModifyHelth();
-            _player.ModifyStamina();
+            if(_hs._attack == HitSponer.AttackState.Nomal)
+            {
+                _player.PlayerModifyHelth();
+                _player.ModifyStamina();
+            }
+            else if(_hs._attack == HitSponer.AttackState.Stamina)
+            {
+                if(_player._stagging)
+                {
+                    _player.PlayerModifyHelth();
+                }
+                else
+                {
+                    _player.ModifyStamina(1.5f);
+                }
+                _hs._attack = HitSponer.AttackState.Nomal;
+            }
             Destroy(gameObject);
         }
             if (TimerOver(_maxTimer * 0.75f))
