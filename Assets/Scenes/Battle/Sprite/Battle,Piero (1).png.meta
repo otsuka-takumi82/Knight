@@ -1,0 +1,871 @@
+fileFormatVersion: 2
+guid: db55bc76e999d2f4ebfa58aaa89a2bf5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5508452029454079823
+    second: Battle,Piero (1)_0
+  - first:
+      213: 3173924527281391047
+    second: Battle,Piero (1)_1
+  - first:
+      213: 282312767444916707
+    second: Battle,Piero (1)_2
+  - first:
+      213: 7936081480885317427
+    second: Battle,Piero (1)_3
+  - first:
+      213: 6895342237136501512
+    second: Battle,Piero (1)_4
+  - first:
+      213: -8146149723115064602
+    second: Battle,Piero (1)_5
+  - first:
+      213: 8974188607987352455
+    second: Battle,Piero (1)_6
+  - first:
+      213: 8736379118686601863
+    second: Battle,Piero (1)_7
+  - first:
+      213: 4663521872770156699
+    second: Battle,Piero (1)_8
+  - first:
+      213: -5551497789455955186
+    second: Battle,Piero (1)_9
+  - first:
+      213: -1722121623136911041
+    second: Battle,Piero (1)_10
+  - first:
+      213: 8235655432783682495
+    second: Battle,Piero (1)_11
+  - first:
+      213: -8430159103586446237
+    second: Battle,Piero (1)_12
+  - first:
+      213: 8935073889452902619
+    second: Battle,Piero (1)_13
+  - first:
+      213: 4193688007704740585
+    second: Battle,Piero (1)_14
+  - first:
+      213: 1404246748048194307
+    second: Battle,Piero (1)_15
+  - first:
+      213: -4352074149901455545
+    second: Battle,Piero (1)_16
+  - first:
+      213: -3533643128139861712
+    second: Battle,Piero (1)_17
+  - first:
+      213: -3468142440977874964
+    second: Battle,Piero (1)_18
+  - first:
+      213: -4460345219031925900
+    second: Battle,Piero (1)_19
+  - first:
+      213: -238405933598880934
+    second: Battle,Piero (1)_20
+  - first:
+      213: 2102365943512498379
+    second: Battle,Piero (1)_21
+  - first:
+      213: -2529026439945135102
+    second: Battle,Piero (1)_22
+  - first:
+      213: -7519312155037410797
+    second: Battle,Piero (1)_23
+  - first:
+      213: 1570015840130610893
+    second: Battle,Piero (1)_24
+  - first:
+      213: 805722639069515381
+    second: Battle,Piero (1)_25
+  - first:
+      213: 5799886602075234120
+    second: Battle,Piero (1)_26
+  - first:
+      213: 3543161284771193702
+    second: Battle,Piero (1)_27
+  - first:
+      213: -1901099497976481236
+    second: Battle,Piero (1)_28
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 129
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Battle,Piero (1)_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 463
+        width: 59
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b82c12701c0e83b0800000000000000
+      internalID: -5508452029454079823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 463
+        width: 59
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c5c1889a8b0c0c20800000000000000
+      internalID: 3173924527281391047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_2
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 463
+        width: 45
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e99c1b57f9fae300800000000000000
+      internalID: 282312767444916707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_3
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 466
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33fa9b84f00a22e60800000000000000
+      internalID: 7936081480885317427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_4
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 400
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80bb4494b3d21bf50800000000000000
+      internalID: 6895342237136501512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_5
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 400
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2749aacff03fe80800000000000000
+      internalID: -8146149723115064602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_6
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 400
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 783817eddf8ba8c70800000000000000
+      internalID: 8974188607987352455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_7
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 400
+        width: 45
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7828478658add3970800000000000000
+      internalID: 8736379118686601863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_8
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 331
+        width: 72
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b98cab45f6828b040800000000000000
+      internalID: 4663521872770156699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_9
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 331
+        width: 56
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0b8c107c2e15f2b0800000000000000
+      internalID: -5551497789455955186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_10
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 331
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f31c7e8028bc918e0800000000000000
+      internalID: -1722121623136911041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_11
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 331
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbb56935bfcea4270800000000000000
+      internalID: 8235655432783682495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_12
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 265
+        width: 71
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36454bec5fe020b80800000000000000
+      internalID: -8430159103586446237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_13
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 265
+        width: 72
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd845b6cc52cffb70800000000000000
+      internalID: 8935073889452902619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_14
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 265
+        width: 57
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e28e0e1609f23a30800000000000000
+      internalID: 4193688007704740585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_15
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 265
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30bf8623af2ec7310800000000000000
+      internalID: 1404246748048194307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_16
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 199
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74fa6f27e935a93c0800000000000000
+      internalID: -4352074149901455545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_17
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 199
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03139380c4af5fec0800000000000000
+      internalID: -3533643128139861712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_18
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 199
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cefbe0f23deaedfc0800000000000000
+      internalID: -3468142440977874964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_19
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 199
+        width: 43
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47b7dfbb7aba912c0800000000000000
+      internalID: -4460345219031925900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_20
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 133
+        width: 48
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5b4e77011301bcf0800000000000000
+      internalID: -238405933598880934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_21
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 133
+        width: 50
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc001f2dfaa1d2d10800000000000000
+      internalID: 2102365943512498379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_22
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 133
+        width: 88
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20cdf7b2ad717ecd0800000000000000
+      internalID: -2529026439945135102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_23
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 133
+        width: 98
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ad7bb1f6906a790800000000000000
+      internalID: -7519312155037410797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_24
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 67
+        width: 63
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc6b8ba9611d9c510800000000000000
+      internalID: 1570015840130610893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_25
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 67
+        width: 50
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57e8a39a8708e2b00800000000000000
+      internalID: 805722639069515381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_26
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 67
+        width: 88
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84fdd3ea2265d7050800000000000000
+      internalID: 5799886602075234120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_27
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 67
+        width: 98
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66324b08a66db2130800000000000000
+      internalID: 3543161284771193702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Battle,Piero (1)_28
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1
+        width: 63
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2a307c3410fd95e0800000000000000
+      internalID: -1901099497976481236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8c5d17c0185fb1043b93dddfe4a9bd9b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Battle,Piero (1)_0: -5508452029454079823
+      Battle,Piero (1)_1: 3173924527281391047
+      Battle,Piero (1)_10: -1722121623136911041
+      Battle,Piero (1)_11: 8235655432783682495
+      Battle,Piero (1)_12: -8430159103586446237
+      Battle,Piero (1)_13: 8935073889452902619
+      Battle,Piero (1)_14: 4193688007704740585
+      Battle,Piero (1)_15: 1404246748048194307
+      Battle,Piero (1)_16: -4352074149901455545
+      Battle,Piero (1)_17: -3533643128139861712
+      Battle,Piero (1)_18: -3468142440977874964
+      Battle,Piero (1)_19: -4460345219031925900
+      Battle,Piero (1)_2: 282312767444916707
+      Battle,Piero (1)_20: -238405933598880934
+      Battle,Piero (1)_21: 2102365943512498379
+      Battle,Piero (1)_22: -2529026439945135102
+      Battle,Piero (1)_23: -7519312155037410797
+      Battle,Piero (1)_24: 1570015840130610893
+      Battle,Piero (1)_25: 805722639069515381
+      Battle,Piero (1)_26: 5799886602075234120
+      Battle,Piero (1)_27: 3543161284771193702
+      Battle,Piero (1)_28: -1901099497976481236
+      Battle,Piero (1)_3: 7936081480885317427
+      Battle,Piero (1)_4: 6895342237136501512
+      Battle,Piero (1)_5: -8146149723115064602
+      Battle,Piero (1)_6: 8974188607987352455
+      Battle,Piero (1)_7: 8736379118686601863
+      Battle,Piero (1)_8: 4663521872770156699
+      Battle,Piero (1)_9: -5551497789455955186
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

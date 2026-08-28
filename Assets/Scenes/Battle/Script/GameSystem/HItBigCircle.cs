@@ -24,5 +24,6 @@ public class HItBigCircle : HitCircle
     {
         _player._currentHp /= 2;
         _player.ShowHP();
+        Debug.Log(this._hp);
     }   
 }

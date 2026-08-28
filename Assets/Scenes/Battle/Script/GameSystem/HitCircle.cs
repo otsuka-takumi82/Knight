@@ -69,30 +69,44 @@ GameManager _gameManager;
         {
             _timer += Time.deltaTime;
         }
-        if (_player._isDead || _enemyHelth._stagging || _hs._isBraff)
+        if (_hs._isBraff)
+        {
+            gameObject.tag = "Untagged";
+            Destroy(gameObject, 1.5f);
+        }
+        
+        if (_player._isDead || _enemyHelth._stagging)
         {
             Destroy(gameObject);
         }
         if (TimerOver(_maxTimer))
         {
-            TimeOver();
-            if(_hs._attack == HitSponer.AttackState.Nomal)
+            if(!_player._isShield)
             {
-                _player.PlayerModifyHelth();
-                _player.ModifyStamina();
-            }
-            else if(_hs._attack == HitSponer.AttackState.Stamina)
-            {
-                if(_player._stagging)
+                TimeOver();
+                if (_hs._attack == HitSponer.AttackState.Nomal)
                 {
                     _player.PlayerModifyHelth();
+                    _player.ModifyStamina();
                 }
-                else
+                else if (_hs._attack == HitSponer.AttackState.Stamina)
                 {
-                    _player.ModifyStamina(1.5f);
+                    if (_player._stagging)
+                    {
+                        _player.PlayerModifyHelth();
+                    }
+                    else
+                    {
+                        _player.ModifyStamina(1.5f);
+                    }
+                    _hs._attack = HitSponer.AttackState.Nomal;
                 }
-                _hs._attack = HitSponer.AttackState.Nomal;
             }
+            else
+            {
+                _player.ModifyStamina(0.5f);
+            }
+            
             Destroy(gameObject);
         }
             if (TimerOver(_maxTimer * 0.75f))
@@ -122,11 +136,19 @@ GameManager _gameManager;
 
     public virtual void TagChange1()
     {
-        gameObject.tag = "Hit1";
+        if(!_hs._isBraff)
+        {
+            gameObject.tag = "Hit1";
+        }
+        
     }
     public virtual void TagChange2()
     {
-        gameObject.tag = "Hit2";
+        if (!_hs._isBraff)
+        {
+            gameObject.tag = "Hit2";
+        }
+        
     }
     public virtual void TimeOver()
     {

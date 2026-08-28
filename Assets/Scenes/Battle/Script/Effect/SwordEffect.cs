@@ -73,6 +73,7 @@ public class SwordEffect : MonoBehaviour
                 Debug.Log(circle._hp);
                 if (circle._hp <= 0)
                 {
+                    _enemyHelth.Knock();
                     _enemyHelth.Stagger();
                     Destroy(collision.gameObject);
                 }

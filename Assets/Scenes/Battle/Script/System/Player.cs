@@ -33,8 +33,11 @@ public class Player : MonoBehaviour
     public bool _stagging;
     public bool _canAttack;
     public bool _isDead;
+    public bool _isShield;
+    public bool _shieldOne = true;
     bool _paused;
     Animator _anim;
+    [SerializeField] Animator _animShield;
     private void Awake()
     {
         _uiManager = FindFirstObjectByType<BattleUIManager>();
@@ -85,14 +88,36 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_isShield);
         if (! _stagging )
         {
+            if(Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                if( _shieldOne )
+                {
+                    
+                    _isShield = true;
+                    _animShield.SetBool("Shield", true);
+                    _shieldOne = false;
+                }
+            }
+            else if(Input.GetKeyUp(KeyCode.LeftShift) && !_shieldOne)
+            {
+                _isShield = false;
+                _animShield.SetBool("Shield", false);
+                _shieldOne = true;
+            }
             if (_currentStamina < _maxStamina)
             {
                 _currentStamina += Time.deltaTime * 0.5f;
                 _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
                 ShowStamina();
             }
+        }
+        else
+        {
+            _isShield = false;
+            _animShield.SetBool("Shield", false);
         }
 
     }

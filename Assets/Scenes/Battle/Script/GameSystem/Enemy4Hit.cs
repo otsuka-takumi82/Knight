@@ -37,15 +37,16 @@ public class Enemy4Hit : HitSponer, ICounter
             else if (num == 2)
             {
                 //ブラフ左
-                _anim.SetTrigger("BrafLeft");
+                _anim.speed = 0.5f;
+                _anim.SetTrigger("Left");
                 Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y, transform.position.z), Quaternion.identity);
-                
-                yield return new WaitForSeconds(1.5f);
                 _isBraff = true;
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(1.5f);
                 _isBraff = false;
+                yield return new WaitForSeconds(0.5f);
                 //右
-                _anim.SetTrigger("Right");
+                _anim.speed = 1;
+                _anim.SetTrigger("Braff");
                 Instantiate(_fastSphire, new Vector3(transform.position.x + 3, transform.position.y, transform.position.z), Quaternion.identity);
             }
             else if (num == 3)
@@ -57,7 +58,7 @@ public class Enemy4Hit : HitSponer, ICounter
             else if (num == 4)
             {
                 //カウンター
-                _anim.SetTrigger("Counter");
+                _anim.SetTrigger("Big");
                 Instantiate(_bigSphire, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             }
 
@@ -92,12 +93,12 @@ public class Enemy4Hit : HitSponer, ICounter
         int num = Random.Range(0, 2);
         if(num == 0)
         {
-            _anim.SetTrigger("CounterAttack");
+            _anim.SetTrigger("CounterAttack1");
             Instantiate(_fastSphire, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
         }
        else if(num == 1)
         {
-            _anim.SetTrigger("CounterAttack");
+            _anim.SetTrigger("CounterAttack2");
             Instantiate(_fastSphire, new Vector3(transform.position.x, transform.position.y - 2, transform.position.z), Quaternion.identity);
         }
         
