@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, Header("アイテム画像")]
     public Sprite[] _itemImage;
     [SerializeField]
-    public Item[] _item;
+    public List<Item> _item;
     [SerializeField, Header("未作成エラー")]
     public GameObject[] _allUI;
     [SerializeField, Header("設定パネル")]

@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections.Generic;   // List を使うために必要
+using System.Linq;
+using System;
 
 public class ItemBase : MonoBehaviour,IPointerDownHandler
 {
@@ -17,13 +20,15 @@ public class ItemBase : MonoBehaviour,IPointerDownHandler
     void Start()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
-        for (int i = 1; i < 4; i++)
-        {
-            if (_gameManager._item[i] == _itemType)
-            {
-                _itemUINum = i;
-            }
-        }
+        int num = _gameManager._item.FindIndex(1, 3, x => x == _itemType);
+        _itemUINum = num;
+        //for (int i = 1; i < 4; i++)
+        //{
+        //    if (_gameManager._item[i] == _itemType)
+        //    {
+        //        _itemUINum = i;
+        //    }
+        //}
         FindFirstObjectByType<BattleUIManager>().ChangeItemText(_itemUINum, ItemStr(), ItemNum());
         FindFirstObjectByType<BattleUIManager>().ChangePorch(ItemStr(), _itemUINum);
 
