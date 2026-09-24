@@ -17,6 +17,10 @@ public class TalkManager : MonoBehaviour
     [SerializeField]
     GameObject[] _button;
     [SerializeField]
+    SpriteRenderer _renderer;
+    [SerializeField]
+    Sprite[] _back;
+    [SerializeField]
     Text _diaText;
     [SerializeField]
     private string[] _sisterMessage;
@@ -50,15 +54,18 @@ public class TalkManager : MonoBehaviour
         _gameManager = FindFirstObjectByType<GameManager>();
         if (_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
         {
+            _renderer.sprite = _back[1];
             TalkStart(_sister, _sisterMessage,1);
 
         }
         else if(_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
         {
+            _renderer.sprite = _back[2];
             TalkStart(_fighter, _fighterMessage,2);
         }
         else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 3)
         {
+            _renderer.sprite = _back[3];
             TalkStart(_maker, _makerMessage,3);
         }
     }
@@ -69,7 +76,8 @@ public class TalkManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
+            _event[1].Invoke();
+            if (_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
             {
                 AddTalk(_sisterMessage);
             }
@@ -87,6 +95,7 @@ public class TalkManager : MonoBehaviour
     #region 武器のボタンの数字戻り値
     public void NumWepon(int num)
     {
+        _event[1].Invoke();
         _gameManager._currentMake = num;
         _gameManager.SettingUI();
     }
@@ -106,6 +115,7 @@ public class TalkManager : MonoBehaviour
     #region 敵のボタンの数字戻り値
     public void Enemy(int num)
     {
+        _event[1].Invoke();
         _gameManager._currentFight = num;
         _gameManager.SettingUI();
     }
@@ -124,9 +134,11 @@ public class TalkManager : MonoBehaviour
     #endregion
     public void OnWeponSelect()
     {
+        _event[1].Invoke();
         if (_makeWepon.activeSelf)
         {
             _makeWepon.SetActive(false);
+            
         }
         else
         {
@@ -135,6 +147,7 @@ public class TalkManager : MonoBehaviour
     }
     public void OnEquipSelect()
     {
+        _event[1].Invoke();
         if (_equipBox.activeSelf)
         {
             _equipBox.SetActive(false);
@@ -146,6 +159,7 @@ public class TalkManager : MonoBehaviour
     }
     public void WeponSelect()
     {
+        _event[1].Invoke();
         if (_swordBox.activeSelf)
         {
             _swordBox.SetActive(false);
@@ -157,6 +171,7 @@ public class TalkManager : MonoBehaviour
     }
     public void OnFighterSelect()
     {
+        _event[1].Invoke();
         if (_fighterButton.activeSelf)
         {
             _fighterButton.SetActive(false);

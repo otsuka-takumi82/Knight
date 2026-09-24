@@ -11,8 +11,8 @@ public class EnemyHelth : MonoBehaviour
     [SerializeField,Header("敵攻撃力")]
     public float _damage;
     [SerializeField]
-    private float _maxStamina;
-    private float _currentStamina;
+    public float _maxStamina;
+    public float _currentStamina;
     [SerializeField]
     private float _staggerPile = 1;
     [SerializeField]
@@ -52,7 +52,6 @@ public class EnemyHelth : MonoBehaviour
 
     public void ModifyHelth(float amount)
     {
-        
         _currentHp += amount * _staggerPile;
         _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
         ShowHP();
@@ -69,7 +68,6 @@ public class EnemyHelth : MonoBehaviour
 
     public void ModifyStamina(float amount)
     {
-
         _currentStamina += amount;
         _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
         ShowStamina();
@@ -97,7 +95,7 @@ public class EnemyHelth : MonoBehaviour
 
     public void PlayerDamage(float pile = 1)
     {
-        ModifyHelth(_player._playerDamage * pile);
+        ModifyHelth(_player._playerDamage * pile * _player._skillPile);
     }
     public void PlayerStamina(float pile = 1)
     {
@@ -106,10 +104,10 @@ public class EnemyHelth : MonoBehaviour
 
     public IEnumerator Stagger()
     {
-        
+        _stagging = true;
+        _anim.ResetTrigger("Knock");
         _anim.SetTrigger("Stagger");
         _staggerPile *= 4f;
-        _stagging = true;
         yield return new WaitForSeconds(5);
         _stagging = false;
         _staggerPile /= 4;
@@ -130,7 +128,11 @@ public class EnemyHelth : MonoBehaviour
 
     public void Knock()
     {
-        _anim.SetTrigger("Knock");
+        if(!_stagging)
+        {
+            _anim.SetTrigger("Knock");
+        }
+        
     }
 
     

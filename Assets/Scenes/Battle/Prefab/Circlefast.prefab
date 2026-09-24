@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3184397256680853649}
   - component: {fileID: 4106770593872408558}
   - component: {fileID: 1395266002689856939}
+  - component: {fileID: -5450221677711097487}
   m_Layer: 2
   m_Name: Circlefast
   m_TagString: Hit
@@ -120,7 +121,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -140,6 +141,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxTimer: 1
   _name: Hitfast
+  _hp: 0
+  _damage: {fileID: 8300000, guid: bc59c6f096106a34b97095f80bbd4562, type: 3}
+  _audio: {fileID: 0}
+  _player: {fileID: 0}
+  _collider: {fileID: 0}
 --- !u!95 &1395266002689856939
 Animator:
   serializedVersion: 7
@@ -162,3 +168,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &-5450221677711097487
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4391123265094694012}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class Enemy2Hit : HitSponer
 {
     [SerializeField] float _diley;
@@ -62,6 +62,28 @@ public class Enemy2Hit : HitSponer
             }
 
         }
+    }
+    public override void Agree()
+    {
+        Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
+        GameObject obj = Instantiate(_commentObject, parent);
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(150f, 150f);
+        Text text = obj.GetComponentInChildren<Text>();
+        text.text = _activeComment[0];
+        _player._getPile *= 2;
+        _ui.CommentActive();
+    }
+    public override void DisAgree()
+    {
+        Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
+        GameObject obj = Instantiate(_commentObject, parent);
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(150f, 150f);
+        Text text = obj.GetComponentInChildren<Text>();
+        text.text = _activeComment[1];
+        _player._getPile *= 0.5f;
+        _ui.CommentActive();
     }
 
 }

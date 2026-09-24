@@ -13,6 +13,8 @@ public class BattleUIManager : MonoBehaviour
     private Image _cursleImage;
     [SerializeField, Header("カーソル判定")]
     private GameObject _curslejadge;
+    [SerializeField, Header("NPCコメント")]
+    private GameObject _comment;
     [SerializeField, Header("プレイヤースタミナ画像")]
     private Image _playerStaminaImage;
     [SerializeField, Header("ポーチ画像")]
@@ -87,6 +89,17 @@ public class BattleUIManager : MonoBehaviour
     public void ChangeItemText(int UInum, string name, int num)
     {
         _itemText[UInum].text = name + num;
+    }
+    public void CommentActive()
+    {
+        if(_comment.activeSelf)
+        {
+            _comment.SetActive(false);
+        }
+        else
+        {
+            _comment.SetActive(true);
+        }
     }
 
     public void ChangeCursleDirection(DirectionAttack.AttackType type)

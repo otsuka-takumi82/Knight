@@ -13,7 +13,9 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
     [SerializeField, Header("右上攻撃")]
     private GameObject _arm;
     
+    
     private bool[] _fastAttack = new bool[4];
+    bool _coolOk;
     
     
     public enum AttackType
@@ -53,14 +55,35 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        if(!_player._stagging)
+        {
+            if (_player._playerAttackType == _attackType)
+            {
+                _player._commboNum++;
+                _player._currentCoolTime = 0.25f;
+                _coolOk = true;
+
+            }
+            else
+            {
+                if(_player._commboNum > _player._saveCommbo)
+                {
+                    _player._saveCommbo = _player._commboNum;
+                }
+                _player._commboNum = 0;
+                _player._currentCoolTime = _player._attackCoolTime;
+                _coolOk = false;
+            }
+        }
+        
         if (!_player._stagging && _player._canAttack)
         {
-            _anim.SetTrigger("Combo");
-            Vector3 clickPosition = eventData.pointerPressRaycast.worldPosition;
-            if(_player._playerAttackType == _attackType)
+            if(_coolOk)
             {
-                _player._currentCoolTime = 0;
+                _anim.SetTrigger("Combo");
             }
+            Vector3 clickPosition = eventData.pointerPressRaycast.worldPosition;
+            
 
             //_enemyHelth.PlayerDamage();
             //_enemyHelth.PlayerStamina();

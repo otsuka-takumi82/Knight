@@ -3,31 +3,52 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class HitSponer : MonoBehaviour
 {
-    [SerializeField, UnitHeaderInspectable("円ヒットボックス")]
+    [SerializeField, Header("円ヒットボックス")]
     public GameObject _hitSphere;
+    [SerializeField, Header("特殊ボール")]
+    public GameObject[] _ball;
+    [SerializeField, UnitHeaderInspectable("反応コメ")]
+    public GameObject _commentObject;
     [SerializeField]private int _enemyNum;
+    [SerializeField]private string _comment;
+    [SerializeField]public string[] _activeComment;
+    private Text _commentBox;
     public enum AttackState
     {
         Nomal,
         Stamina,
         Damage
     };
+    public enum EnemyState
+    {
+        Nomal,
+        Up,
+        Down,
+    };
     public AttackState _attack = AttackState.Nomal;
     public Animator _anim;
     public float _animSpeed = 1;
     private Coroutine _sphereCor;
     public EnemyHelth _enemy;
+    public BattleUIManager _ui;
     public Player _player;
     public float _waitNum = 3;
+    public float _powerPile = 2;
     private bool _isOne;
+    bool _one = true;
+    bool _isComment = true;
     public bool _isPause;
     public bool _isBraff;
     private GameManager _gm;
+    SpriteRenderer _ren;
     private void Awake()
     {
+        _ren = GetComponent<SpriteRenderer>();
+        _ui = FindFirstObjectByType<BattleUIManager>();
         _player = FindFirstObjectByType<Player>();
         _gm = FindFirstObjectByType<GameManager>();
         _enemy = FindFirstObjectByType<EnemyHelth>();
@@ -40,9 +61,8 @@ public class HitSponer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         _sphereCor = StartCoroutine(Sphere());
-        
+
     }
     private void OnEnable()
     {
@@ -72,14 +92,37 @@ public class HitSponer : MonoBehaviour
             {
                 if (_isOne)
                 {
-
                     _sphereCor = StartCoroutine(Sphere());
                     _isOne = false;
                 }
 
             }
+
+            
         }
-          
+        if (_one && _enemy._currentHp <= _enemy._maxHp / 2)
+        {
+            _ui.CommentActive();
+            _commentBox = GameObject.FindGameObjectWithTag("Coment").GetComponent<Text>();
+            _commentBox.text = _comment;
+            _one = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.W) && _isComment)
+        {
+            Agree();
+            _isComment = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.S) && _isComment)
+        {
+            DisAgree();
+            _isComment = false;
+        }
+        else if (Input.GetKeyDown(KeyCode.D) && _isComment)
+        {
+            Nomal();
+            _isComment = false;
+        }
+        
     }
 
     public virtual IEnumerator Sphere()
@@ -130,6 +173,34 @@ public class HitSponer : MonoBehaviour
 
         }
         
+    }
+    public void Nomal()
+    {
+        _ui.CommentActive();
+    }
+    public virtual void Agree()
+    {
+        Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
+        GameObject obj = Instantiate(_commentObject,parent);
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(150f, 150f);
+        Text text = obj.GetComponentInChildren<Text>();
+        text.text = _activeComment[0];
+        _ren.color = Color.yellow;
+        _player._getPile *= 2;
+        _ui.CommentActive();
+    }
+    public virtual void DisAgree()
+    {
+        Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
+        GameObject obj = Instantiate(_commentObject, parent);
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(150f, 150f);
+        Text text = obj.GetComponentInChildren<Text>();
+        text.text = _activeComment[1];
+        _ren.color = Color.blue;
+        _player._getPile *= 0.5f;
+        _ui.CommentActive();
     }
 
     public void PauseReseum(bool paused)

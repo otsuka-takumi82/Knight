@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Linq;
 
 public class HitCircle : MonoBehaviour, IPointerDownHandler
 {
@@ -11,12 +12,16 @@ public class HitCircle : MonoBehaviour, IPointerDownHandler
     string _name;
     [SerializeField]
     public float _hp;
+    [SerializeField]
+    public AudioClip _damage;
+    AudioSource _audio;
 
     private float _timer;
     private EnemyHelth _enemyHelth;
     public Player _player;
     private DirectionAttack _directionAttack;
     bool _paused;
+    TextMesh _text;
     
 GameManager _gameManager;
     SpriteRenderer _spriteRenderer;
@@ -26,6 +31,7 @@ GameManager _gameManager;
     void Awake()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
+        _audio = GameObject.FindGameObjectWithTag("God").GetComponent<AudioSource>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
         _player = FindFirstObjectByType<Player>();
@@ -33,6 +39,7 @@ GameManager _gameManager;
         _directionAttack = FindFirstObjectByType<DirectionAttack>();
         _anim = GetComponent<Animator>();
         _hs = FindFirstObjectByType<HitSponer>();
+        _text = GetComponentInChildren<TextMesh>();
         _collider.enabled = false;
         _anim.Play(_name);
     }
@@ -64,6 +71,10 @@ GameManager _gameManager;
     // Update is called once per frame
     void Update()
     {
+        if (_text != null)
+        {
+            _text.text = _hp.ToString();
+        }
         
         if (!_paused)
         {
@@ -81,6 +92,7 @@ GameManager _gameManager;
         }
         if (TimerOver(_maxTimer))
         {
+            _audio.PlayOneShot(_damage);
             if(!_player._isShield)
             {
                 TimeOver();
@@ -104,14 +116,14 @@ GameManager _gameManager;
             }
             else
             {
-                _player.ModifyStamina(0.5f);
+                _player.ModifyStamina(0.25f);
             }
             
             Destroy(gameObject);
         }
             if (TimerOver(_maxTimer * 0.75f))
             {
-            _spriteRenderer.color = Color.red;
+            _spriteRenderer.color = Color.green;
             TagChange2();
                 
             }
@@ -120,9 +132,10 @@ GameManager _gameManager;
                 _collider.enabled = true;
                 TagChange1();
                
-            _spriteRenderer.color = Color.yellow;
+            _spriteRenderer.color = Color.red;
         }
     }
+
 
     public void OnPointerDown(PointerEventData eventData)
     {

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -5,6 +7,8 @@ public class SwordEffect : MonoBehaviour
 {
     [SerializeField, UnitHeaderInspectable("火花")]
     GameObject _hibana;
+    AudioSource _audio;
+    [SerializeField,Header("効果音")]AudioClip[] _se;
 
     private EnemyHelth _enemyHelth;
     private Player _player;
@@ -13,6 +17,7 @@ public class SwordEffect : MonoBehaviour
     {
         _enemyHelth = FindFirstObjectByType<EnemyHelth>();
         _player = FindFirstObjectByType<Player>();
+        _audio = GetComponentInParent<AudioSource>();
     }
 
     private void OnDestroy()
@@ -32,6 +37,18 @@ public class SwordEffect : MonoBehaviour
             _enemyHelth.PlayerDamage();
             _enemyHelth.PlayerStamina();
             Hibana(transform.position);
+            _audio.PlayOneShot(_se[0]);
+        }
+        if (collision.gameObject.CompareTag("GoodBall"))
+        {
+            _player.ModifyStamina(-1);
+            _audio.PlayOneShot(_se[2]);
+            Hibana(collision.transform.position);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Hit2"))
         {
@@ -39,6 +56,7 @@ public class SwordEffect : MonoBehaviour
             _enemyHelth.PlayerDamage();
             _enemyHelth.PlayerStamina(2);
             Hibana(transform.position);
+            _audio.PlayOneShot(_se[1]);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Hit1"))
@@ -73,7 +91,6 @@ public class SwordEffect : MonoBehaviour
                 Debug.Log(circle._hp);
                 if (circle._hp <= 0)
                 {
-                    _enemyHelth.Knock();
                     _enemyHelth.Stagger();
                     Destroy(collision.gameObject);
                 }

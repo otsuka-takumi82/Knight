@@ -1,7 +1,9 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static GameManager;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
 {
@@ -12,9 +14,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     public float _maxHp;
     [SerializeField]
+    public Text _combo;
+    public float _getPile = 1;
+    public float _skillPile = 1;
+    [SerializeField]
     public float _maxStamina;
     [SerializeField]
     private float _staggerPile = 1;
+    [SerializeField, Header("スタッガー")]
+    public AudioClip _breath;
     [SerializeField]
     public float _attackCoolTime = 0.5f;
     [SerializeField]
@@ -25,6 +33,9 @@ public class Player : MonoBehaviour
     public float _currentHp;
     public float _currentStamina;
     public int _currentHarb;
+    public int _commboNum;
+    public int _saveCommbo;
+    [SerializeField]public float _addScore = 10;
     private int _currentHighHarb;
     private Wepon _wepon;
     private BattleUIManager _uiManager;
@@ -33,10 +44,11 @@ public class Player : MonoBehaviour
     public bool _stagging;
     public bool _canAttack;
     public bool _isDead;
-    public bool _isShield;
+    public bool _isShield = true;
     public bool _shieldOne = true;
     bool _paused;
     Animator _anim;
+    public AudioSource _audio;
     [SerializeField] Animator _animShield;
     private void Awake()
     {
@@ -44,6 +56,7 @@ public class Player : MonoBehaviour
         _enemy = FindFirstObjectByType<EnemyHelth>();
         _gameManager = FindFirstObjectByType<GameManager>();
         _anim = GetComponentInChildren<Animator>();
+        _audio = GetComponent<AudioSource>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -88,7 +101,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_isShield);
+        _combo.text = $"{_commboNum.ToString("0")}combo";
+        Debug.Log(_saveCommbo);
         if (! _stagging )
         {
             if(Input.GetKeyDown(KeyCode.LeftShift))
@@ -109,7 +123,10 @@ public class Player : MonoBehaviour
             }
             if (_currentStamina < _maxStamina)
             {
-                _currentStamina += Time.deltaTime * 0.5f;
+                if(!_isShield)
+                {
+                    _currentStamina += Time.deltaTime * 0.5f;
+                }
                 _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
                 ShowStamina();
             }
@@ -123,12 +140,13 @@ public class Player : MonoBehaviour
     }
     private void OnDestroy()
     {
-        _gameManager.AddRepair(-1);
+        _gameManager.AddRepair(-0);
     }
 
     public void PlayerModifyHelth(float pile = 1)
     {
-        _currentHp += _enemy._damage * pile * _staggerPile;
+        float damage = _enemy._damage * pile * _getPile * _staggerPile;
+        _currentHp += damage;
         _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
         ShowHP();
         if( _currentHp <= 0 )
@@ -176,6 +194,7 @@ public class Player : MonoBehaviour
     {
         _staggerPile = 1.5f;
         _stagging = true;
+        _audio.PlayOneShot(_breath);
         yield return new WaitForSeconds(5);
         _stagging = false;
         _staggerPile = 1;
@@ -206,12 +225,18 @@ public class Player : MonoBehaviour
         if (paused)
         {
             _anim.speed = 0;
+            _animShield.speed = 0;
         }
         else
         {
             _anim.speed = 1;
+            _animShield.speed = 1;
         }
 
     }
 
+    public float AddScore()
+    {
+        return _saveCommbo * _addScore;
+    }
 }

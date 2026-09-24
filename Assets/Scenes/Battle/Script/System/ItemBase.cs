@@ -21,7 +21,9 @@ public class ItemBase : MonoBehaviour,IPointerDownHandler
     {
         _gameManager = FindFirstObjectByType<GameManager>();
         int num = _gameManager._item.FindIndex(1, 3, x => x == _itemType);
+        if (num == -1) num = 0;
         _itemUINum = num;
+        Debug.Log(_itemUINum);
         //for (int i = 1; i < 4; i++)
         //{
         //    if (_gameManager._item[i] == _itemType)

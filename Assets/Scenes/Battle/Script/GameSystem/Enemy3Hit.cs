@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class Enemy3Hit : HitSponer, ICounter
 {
     [SerializeField] float _diley;
@@ -24,6 +24,7 @@ public class Enemy3Hit : HitSponer, ICounter
             {
                 //左上
                 _anim.SetTrigger("LeftUp");
+                Instantiate(_ball[0], new Vector3(transform.position.x + 5, transform.position.y + -5, transform.position.z), Quaternion.identity);
                 Instantiate(_hitSphere, new Vector3(transform.position.x + -1, transform.position.y + 1, transform.position.z), Quaternion.identity);
 
             }
@@ -76,12 +77,34 @@ public class Enemy3Hit : HitSponer, ICounter
 
         }
     }
+    public override void Agree()
+    {
+        Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
+        GameObject obj = Instantiate(_commentObject, parent);
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(150f, 150f);
+        Text text = obj.GetComponentInChildren<Text>();
+        text.text = _activeComment[0];
+        _player._getPile *= 0.5f;
+        _ui.CommentActive();
+    }
+    public override void DisAgree()
+    {
+        Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
+        GameObject obj = Instantiate(_commentObject, parent);
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(150f, 150f);
+        Text text = obj.GetComponentInChildren<Text>();
+        text.text = _activeComment[1];
+        _player._getPile *= 0.5f;
+        _ui.CommentActive();
+    }
     void ICounter.CounterAttack()
     {
         FindFirstObjectByType<Player>().ModifyStamina();
         _anim.SetTrigger("CounterAttack");
-        Instantiate(_hitSphere, new Vector3(transform.position.x + 3, transform.position.y + -2, transform.position.z), Quaternion.identity);
-        Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y + 2, transform.position.z), Quaternion.identity);
+        Instantiate(_hitSphere, new Vector3(transform.position.x + 3, transform.position.y + 2, transform.position.z), Quaternion.identity);
+        Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y + -2, transform.position.z), Quaternion.identity);
     } 
 
 }

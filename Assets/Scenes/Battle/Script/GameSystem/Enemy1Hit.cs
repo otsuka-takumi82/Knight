@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Enemy1Hit : HitSponer
 {
@@ -23,6 +24,8 @@ public class Enemy1Hit : HitSponer
                 //中
                 _anim.SetTrigger("Middle");
                 Instantiate(_hitSphere, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                Instantiate(_ball[0], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                Instantiate(_ball[1], new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
 
             }
             else if (num == 2)
@@ -51,5 +54,27 @@ public class Enemy1Hit : HitSponer
 
         }
     }
-
+    public override void Agree()
+    {
+        Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
+        GameObject obj = Instantiate(_commentObject, parent);
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(150f, 150f);
+        Text text = obj.GetComponentInChildren<Text>();
+        text.text = _activeComment[0];
+        _player._getPile *= 2;
+        _ui.CommentActive();
     }
+    public override void DisAgree()
+    {
+        Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
+        GameObject obj = Instantiate(_commentObject, parent);
+        RectTransform rect = obj.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(150f, 150f);
+        Text text = obj.GetComponentInChildren<Text>();
+        text.text = _activeComment[1];
+        _player._getPile *= 2;
+        _ui.CommentActive();
+    }
+
+}
