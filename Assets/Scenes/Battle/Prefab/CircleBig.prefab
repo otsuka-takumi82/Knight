@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.97708035, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.018557549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -166,7 +166,6 @@ MonoBehaviour:
   _name: HitBig
   _hp: 5
   _damage: {fileID: 8300000, guid: 0b91c1cc3f4c4544faa4163c874bcc66, type: 3}
-  _audio: {fileID: 0}
   _player: {fileID: 0}
   _collider: {fileID: 0}
 --- !u!50 &4200206927104780428

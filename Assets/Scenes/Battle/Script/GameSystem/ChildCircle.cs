@@ -34,7 +34,7 @@ public class ChildCircle : MonoBehaviour
         {
             Rigidbody2D pRb = _parent.GetComponent<Rigidbody2D>();
             pRb.linearVelocity = _save;
-            _sprite.color = Color.red;
+            _sprite.color = Color.yellow;
             _parent.gameObject.tag = "Ball";
         }
     }

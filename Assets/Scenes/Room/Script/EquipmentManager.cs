@@ -42,4 +42,18 @@ public class EquipmentManager : MonoBehaviour
             _gameManager.UnCreated();
         }
     }
+    public void EquipMeis()
+    {
+
+        if (_gameManager._wepon[2]._isCrafted)
+        {
+            _gameManager._currentEquipped = 2;
+            _gameManager .EquipUI();
+        }
+        else
+        {
+            Debug.LogWarningFormat("まだ作成していない！");
+            _gameManager.UnCreated();
+        }
+    }
 }

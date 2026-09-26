@@ -36,7 +36,7 @@ public class Result : MonoBehaviour
         }
         _addScoreNum = _player.AddScore();
         _addScore.text = $@"コンボボーナス+
-{_addScoreNum.ToString("0")}";
+{_player._saveCommbo .ToString("0")}×{_player._addScore.ToString("0")}";
         _score.text = _eH._enemyScore.ToString("0");
         _name.text = _eH._name;
         _enemy.sprite = _eH._enemyImage;

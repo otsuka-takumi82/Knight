@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,20 +15,54 @@ public class SwordControler : MonoBehaviour
     UnityEvent[] _events;
     [SerializeField, Header("作った武器")]
     GameObject[] _makeWepon;
+    [SerializeField, Header("剣アセット")]
+    GameObject[] _swordAsset;
+    [SerializeField, Header("メイスアセット")]
+    GameObject[] _maceAsset;
+    [SerializeField, Header("武器種")]
+    public WeponEnum _weponEnum;
 
     bool _swordActive = true;
     private int _currentBarn;
     private int _currentPal;
-    private Wepon _currentWepon;
+    public Wepon _currentWepon;
     private int _weponNum;
     private GameManager _gameManager;
     SpriteRenderer _spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _gameManager = FindFirstObjectByType<GameManager>();
-        StartDefaultSword(_gameManager._currentMake);
+        if (_weponEnum == WeponEnum.Sword)
+        {
+            StartDefaultSword(_gameManager._currentMake);
+        }
+        else
+        {
+            _weponNum = _gameManager._currentMake;
+            _currentWepon = _gameManager._wepon[_weponNum];
+        }
+        if (_weponEnum != _currentWepon._weponState)
+        {
+            if(_weponEnum == WeponEnum.Sword)
+            {
+                Array.ForEach(_swordAsset, obj => { if (obj != null) obj.SetActive(false); });
+                gameObject.SetActive(false);
+
+            }
+            else if(_weponEnum == WeponEnum.Mace)
+            {
+                Array.ForEach(_maceAsset, obj => { if (obj != null) obj.SetActive(false); });
+                gameObject.SetActive(false);
+            }
+            
+
+        }
+        else
+        {
+            
+        }
         //_currentBarn = _maxBarn;
         //CheckBarn();
         //CheckPal();
@@ -37,7 +72,7 @@ public class SwordControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(_weponNum);
     }
     public void StartDefaultSword(int num)
     {
@@ -163,5 +198,16 @@ public class SwordControler : MonoBehaviour
             Debug.Log("失敗！");
         }
         _gameManager._wepon[_weponNum] = _currentWepon;
+    }
+    public IEnumerator FinishMake()
+    {
+        yield return new WaitForSeconds(2);   
+        if (!_currentWepon._isCrafted)
+        {
+            _currentWepon._isCrafted = true;
+        }
+        _gameManager._wepon[_weponNum] = _currentWepon;
+        Debug.Log(_makeWepon.Length);
+        _makeWepon[_weponNum].SetActive(true);
     }
 }

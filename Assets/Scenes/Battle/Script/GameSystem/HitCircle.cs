@@ -132,7 +132,7 @@ GameManager _gameManager;
                 _collider.enabled = true;
                 TagChange1();
                
-            _spriteRenderer.color = Color.red;
+            _spriteRenderer.color = Color.yellow;
         }
     }
 
