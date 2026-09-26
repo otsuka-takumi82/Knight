@@ -1566,6 +1566,10 @@ MonoBehaviour:
   _currentEquipped: 0
   _currentMake: 0
   _currentFight: 0
+  _prayLevel: 0
+  _prayPile:
+  - 1
+  - 1.1
   _harb: 0
   _highHarb: 0
   _meat: 5

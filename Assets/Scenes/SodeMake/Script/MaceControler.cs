@@ -60,7 +60,6 @@ public class MaceControler : MonoBehaviour
                 {
                     if (!_maceAnim.GetBool("Open"))
                     {
-                        Debug.Log("fuck");
                         _maceAnim.SetBool("Open", true);
                     }
                 }
@@ -77,15 +76,15 @@ public class MaceControler : MonoBehaviour
                 _events[1].Invoke();
                 if (Mathf.Abs(_maxTimer - _timer) <= 1)
                 {
-                    _sw._currentWepon._repairPal = 2;
+                    _sw._currentWepon._repairPal = 5;
                 }
                 else if (Mathf.Abs(_maxTimer - _timer) <= 2)
                 {
-                    _sw._currentWepon._repairPal = 1;
+                    _sw._currentWepon._repairPal = 2;
                 }
                 else if(Mathf.Abs(_maxTimer - _timer) > 2)
                 {
-                    _sw._currentWepon._repairPal = 0;
+                    _sw._currentWepon._repairPal = 1;
                 }
                
                 _eventNum++;

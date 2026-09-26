@@ -72,7 +72,7 @@ public class SwordControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_weponNum);
+
     }
     public void StartDefaultSword(int num)
     {
@@ -94,7 +94,7 @@ public class SwordControler : MonoBehaviour
             {
                 _currentPal = 7;
             }
-            else if (_currentWepon._repairPal == 2)
+            else if (_currentWepon._repairPal >= 2)
             {
                 _currentPal = _maxSordPal;
                 Debug.Log("完璧だ");

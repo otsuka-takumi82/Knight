@@ -69,9 +69,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public int _currentTimeNum;
     public int _currentDayNum;
+    public int _noPrayDay;
     public int _currentEquipped = 0;
     public int _currentMake = 0;
     public int _currentFight = 0;
+    public int _prayLevel;
+    public float[] _prayPile;
     public int _harb;
     public int _highHarb;
     public int _meat = 5;
@@ -138,7 +141,7 @@ public class GameManager : MonoBehaviour
     {
         Wepon wepon;
         wepon = _wepon[_currentEquipped];
-        wepon._repairPal =  Mathf.Clamp(wepon._repairPal + num,0,2);
+        wepon._repairPal =  Mathf.Clamp(wepon._repairPal + num,0,11);
         _wepon[_currentEquipped] = wepon;
     }
     public void ChangeState(PlayerState buff)
@@ -242,5 +245,9 @@ public class GameManager : MonoBehaviour
         {
             _dayBack.sprite = _daySprite[2];
         }
+    }
+    public float GetPrayPile()
+    {
+        return _prayPile[0] + _prayPile[1];
     }
 }

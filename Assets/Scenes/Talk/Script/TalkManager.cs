@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Unity.VisualScripting;
+using UnityEngine.Timeline;
 
 //StartとUpdateのなかにsummaryの指示に従って入れればいい
 public class TalkManager : MonoBehaviour
@@ -10,6 +12,8 @@ public class TalkManager : MonoBehaviour
     UnityEvent[] _event;
     [SerializeField,Header("シスターのゲームオブジェクト")]
     GameObject _sister;
+    [SerializeField,Header("シスターの立ち絵")]
+    Sprite[] _sisterSprite;
     [SerializeField, Header("ファイターのゲームオブジェクト")]
     GameObject _fighter;
     [SerializeField, Header("鍛冶屋のゲームオブジェクト")]
@@ -24,6 +28,8 @@ public class TalkManager : MonoBehaviour
     Text _diaText;
     [SerializeField]
     private string[] _sisterMessage;
+    [SerializeField]
+    private string[] _sisterMessage2;
     [SerializeField]
     private string[] _fighterMessage;
     [SerializeField]
@@ -55,7 +61,15 @@ public class TalkManager : MonoBehaviour
         if (_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
         {
             _renderer.sprite = _back[1];
-            TalkStart(_sister, _sisterMessage,1);
+            if(_gameManager._noPrayDay >= 3)
+            {
+                _sister.GetComponent<Image>().sprite = _sisterSprite[1];
+            }
+            else
+            {
+                _sister.GetComponent<Image>().sprite = _sisterSprite[0];
+            }
+            TalkStart(_sister, GetSisterMessage(),1);
 
         }
         else if(_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
@@ -79,7 +93,7 @@ public class TalkManager : MonoBehaviour
             _event[1].Invoke();
             if (_gameManager._stageNum[_gameManager._currentTimeNum] == 1)
             {
-                AddTalk(_sisterMessage);
+                AddTalk(GetSisterMessage());
             }
             else if (_gameManager._stageNum[_gameManager._currentTimeNum] == 2)
             {
@@ -238,5 +252,19 @@ public class TalkManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         _gameManager.SetSetting();
         FindFirstObjectByType<SceneLoader>().LoadElseScene(scenename);
+    }
+
+    public string[] GetSisterMessage()
+    {
+        string[] str = new string[_sisterMessage2.Length];
+        if (_gameManager._noPrayDay >= 3)
+        {
+            str = _sisterMessage2;
+        }
+        else
+        {
+            str = _sisterMessage;
+        }
+        return str;
     }
 }

@@ -33,7 +33,7 @@ public class WeponPanel : MonoBehaviour
             {
                 _savePower *= 1;
             }
-            else if (_gameManager._wepon[_weponNum]._repairPal == 2)
+            else if (_gameManager._wepon[_weponNum]._repairPal >= 2)
             {
                 _savePower *= 1.2f;
             }
@@ -58,15 +58,15 @@ public class WeponPanel : MonoBehaviour
         {
             if (_gameManager._wepon[_weponNum]._repairPal == 0)
             {
-                _weonRepair.text = "耐久度: " + _repairStr[0];
+                _weonRepair.text = $"耐久度: {_repairStr[0]}({_gameManager._wepon[_weponNum]._repairPal})";
             }
             else if (_gameManager._wepon[_weponNum]._repairPal == 1)
             {
-                _weonRepair.text = "耐久度: " + _repairStr[1];
+                _weonRepair.text = $"耐久度: {_repairStr[1]}({_gameManager._wepon[_weponNum]._repairPal})";
             }
-            else if (_gameManager._wepon[_weponNum]._repairPal == 2)
+            else if (_gameManager._wepon[_weponNum]._repairPal >= 2)
             {
-                _weonRepair.text = "耐久度: " + _repairStr[2];
+                _weonRepair.text = $"耐久度: {_repairStr[2]}({_gameManager._wepon[_weponNum]._repairPal})";
             }
         }
         else

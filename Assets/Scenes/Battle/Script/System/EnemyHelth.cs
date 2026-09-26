@@ -1,8 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHelth : MonoBehaviour
 {
+    [SerializeField, Header("バフ画像")] public Sprite[] _buffSprite;
+    [SerializeField, Header("バフ")] public Image _buff;
     [SerializeField]
     public string _name;
     [SerializeField]
@@ -41,8 +44,8 @@ public class EnemyHelth : MonoBehaviour
     }
     void Start()
     {
-        
-        
+        _buff.sprite = _buffSprite[0];
+
     }
 
     private void Update()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -12,6 +13,8 @@ public class SwordEffect : MonoBehaviour
 
     private EnemyHelth _enemyHelth;
     private Player _player;
+
+    public bool _isCombos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -52,6 +55,7 @@ public class SwordEffect : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Hit2"))
         {
+            _isCombos = true;
             _enemyHelth.Knock();
             _enemyHelth.PlayerDamage();
             _enemyHelth.PlayerStamina(2);
@@ -97,6 +101,19 @@ public class SwordEffect : MonoBehaviour
             }
            
             
+        }
+    }
+    public void GetCombo()
+    {
+        if (_player._noCombo && _isCombos)
+        {
+            _player._commboNum++;
+            _player._noCombo = false;
+            _isCombos = false;
+        }
+        else if(_player._noCombo && !_isCombos)
+        {
+            _player._commboNum = 0;
         }
     }
     public void Hibana(Vector3 hibanapos)

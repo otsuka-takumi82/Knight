@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     public float _playerDamage;
     [SerializeField, Header("プレイヤー剣")]
     public SpriteRenderer _currentWepon;
+    [SerializeField, Header("バフ画像")] public Sprite[] _buffSprite;
+    [SerializeField, Header("プレイヤーバフ")] public Image _buff;
     [SerializeField]
     public float _maxHp;
     [SerializeField]
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
 
     public float _currentHp;
     public float _currentStamina;
+    float _save;
     public int _currentHarb;
     public int _commboNum;
     public int _saveCommbo;
@@ -46,7 +49,7 @@ public class Player : MonoBehaviour
     public bool _isDead;
     public bool _isShield = true;
     public bool _shieldOne = true;
-    bool _paused;
+    public bool _noCombo;
     Animator _anim;
     public AudioSource _audio;
     [SerializeField] Animator _animShield;
@@ -60,7 +63,7 @@ public class Player : MonoBehaviour
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    { 
         _currentHp = _maxHp;
         _currentStamina = _maxStamina;
         if (_gameManager != null)
@@ -71,7 +74,7 @@ public class Player : MonoBehaviour
             {
                 _playerDamage *= 0.5f;
             }
-            else if (_wepon._repairPal == 2)
+            else if (_wepon._repairPal >= 2)
             {
                 _playerDamage *= 1.2f;
             }
@@ -81,13 +84,27 @@ public class Player : MonoBehaviour
             if (_gameManager.State(GameManager.PlayerState.Power))
             {
                 _playerDamage *= 1.2f;
+                _buff.sprite = _buffSprite[1];
+            }
+            else if (_gameManager.State(GameManager.PlayerState.Nomal))
+            {
+                _playerDamage *= 1.2f;
+                _buff.sprite = _buffSprite[0];
+            }
+            if (_gameManager._wepon[_gameManager._currentEquipped]._weponState == WeponEnum.Sword)
+            {
+                _anim.speed *= 1;
+            }
+            else if (_gameManager._wepon[_gameManager._currentEquipped]._weponState == WeponEnum.Mace)
+            {
+                _anim.speed *= 0.5f;
             }
         }
         _currentWepon.sprite = _gameManager._swordImage[_gameManager._currentEquipped];
         
             _canAttack = true;
-        
-        
+        _save = _anim.speed;
+
     }
     void OnEnable()
     {
@@ -140,7 +157,7 @@ public class Player : MonoBehaviour
     }
     private void OnDestroy()
     {
-        _gameManager.AddRepair(-0);
+        _gameManager.AddRepair(-1);
     }
 
     public void PlayerModifyHelth(float pile = 1)
@@ -222,15 +239,17 @@ public class Player : MonoBehaviour
     }
     public void PauseReseum(bool paused)
     {
+        
         if (paused)
         {
+            _save = _anim.speed;
             _anim.speed = 0;
             _animShield.speed = 0;
         }
         else
         {
-            _anim.speed = 1;
-            _animShield.speed = 1;
+            _anim.speed = _save;
+            _animShield.speed = _save;
         }
 
     }

@@ -8,6 +8,8 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
 {
     [SerializeField, Header("祈りMax")]
     float _prayMax;
+    [SerializeField, Header("祈りレベル")]
+    Text _prayLevel;
     [SerializeField, Header("Unityevent")]
     UnityEvent[] _events;
     [SerializeField, Header("アイテム画像")]
@@ -18,14 +20,18 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     Image _itemBox;
 
     public float _pray;
+    public float _prayPile = 1;
     public bool _isPray;
     public bool _isMax;
     public bool[] _itemDel;
     PrayUIManager _uiManager;
+    GameManager _gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _gameManager = FindFirstObjectByType<GameManager>();
         _uiManager = FindFirstObjectByType<PrayUIManager>();
+        _prayLevel.text = $"Lv.{_gameManager._prayLevel}";
         InItemAll();
         AllItemSetBool(true);
     }
@@ -36,7 +42,7 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         //Debug.Log(_pray.ToString("0.00"));
         if (_isPray)
         {
-            _pray += Time.deltaTime;
+            _pray += Time.deltaTime * _prayPile;
             _uiManager.GageControl(_pray, _prayMax);
             if (_pray > 0 && _itemDel[0])
             {
@@ -107,8 +113,14 @@ public class GodControler : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         }
         else if (num == 3)
         {
+            _gameManager._noPrayDay = 0;
             Debug.Log("熟成薬草");
             _itemBox.sprite = _itemImage[2];
+            _gameManager._prayLevel++;
+            _prayLevel.text = $"Lv.{_gameManager._prayLevel}";
+            _prayPile = _gameManager.GetPrayPile();
+            _gameManager._prayPile[0] = _gameManager._prayPile[1];
+            _gameManager._prayPile[1] = _prayPile;
             GetHighHarb();
         }
 

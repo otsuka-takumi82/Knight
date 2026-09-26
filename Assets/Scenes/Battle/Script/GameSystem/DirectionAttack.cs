@@ -70,7 +70,8 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
                 {
                     _player._saveCommbo = _player._commboNum;
                 }
-                _player._commboNum = 0;
+                //_player._commboNum = 0;
+                _player._noCombo = true;
                 _player._currentCoolTime = _player._attackCoolTime;
                 _coolOk = false;
             }

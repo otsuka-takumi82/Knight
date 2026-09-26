@@ -1,5 +1,10 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+
 
 public class RoomManager : MonoBehaviour
 {
@@ -9,7 +14,7 @@ public class RoomManager : MonoBehaviour
     Text[] _stageName;
     [SerializeField]
     Text _dayText;
-    
+    [SerializeField,Header("Sister")]GameObject _sister;
     [SerializeField]
     GameObject _stageSelect;
     [SerializeField]
@@ -39,12 +44,21 @@ public class RoomManager : MonoBehaviour
         {
             _isNight= false;
         }
+        if(_isNight && _gameManager._noPrayDay >= 3)
+        {
+            _sister.SetActive(true);
+        }
         AllCheck();
     }
     private void OnDestroy()
     {
         if(_isNight)
         {
+            List<int> noDay = _gameManager._stageNum.Where((x, index) => index != 0 && index != 4).ToList();
+            if (noDay.All(x => x != 1))
+            {
+                _gameManager._noPrayDay++;
+            }
             _gameManager._currentDayNum++;
         }
     }
