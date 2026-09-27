@@ -29,7 +29,6 @@ GameManager _gameManager;
     SpriteRenderer _spriteRenderer;
     public Collider2D _collider;
     HitSponer _hs;
-    float _destDilay = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -194,7 +193,6 @@ GameManager _gameManager;
     public IEnumerator SkillCol()
     {
         _anim.speed = 0.5f;
-        _destDilay = 2;
         while (true)
         {
             gameObject.tag = "Hit2";

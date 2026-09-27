@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     public float _attackCoolTime = 0.5f;
     [SerializeField]
     public float _currentCoolTime = 0.5f;
+    public float _saveCoolTime;
     public DirectionAttack.AttackType _playerAttackType = DirectionAttack.AttackType.RightUp;
     [SerializeField, Header("スキル演出")] public UnityEvent[] _events;
     [SerializeField,Header("スキルゲージMax")] public float _skillMax;
@@ -137,7 +138,7 @@ public class Player : MonoBehaviour
         {
             if(SkillMax())
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.Z))
                 {
                     _skill.Invoke();
                 }
@@ -295,29 +296,32 @@ public class Player : MonoBehaviour
 
     public IEnumerator SkillCol()
     {
+        _skillPts = 0;
+        _saveCoolTime = _attackCoolTime;
+        _attackCoolTime = 0.25f;
         _isSkill = true;
         _events[0].Invoke();
         _save = _anim.speed;
         _anim.speed *= 2f;
         yield return new WaitForSeconds(_skillTime);
         PlayerSkill skill = GetComponent<PlayerSkill>();
+        _events[2].Invoke();
         while(_skillTimer <= 2)
         {
-            if(Input.GetKeyDown(KeyCode.Alpha1))
+            if(Input.GetKeyDown(KeyCode.Z))
             {
-                _anim.speed = _save;
                 skill.Skill();
                 break;
             }
             _skillTimer += Time.deltaTime;
             yield return null;
         }
-        skill.Skill();
-        _anim.speed = _save;
-        _skillPts = 0;
+        _attackCoolTime = _saveCoolTime;
         _skillTimer = 0f;
         _events[1].Invoke();
         _isSkill = false;
+        yield return new WaitForSeconds(1);
+        _anim.speed = _save;
     }
     public void Skill()
     {

@@ -102,29 +102,35 @@ public class HitSponer : MonoBehaviour
 
             
         }
-        if (_one && _enemy._currentHp <= _enemy._maxHp / 2)
+        if (_enemy._currentHp <= _enemy._maxHp / 2)
         {
-            _ui.CommentActive();
-            _commentBox = GameObject.FindGameObjectWithTag("Coment").GetComponent<Text>();
-            _commentBox.text = _comment;
-            _one = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.W) && _isComment)
-        {
-            Agree();
-            _isComment = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && _isComment)
-        {
-            DisAgree();
-            _isComment = false;
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && _isComment)
-        {
-            Nomal();
-            _isComment = false;
+            if (_one)
+            {
+                _ui.CommentActive();
+                _commentBox = GameObject.FindGameObjectWithTag("Coment").GetComponent<Text>();
+                _commentBox.text = _comment;
+                _one = false;
+            }
+            if (Input.GetKeyDown(KeyCode.W) && _isComment)
+            {
+                Agree();
+                _isComment = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.S) && _isComment)
+            {
+                DisAgree();
+                _isComment = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.D) && _isComment)
+            {
+                Nomal();
+                _isComment = false;
+            }
+            
         }
         
+
+
     }
 
     public virtual IEnumerator Sphere()
@@ -235,7 +241,8 @@ public class HitSponer : MonoBehaviour
         _save = _anim.speed;
         _anim.speed *= 0.5f;
         yield return new WaitForSeconds(_player._skillTime + 2);
-        _anim.speed *= _save;
+        _anim.speed = _save;
+        Debug.Log(_save);
         _saveWait = 1;
     }
     public void Skill()

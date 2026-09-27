@@ -41,7 +41,7 @@ public class PlayerSkill : MonoBehaviour
     public IEnumerator SkillCol()
     {
         _player._skillPile = 5;
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(5f);
         _player._skillPile = 1;
     }
 }
