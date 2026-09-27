@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,8 +10,8 @@ public class BattleUIManager : MonoBehaviour
     private Image _enemyHpImage;
     [SerializeField, Header("敵スタミナ画像")]
     private Image _enemyStaminaImage;
-    [SerializeField, Header("プレイヤーHP画像")]
-    private Image _playerHpImage;
+    [SerializeField, Header("プレイヤーHP画像")] private Image _playerHpImage;
+    [SerializeField, Header("スキルゲージ")] public Image[] _skillGage;//0が右１が左
     [SerializeField, Header("カーソル画像")]
     private Image _cursleImage;
     [SerializeField, Header("カーソル判定")]
@@ -27,9 +30,15 @@ public class BattleUIManager : MonoBehaviour
     private GameObject _meatImage;
     [SerializeField, Header("アイテムのテキスト")]
     private Text[] _itemText;
+    float _num = 5;
 
     float[] _scale = new float[2];
     Vector2 _mousePos;
+    Player _player;
+    private void Awake()
+    {
+        _player = FindFirstObjectByType<Player>();
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,6 +46,14 @@ public class BattleUIManager : MonoBehaviour
         _cursleImage.raycastTarget = false;
         _scale[0] = _cursleImage.rectTransform.localScale.x;
         _scale[1] = _cursleImage.rectTransform.localScale.y;
+    }
+    private void OnEnable()
+    {
+        _player._skill += Skill;
+    }
+    private void OnDisable()
+    {
+        _player._skill += Skill;
     }
 
     // Update is called once per frame
@@ -67,6 +84,10 @@ public class BattleUIManager : MonoBehaviour
     public void PlayerStaminaUI(float stamina, float maxStamina)
     {
         _playerStaminaImage.fillAmount = (float)stamina / maxStamina;
+    }
+    public void PlayerSkillUI(float skill, float skillMax)
+    {
+        Array.ForEach(_skillGage,x => x.fillAmount = skill / skillMax);
     }
 
     public void ChangePorch(string item, int num)
@@ -120,5 +141,20 @@ public class BattleUIManager : MonoBehaviour
         {
             _cursleImage.rectTransform.localScale = new Vector2(_scale[0] * -1, _scale[1] * -1);
         }
+    }
+
+   public IEnumerator SkillCol()
+    {
+        _num = 5f;
+        while (_num > 0)
+        {
+            _num -= Time.deltaTime;
+            PlayerSkillUI(_num, 5);
+            yield return null;
+        }
+    }
+    public void Skill()
+    {
+        StartCoroutine(SkillCol());
     }
 }

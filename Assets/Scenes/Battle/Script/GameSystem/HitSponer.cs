@@ -38,6 +38,7 @@ public class HitSponer : MonoBehaviour
     public Player _player;
     public float _waitNum = 3;
     public float _powerPile = 2;
+    float _save;
     private bool _isOne;
     bool _one = true;
     bool _isComment = true;
@@ -45,6 +46,7 @@ public class HitSponer : MonoBehaviour
     public bool _isBraff;
     private GameManager _gm;
     SpriteRenderer _ren;
+    float _saveWait = 1;
     private void Awake()
     {
         _ren = GetComponent<SpriteRenderer>();
@@ -67,16 +69,16 @@ public class HitSponer : MonoBehaviour
     private void OnEnable()
     {
         _gm._pauseReseum += PauseReseum;
+        _player._skill += Skill;
     }
     private void OnDisable()
     {
         _gm._pauseReseum -= PauseReseum;
+        _player._skill -= Skill;
     }
-
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_sphereCor);
         if(!_isPause)
         {
             if (_enemy._stagging || _enemy.Died())
@@ -161,7 +163,7 @@ public class HitSponer : MonoBehaviour
             }
 
             float waitNum = Random.Range(3, 6f);
-            _waitNum = waitNum;
+            _waitNum = waitNum * _saveWait;
             yield return new WaitForSeconds(waitNum);
 
             if (_isPause)
@@ -226,5 +228,18 @@ public class HitSponer : MonoBehaviour
             if (_anim != null) _anim.speed = _animSpeed;
             _isOne = true;
         }
+    }
+    public IEnumerator SkillCol()
+    {
+        _saveWait = 0.5f;
+        _save = _anim.speed;
+        _anim.speed *= 0.5f;
+        yield return new WaitForSeconds(_player._skillTime + 2);
+        _anim.speed *= _save;
+        _saveWait = 1;
+    }
+    public void Skill()
+    {
+        StartCoroutine(SkillCol());
     }
 }

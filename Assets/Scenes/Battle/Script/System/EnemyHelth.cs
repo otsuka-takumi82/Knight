@@ -16,6 +16,7 @@ public class EnemyHelth : MonoBehaviour
     [SerializeField]
     public float _maxStamina;
     public float _currentStamina;
+    
     [SerializeField]
     private float _staggerPile = 1;
     [SerializeField]
@@ -68,6 +69,7 @@ public class EnemyHelth : MonoBehaviour
 
         }
     }
+    
 
     public void ModifyStamina(float amount)
     {

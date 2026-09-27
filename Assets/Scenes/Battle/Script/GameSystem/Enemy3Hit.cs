@@ -11,7 +11,10 @@ public class Enemy3Hit : HitSponer, ICounter
         while (true)
         {
             int num = Random.Range(0, 5);
-            _anim.speed = _animSpeed;
+            if(!_player._isSkill)
+            {
+                _anim.speed = _animSpeed;
+            }
             if (num == 0)
             {
                 //右上
@@ -79,6 +82,8 @@ public class Enemy3Hit : HitSponer, ICounter
     }
     public override void Agree()
     {
+        _enemy._buff.color = Color.blue;
+        _enemy._buff.sprite = _enemy._buffSprite[1];
         Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
         GameObject obj = Instantiate(_commentObject, parent);
         RectTransform rect = obj.GetComponent<RectTransform>();
@@ -90,6 +95,8 @@ public class Enemy3Hit : HitSponer, ICounter
     }
     public override void DisAgree()
     {
+        _enemy._buff.color = Color.blue;
+        _enemy._buff.sprite = _enemy._buffSprite[1];
         Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
         GameObject obj = Instantiate(_commentObject, parent);
         RectTransform rect = obj.GetComponent<RectTransform>();

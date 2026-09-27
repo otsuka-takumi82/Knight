@@ -1,9 +1,11 @@
 using System.Collections;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static GameManager;
 using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -30,8 +32,12 @@ public class Player : MonoBehaviour
     [SerializeField]
     public float _currentCoolTime = 0.5f;
     public DirectionAttack.AttackType _playerAttackType = DirectionAttack.AttackType.RightUp;
-    
-
+    [SerializeField, Header("スキル演出")] public UnityEvent[] _events;
+    [SerializeField,Header("スキルゲージMax")] public float _skillMax;
+    public float _skillPts;
+    [SerializeField, Header("スキルゲージ+")] public float _addSkillPts = 1;
+    [SerializeField,Header("スキル時間")]public float _skillTime = 5;
+    public float _skillTimer;
     public float _currentHp;
     public float _currentStamina;
     float _save;
@@ -44,12 +50,14 @@ public class Player : MonoBehaviour
     private BattleUIManager _uiManager;
     private EnemyHelth _enemy;
     private GameManager _gameManager;
+    public Action _skill;
     public bool _stagging;
     public bool _canAttack;
     public bool _isDead;
     public bool _isShield = true;
     public bool _shieldOne = true;
     public bool _noCombo;
+    public bool _isSkill;
     Animator _anim;
     public AudioSource _audio;
     [SerializeField] Animator _animShield;
@@ -109,19 +117,31 @@ public class Player : MonoBehaviour
     void OnEnable()
     {
         _gameManager._pauseReseum += PauseReseum;
+        _skill += Skill;
     }
     void OnDisable()
     {
         _gameManager._pauseReseum -= PauseReseum;
+        _skill -= Skill;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(_isSkill)
+        {
+            AddStamina(10);
+        }
         _combo.text = $"{_commboNum.ToString("0")}combo";
-        Debug.Log(_saveCommbo);
         if (! _stagging )
         {
+            if(SkillMax())
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    _skill.Invoke();
+                }
+            }
             if(Input.GetKeyDown(KeyCode.LeftShift))
             {
                 if( _shieldOne )
@@ -180,10 +200,12 @@ public class Player : MonoBehaviour
 
     public void ModifyStamina(float num = 1)
     {
-
-        _currentStamina += _enemy._damage * num;
-        _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
-        ShowStamina();
+        if(!_isSkill)
+        {
+            _currentStamina += _enemy._damage * num;
+            _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
+            ShowStamina();
+        }
         if (!_stagging)
         {
             if (_currentStamina <= 0)
@@ -253,9 +275,52 @@ public class Player : MonoBehaviour
         }
 
     }
-
     public float AddScore()
     {
         return _saveCommbo * _addScore;
+    }
+    public float GetSkillPts(float pile = 1)
+    {
+        return _skillPts * pile; 
+    }
+    public void AddSkillPts(float skill)
+    {
+        _skillPts = Mathf.Clamp(_skillPts + skill, 0f, _skillMax);
+        _uiManager.PlayerSkillUI(_skillPts, _skillMax);
+    }
+    public bool SkillMax()
+    {
+        return _skillPts >= _skillMax;
+    }
+
+    public IEnumerator SkillCol()
+    {
+        _isSkill = true;
+        _events[0].Invoke();
+        _save = _anim.speed;
+        _anim.speed *= 2f;
+        yield return new WaitForSeconds(_skillTime);
+        PlayerSkill skill = GetComponent<PlayerSkill>();
+        while(_skillTimer <= 2)
+        {
+            if(Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                _anim.speed = _save;
+                skill.Skill();
+                break;
+            }
+            _skillTimer += Time.deltaTime;
+            yield return null;
+        }
+        skill.Skill();
+        _anim.speed = _save;
+        _skillPts = 0;
+        _skillTimer = 0f;
+        _events[1].Invoke();
+        _isSkill = false;
+    }
+    public void Skill()
+    {
+        StartCoroutine(SkillCol());
     }
 }

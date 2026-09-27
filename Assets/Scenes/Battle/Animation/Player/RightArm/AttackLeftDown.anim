@@ -2107,7 +2107,7 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.5
+  - time: 0.4
     functionName: GetSwordEffect
     data: 
     objectReferenceParameter: {fileID: 0}

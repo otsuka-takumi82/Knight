@@ -31,7 +31,7 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
     BattleUIManager _bUI;
     [SerializeField, Header("次のコンボ攻撃")]
     Animator _anim;
-    
+    [SerializeField, Header("Sword")]SwordEffect _sw;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,7 +59,13 @@ public class DirectionAttack : MonoBehaviour, IPointerDownHandler
         {
             if (_player._playerAttackType == _attackType)
             {
+                //if (_player._commboNum >= _sw.PlusFibo())
+                //{
+                //    _player.AddSkillPts(_sw.PlusFibo());
+                //}
+                //_sw.GetFibo();
                 _player._commboNum++;
+                //_bUI.PlayerSkillUI(_player._skillPts, _player._skillMax);
                 _player._currentCoolTime = 0.25f;
                 _coolOk = true;
 

@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Linq;
+using System.Collections;
 
 public class HitCircle : MonoBehaviour, IPointerDownHandler
 {
@@ -21,12 +22,14 @@ public class HitCircle : MonoBehaviour, IPointerDownHandler
     public Player _player;
     private DirectionAttack _directionAttack;
     bool _paused;
+    bool _skiled = true;
     TextMesh _text;
     
 GameManager _gameManager;
     SpriteRenderer _spriteRenderer;
     public Collider2D _collider;
     HitSponer _hs;
+    float _destDilay = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -62,15 +65,22 @@ GameManager _gameManager;
     void OnEnable()
     {
         _gameManager._pauseReseum += PauseResume;
+        _player._skill += Skill;
     }
     void OnDisable()
     {
         _gameManager._pauseReseum -= PauseResume;
+        _player._skill -= Skill;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(_player._isSkill && _skiled)
+        {
+            Skill();
+            _skiled = false;
+        }
         if (_text != null)
         {
             _text.text = _hp.ToString();
@@ -118,7 +128,7 @@ GameManager _gameManager;
             {
                 _player.ModifyStamina(0.25f);
             }
-            
+
             Destroy(gameObject);
         }
             if (TimerOver(_maxTimer * 0.75f))
@@ -179,5 +189,21 @@ GameManager _gameManager;
             _paused = false;
             _anim.speed = 1;
         }
+    }
+
+    public IEnumerator SkillCol()
+    {
+        _anim.speed = 0.5f;
+        _destDilay = 2;
+        while (true)
+        {
+            gameObject.tag = "Hit2";
+            _spriteRenderer.color = Color.green;
+            yield return null;
+        }
+    }
+    public void Skill()
+    {
+        StartCoroutine(SkillCol());
     }
 }

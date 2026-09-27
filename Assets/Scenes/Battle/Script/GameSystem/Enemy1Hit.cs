@@ -56,6 +56,8 @@ public class Enemy1Hit : HitSponer
     }
     public override void Agree()
     {
+        _enemy._buff.color = Color.white;
+        _enemy._buff.sprite = _enemy._buffSprite[1];
         Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
         GameObject obj = Instantiate(_commentObject, parent);
         RectTransform rect = obj.GetComponent<RectTransform>();
@@ -67,6 +69,8 @@ public class Enemy1Hit : HitSponer
     }
     public override void DisAgree()
     {
+        _enemy._buff.color = Color.white;
+        _enemy._buff.sprite = _enemy._buffSprite[1];
         Transform parent = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Transform>();
         GameObject obj = Instantiate(_commentObject, parent);
         RectTransform rect = obj.GetComponent<RectTransform>();

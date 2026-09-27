@@ -34,15 +34,8 @@ public class SwordControler : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _gameManager = FindFirstObjectByType<GameManager>();
-        if (_weponEnum == WeponEnum.Sword)
-        {
-            StartDefaultSword(_gameManager._currentMake);
-        }
-        else
-        {
-            _weponNum = _gameManager._currentMake;
-            _currentWepon = _gameManager._wepon[_weponNum];
-        }
+        _weponNum = _gameManager._currentMake;
+        _currentWepon = _gameManager._wepon[_weponNum];
         if (_weponEnum != _currentWepon._weponState)
         {
             if(_weponEnum == WeponEnum.Sword)
@@ -56,17 +49,31 @@ public class SwordControler : MonoBehaviour
                 Array.ForEach(_maceAsset, obj => { if (obj != null) obj.SetActive(false); });
                 gameObject.SetActive(false);
             }
-            
-
         }
-        else
-        {
+        //else
+        //{
             
-        }
+        //}
+        
         //_currentBarn = _maxBarn;
         //CheckBarn();
         //CheckPal();
 
+    }
+    private void Start()
+    {
+        if (_weponEnum == WeponEnum.Sword)
+        {
+            StartDefaultSword(_gameManager._currentMake);
+            Debug.Log("deteru");
+        }
+        else if (_weponEnum == WeponEnum.Mace)
+        {
+            if(_currentWepon._repairPal >= 5)
+            {
+                StartCoroutine(FinishMake(0));
+            }
+        }
     }
 
     // Update is called once per frame
@@ -199,15 +206,14 @@ public class SwordControler : MonoBehaviour
         }
         _gameManager._wepon[_weponNum] = _currentWepon;
     }
-    public IEnumerator FinishMake()
+    public IEnumerator FinishMake(float diley = 2)
     {
-        yield return new WaitForSeconds(2);   
+        yield return new WaitForSeconds(diley);   
         if (!_currentWepon._isCrafted)
         {
             _currentWepon._isCrafted = true;
         }
         _gameManager._wepon[_weponNum] = _currentWepon;
-        Debug.Log(_makeWepon.Length);
         _makeWepon[_weponNum].SetActive(true);
     }
 }

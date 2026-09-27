@@ -19,16 +19,26 @@ public class PlayerSkill : MonoBehaviour
     {
         if(!_player._stagging)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                StartCoroutine(Skill());
-                _events[0].Invoke();
-                _target.position = new Vector3(0, 0, 0);
-            }
+            //if (Input.GetKeyDown(KeyCode.Alpha1))
+            //{
+            //    StartCoroutine(Skill());
+            //    _events[0].Invoke();
+            //    _target.position = new Vector3(0, 0, 0);
+            //}
         }
         
     }
-    public IEnumerator Skill()
+
+    public void Skill()
+    {
+        if (!_player._stagging)
+        {
+            StartCoroutine(SkillCol());
+            _events[0].Invoke();
+            _target.position = new Vector3(0, 0, 0);
+        }
+    }
+    public IEnumerator SkillCol()
     {
         _player._skillPile = 5;
         yield return new WaitForSeconds(2.5f);

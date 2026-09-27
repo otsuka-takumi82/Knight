@@ -10,7 +10,7 @@ public class SwordEffect : MonoBehaviour
     GameObject _hibana;
     AudioSource _audio;
     [SerializeField,Header("効果音")]AudioClip[] _se;
-
+    float[] _fibo = new float[2];
     private EnemyHelth _enemyHelth;
     private Player _player;
 
@@ -21,11 +21,11 @@ public class SwordEffect : MonoBehaviour
         _enemyHelth = FindFirstObjectByType<EnemyHelth>();
         _player = FindFirstObjectByType<Player>();
         _audio = GetComponentInParent<AudioSource>();
+        _fibo[1] = _player._addSkillPts;
     }
 
     private void OnDestroy()
     {
-        Debug.Log("破壊");
     }
     // Update is called once per frame
     void Update()
@@ -37,6 +37,19 @@ public class SwordEffect : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("RightUp"))
         {
+            //if(_player._commboNum >= PlusFibo())
+            //{
+            //    _player.AddSkillPts(PlusFibo());
+            //}
+            if (_player._commboNum >= 20 && !_player._isSkill)
+            {
+                _player.AddSkillPts(_player._addSkillPts * 2);
+            }
+            else if (_player._commboNum >= 5 && !_player._isSkill)
+            {
+                _player.AddSkillPts(_player._addSkillPts);
+            }
+            
             _enemyHelth.PlayerDamage();
             _enemyHelth.PlayerStamina();
             Hibana(transform.position);
@@ -44,6 +57,11 @@ public class SwordEffect : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("GoodBall"))
         {
+            if (!_player._isSkill)
+            {
+                _player.AddSkillPts(_player._skillMax / 5);
+            }
+            
             _player.ModifyStamina(-1);
             _audio.PlayOneShot(_se[2]);
             Hibana(collision.transform.position);
@@ -55,6 +73,10 @@ public class SwordEffect : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Hit2"))
         {
+            if(!_player._isSkill)
+            {
+                _player.AddSkillPts(_player._addSkillPts * 2);
+            }
             _isCombos = true;
             _enemyHelth.Knock();
             _enemyHelth.PlayerDamage();
@@ -92,7 +114,6 @@ public class SwordEffect : MonoBehaviour
             if (collision.gameObject.TryGetComponent<HItBigCircle>(out HItBigCircle circle))
             {
                 circle._hp += _player._playerDamage;
-                Debug.Log(circle._hp);
                 if (circle._hp <= 0)
                 {
                     _enemyHelth.Stagger();
@@ -108,16 +129,29 @@ public class SwordEffect : MonoBehaviour
         if (_player._noCombo && _isCombos)
         {
             _player._commboNum++;
-            _player._noCombo = false;
-            _isCombos = false;
         }
         else if(_player._noCombo && !_isCombos)
         {
             _player._commboNum = 0;
+            _fibo[0] = 0;
+            _fibo[1] = _player._addSkillPts;
         }
+        _player._noCombo = false;
+        _isCombos = false;
     }
     public void Hibana(Vector3 hibanapos)
     {
         Instantiate(_hibana, hibanapos, Quaternion.identity);
+    }
+
+    public void GetFibo()
+    {
+        float num3 = PlusFibo();
+        _fibo[0] = _fibo[1];
+        _fibo[1] = num3;
+    }
+    public float PlusFibo()
+    {
+       return _fibo[0] + _fibo[1];
     }
 }

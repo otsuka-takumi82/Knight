@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class JumpCircle : MonoBehaviour
     Vector2 _save;
     [SerializeField]Vector2 _force;
     EnemyHelth _enemy;
+    bool _skiled = true;
+    Player _player;
     public enum CircleState
     {
         Var,
@@ -20,6 +23,8 @@ public class JumpCircle : MonoBehaviour
     private void Awake()
     {
         _gameManager = FindFirstObjectByType<GameManager>();
+        _player = FindFirstObjectByType<Player>();
+        
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,10 +41,13 @@ public class JumpCircle : MonoBehaviour
     void OnEnable()
     {
         _gameManager._pauseReseum += PauseReseum;
+        _player._skill += Skill;
+        
     }
     void OnDisable()
     {
         _gameManager._pauseReseum -= PauseReseum;
+        _player._skill -= Skill;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -60,7 +68,11 @@ public class JumpCircle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (_player._isSkill && _skiled)
+        {
+            Skill();
+            _skiled = false;
+        }
     }
     public void PauseReseum(bool paused)
     {
@@ -81,5 +93,20 @@ public class JumpCircle : MonoBehaviour
     {
         _enemy.ModifyStamina(_enemy._maxStamina / 10);
         Destroy(gameObject);
+    }
+    public IEnumerator SkillCol()
+    {
+        rb.linearVelocity *= 0.5f;
+        while (true)
+        {
+            gameObject.tag = "GoodBall";
+            GetComponent<SpriteRenderer>().color = Color.green;
+            yield return null;
+        }
+    }
+
+    public void Skill()
+    {
+        StartCoroutine(SkillCol());
     }
 }
