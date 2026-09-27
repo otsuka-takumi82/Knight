@@ -62,6 +62,11 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(SceneLoad(0));
         
     }
+
+    public void Goat()
+    {
+        StartCoroutine(NoTimeSceneLoad("BattleScene"));
+    }
     public IEnumerator SceneLoad(int num)
     {
         //if (_event[num] != null)
@@ -81,4 +86,12 @@ public class SceneLoader : MonoBehaviour
             LoadRoom();
         }
     }
+    public IEnumerator NoTimeSceneLoad(string scene)
+    {
+        _gameManager.BrackOut();
+        yield return new WaitForSeconds(1);
+        _gameManager._currentFight = 5;
+        LoadElseScene(scene);
+    }
+
 }

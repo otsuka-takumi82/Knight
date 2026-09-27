@@ -302,7 +302,7 @@ public class Player : MonoBehaviour
         _isSkill = true;
         _events[0].Invoke();
         _save = _anim.speed;
-        _anim.speed *= 2f;
+        _anim.speed *= 1.5f;
         yield return new WaitForSeconds(_skillTime);
         PlayerSkill skill = GetComponent<PlayerSkill>();
         _events[2].Invoke();

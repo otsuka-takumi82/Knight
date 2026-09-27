@@ -15,6 +15,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField]
     Text _dayText;
     [SerializeField,Header("Sister")]GameObject _sister;
+    [SerializeField,Header("GoatButton")]GameObject _goatButton;
     [SerializeField]
     GameObject _stageSelect;
     [SerializeField]
@@ -44,9 +45,14 @@ public class RoomManager : MonoBehaviour
         {
             _isNight= false;
         }
-        if(_isNight && _gameManager._noPrayDay >= 3)
+        if(_isNight )
         {
-            _sister.SetActive(true);
+            if(_gameManager._noPrayDay >= 3)
+            {
+                _sister.SetActive(true);
+            }
+            
+            _goatButton.SetActive(true);
         }
         AllCheck();
     }

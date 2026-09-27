@@ -13,6 +13,8 @@ public class HitSponer : MonoBehaviour
     public GameObject[] _ball;
     [SerializeField, UnitHeaderInspectable("反応コメ")]
     public GameObject _commentObject;
+    [SerializeField, UnitHeaderInspectable("背景")]
+    public GameObject _backGround;
     [SerializeField]private int _enemyNum;
     [SerializeField]private string _comment;
     [SerializeField]public string[] _activeComment;
@@ -64,7 +66,10 @@ public class HitSponer : MonoBehaviour
     void Start()
     {
         _sphereCor = StartCoroutine(Sphere());
-
+        if (_enemyNum == 5)
+        {
+            _backGround.SetActive(false);
+        }
     }
     private void OnEnable()
     {

@@ -38,13 +38,13 @@ public class EnemyHelth : MonoBehaviour
         _uiManager = FindFirstObjectByType<BattleUIManager>();
         _player = FindFirstObjectByType<Player>();
         _anim = GetComponent<Animator>();
+    }
+    void Start()
+    {
         _currentHp = _maxHp;
         _currentStamina = _maxStamina;
         ShowHP();
         ShowStamina();
-    }
-    void Start()
-    {
         _buff.sprite = _buffSprite[0];
 
     }

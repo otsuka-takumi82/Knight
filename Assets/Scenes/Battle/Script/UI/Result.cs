@@ -7,6 +7,8 @@ using System.Collections;
 
 public class Result : MonoBehaviour
 {
+    [SerializeField]
+    GameObject[] _button;
     EnemyHelth _eH;
     [SerializeField]
     Text _score;
@@ -30,6 +32,14 @@ public class Result : MonoBehaviour
         _audio.PlayOneShot(_bgm);
         _eH = FindFirstObjectByType<EnemyHelth>();
         _player = FindFirstObjectByType<Player>();
+        if(_eH._name == "Goat")
+        {
+            _button[0].SetActive(false);
+        }
+        else
+        {
+            _button[1].SetActive(false);
+        }
         if (_player._commboNum > _player._saveCommbo)
         {
             _player._saveCommbo = _player._commboNum;
