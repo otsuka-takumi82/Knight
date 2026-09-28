@@ -69,6 +69,7 @@ public class HitSponer : MonoBehaviour
         if (_enemyNum == 5)
         {
             _backGround.SetActive(false);
+            _backGround.GetComponent<SpriteRenderer>().color = Color.gray;
         }
     }
     private void OnEnable()

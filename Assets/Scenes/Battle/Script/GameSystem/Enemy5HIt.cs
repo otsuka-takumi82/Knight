@@ -7,70 +7,201 @@ public class Enemy5Hit : HitSponer, ICounter
     [SerializeField] GameObject _fastSphire;
     [SerializeField] GameObject _bigSphire;
     [SerializeField, Header("カウンターHit")] GameObject _counterSphere;
+    [SerializeField, Header("Goat2")] Animator _goat2;
+    int _enemyState = 0;
+    int _saveAttack;
 
     public override IEnumerator Sphere()
     {
+
         yield return new WaitForSeconds(_waitNum);
-        while (true)
+        if (_enemyState == 1)
         {
-            int num = Random.Range(0, 4);
-            if (_enemy._currentHp > _enemy._maxHp / 2 && !_player._stagging)
+            _anim = _goat2;
+            _enemyState++;
+        }
+            while (true)
+        {
+            if( _enemyState == 0)
             {
-            }
-            _anim.speed = _animSpeed;
-            if (num == 0)
-            {
-                //右
-                _attack = AttackState.Damage;
-                _anim.SetTrigger("Right");
-                Instantiate(_fastSphire, new Vector3(transform.position.x + 3, transform.position.y, transform.position.z), Quaternion.identity);
+                int num = Random.Range(0, 4);
+                if (_enemy._currentHp > _enemy._maxHp / 2)
+                {
+                    _enemyState++;
+                }
+                _anim.speed = _animSpeed;
+                if (num == 0)
+                {
+                    //右
+                    _attack = AttackState.Damage;
+                    _anim.SetTrigger("Right");
+                    Instantiate(_fastSphire, new Vector3(transform.position.x + 3, transform.position.y, transform.position.z), Quaternion.identity);
 
-            }
-            else if (num == 1)
-            {
-                //左
-                _attack = AttackState.Damage;
-                _anim.SetTrigger("Left");
-                Instantiate(_fastSphire, new Vector3(transform.position.x + -3, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+                else if (num == 1)
+                {
+                    //左
+                    _attack = AttackState.Damage;
+                    _anim.SetTrigger("Left");
+                    Instantiate(_fastSphire, new Vector3(transform.position.x + -3, transform.position.y, transform.position.z), Quaternion.identity);
 
-            }
-            else if (num == 2)
-            {
-                //真ん中
-                _attack = AttackState.Nomal;
-                _anim.SetTrigger("Middle");
-                Instantiate(_fastSphire, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            }
-            else if (num == 3)
-            {
-                //カウンター
-                _anim.SetTrigger("Counter");
-                Instantiate(_counterSphere, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            }
+                }
+                else if (num == 2)
+                {
+                    //真ん中
+                    _attack = AttackState.Stamina;
+                    _anim.SetTrigger("Middle");
+                    Instantiate(_fastSphire, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                }
+                else if (num == 3)
+                {
+                    //カウンター
+                    _anim.SetTrigger("Counter");
+                    Instantiate(_counterSphere, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+                }
 
-            if (num == 3)
+                if (num == 3)
+                {
+                    _diley = 4;
+                }
+                else
+                {
+                    _diley = 2;
+                }
+                float waitNum = _diley;
+                _waitNum = waitNum;
+                yield return new WaitForSeconds(waitNum);
+
+                if (_isPause)
+                {
+                    yield return null;
+                    continue;
+                }
+            }
+            else if(_enemyState == 2)
             {
-                _diley = 4;
+                int num = 0;
+                if (_saveAttack == 0)
+                {
+                    num = Random.Range(0, 6);
+                }
+                else if( _saveAttack == 1)
+                {
+                    num = 4;
+                }
+                else if (_saveAttack == 2)
+                {
+                    num = 5;
+                }
+                else if (_saveAttack == 3)
+                {
+                    num = 1;
+                }
+                else if (_saveAttack == 4)
+                {
+                    num = 2;
+                }
+                _anim.speed = _animSpeed;
+                if (num == 0)
+                {
+                    //左
+                    _attack = AttackState.Damage;
+                    _anim.SetTrigger("Left");
+                    Instantiate(_fastSphire, new Vector3(-3, 0, 0), Quaternion.identity);
+
+                }
+                else if (num == 1)
+                {
+                    //右
+                    _attack = AttackState.Damage;
+                    int num2 = Random.Range(0,3);
+                    if(num2 == 1)
+                    {
+                        _anim.SetTrigger("Right");
+                        _saveAttack = 1;
+                    }
+                    else if(num2 == 2)
+                    {
+                        _anim.SetTrigger("Right2");
+                        _saveAttack = 2;
+                    }
+                    Instantiate(_fastSphire, new Vector3(3, 0, 0), Quaternion.identity);
+
+                }
+                else if (num == 2)
+                {
+                    //クロス
+                    _attack = AttackState.Stamina;
+                    _anim.SetTrigger("Combo3");
+                    Instantiate(_hitSphere, new Vector3(0, 0, 0), Quaternion.identity);
+                    _saveAttack = 0;
+                }
+                else if (num == 3)
+                {
+                    //噛みつき
+                    _anim.SetTrigger("Big");
+                    Instantiate(_bigSphire, new Vector3(0, 0, 0), Quaternion.identity);
+                }
+                else if (num == 4)
+                {
+                    //combo左
+                    _attack = AttackState.Stamina;
+                    _anim.SetTrigger("Combo1");
+                    Instantiate(_fastSphire, new Vector3(-3, 0, 0), Quaternion.identity);
+                    int num2 = Random.Range(0, 2);
+                    if (num2 == 0)
+                    {
+                        _saveAttack = 3;
+                    }
+                    else if (num2 == 1)
+                    {
+                        _saveAttack = 4;
+                    }
+                }
+                else if (num == 5)
+                {
+                    //combo下
+                    _anim.SetTrigger("Combo2");
+                    Instantiate(_counterSphere, new Vector3(0, -2, 0), Quaternion.identity);
+                }
+
+                if (num == 3)
+                {
+                    _diley = 4;
+                }
+                else if(num == 1 || num == 4 || num == 5)
+                {
+                    _diley = 1;
+                }
+                else if(num == 0)
+                {
+                    _diley = 5;
+                }
+                else
+                {
+                    _diley = 2;
+                }
+                float waitNum = _diley;
+                _waitNum = waitNum;
+                yield return new WaitForSeconds(waitNum);
+
+                if (_isPause)
+                {
+                    yield return null;
+                    continue;
+                }
             }
             else
             {
-                _diley = 2;
-            }
-            float waitNum = _diley;
-            _waitNum = waitNum;
-            yield return new WaitForSeconds(waitNum);
-
-            if (_isPause)
-            {
                 yield return null;
-                continue;
             }
+            
 
         }
     }
     void ICounter.CounterAttack()
     {
-        _attack = AttackState.Stamina;
+        _attack = AttackState.Nomal;
         _anim.SetTrigger("CounterAttack");
         Instantiate(_fastSphire, new Vector3(transform.position.x + 3, transform.position.y + 2, transform.position.z), Quaternion.identity);
         Instantiate(_fastSphire, new Vector3(transform.position.x + -3, transform.position.y + -2, transform.position.z), Quaternion.identity);

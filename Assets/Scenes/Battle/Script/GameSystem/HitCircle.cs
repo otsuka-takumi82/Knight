@@ -110,6 +110,11 @@ GameManager _gameManager;
                     _player.PlayerModifyHelth();
                     _player.ModifyStamina();
                 }
+                if (_hs._attack == HitSponer.AttackState.Damage)
+                {
+                    _player.PlayerModifyHelth(1.2f);
+                    _player.ModifyStamina(0.5f);
+                }
                 else if (_hs._attack == HitSponer.AttackState.Stamina)
                 {
                     if (_player._stagging)

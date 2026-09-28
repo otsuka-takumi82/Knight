@@ -65,14 +65,14 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _uiManager = FindFirstObjectByType<BattleUIManager>();
-        _enemy = FindFirstObjectByType<EnemyHelth>();
         _gameManager = FindFirstObjectByType<GameManager>();
         _anim = GetComponentInChildren<Animator>();
         _audio = GetComponent<AudioSource>();
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    { 
+    {
+        _enemy = FindFirstObjectByType<EnemyHelth>();
         _currentHp = _maxHp;
         _currentStamina = _maxStamina;
         if (_gameManager != null)
@@ -129,6 +129,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_enemy._name);
         if(_isSkill)
         {
             AddStamina(10);
