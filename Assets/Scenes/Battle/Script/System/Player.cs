@@ -129,7 +129,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_enemy._name);
         if(_isSkill)
         {
             AddStamina(10);
@@ -193,8 +192,15 @@ public class Player : MonoBehaviour
             _isDead = true;
             if(_isDead)
             {
-                FindFirstObjectByType<SceneLoader>().LoadTimeAdd();
-                //_isDead = false;
+                SceneLoader scene = FindFirstObjectByType<SceneLoader>();
+                if (_enemy._name == "Goat")
+                {
+                    StartCoroutine(scene.NoTimeSceneLoad("RoomScene"));
+                }
+                else
+                {
+                    scene.LoadTimeAdd();
+                }                //_isDead = false;
             }
             
         }

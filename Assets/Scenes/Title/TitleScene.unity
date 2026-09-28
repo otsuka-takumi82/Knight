@@ -1526,8 +1526,8 @@ MonoBehaviour:
   - _name: "\u5263"
     _weponState: 1
     _weponPower: -3
-    _isCrafted: 0
-    _repairPal: 0
+    _isCrafted: 1
+    _repairPal: 2
   - _name: "\u30E1\u30A4\u30B9"
     _weponState: 2
     _weponPower: -5
@@ -1563,6 +1563,7 @@ MonoBehaviour:
   _settingPanel: {fileID: 262716735762340928}
   _currentTimeNum: 0
   _currentDayNum: 0
+  _noPrayDay: 0
   _currentEquipped: 0
   _currentMake: 0
   _currentFight: 0
