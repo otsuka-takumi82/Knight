@@ -301,5 +301,9 @@ public class Enemy5Hit : HitSponer, ICounter
     {
         Instantiate(obj, new Vector3(0, 0, 0), Quaternion.identity);
     }
+    public void SE()
+    {
+        GetComponent<AudioSource>().PlayOneShot(_se[1]);
+    }
 
 }

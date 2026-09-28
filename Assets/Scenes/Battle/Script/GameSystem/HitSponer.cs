@@ -48,6 +48,7 @@ public class HitSponer : MonoBehaviour
     public bool _isBraff;
     private GameManager _gm;
     SpriteRenderer _ren;
+    [SerializeField, Header("Goat2")]public AudioClip[] _se;
     float _saveWait = 1;
     private void Awake()
     {
@@ -69,7 +70,10 @@ public class HitSponer : MonoBehaviour
         if (_enemyNum == 5)
         {
             _backGround.SetActive(false);
-            _backGround.GetComponent<SpriteRenderer>().color = Color.gray;
+            AudioSource audio = GameObject.FindFirstObjectByType<BattleUIManager>().GetComponent<AudioSource>();
+            audio.clip = _se[0];
+            audio.Play();
+
         }
     }
     private void OnEnable()

@@ -89,7 +89,7 @@ public class SwordEffect : MonoBehaviour
         {
             _enemyHelth.Knock();
             _enemyHelth.PlayerStamina();
-            _player.ModifyStamina();
+            _player.ModifyStamina(0.5f);
             Destroy(collision.gameObject);
         }
         else if (collision.gameObject.CompareTag("Hit"))

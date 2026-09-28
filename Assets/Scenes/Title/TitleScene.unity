@@ -1526,8 +1526,8 @@ MonoBehaviour:
   - _name: "\u5263"
     _weponState: 1
     _weponPower: -3
-    _isCrafted: 1
-    _repairPal: 2
+    _isCrafted: 0
+    _repairPal: 0
   - _name: "\u30E1\u30A4\u30B9"
     _weponState: 2
     _weponPower: -5
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   _daySprite:
   - {fileID: 21300000, guid: 706e5a459cba4204cb338a19a7826eec, type: 3}
   - {fileID: 21300000, guid: 0e8b40b17deb48a4ea5af4d081aa7483, type: 3}
-  - {fileID: 21300000, guid: 4847fc7dba2616e47a222fa006a5c0f2, type: 3}
+  - {fileID: 21300000, guid: c39b1d70448a8c24c83fbb304e0c0d5e, type: 3}
   _dayBack: {fileID: 1980689382}
   _itemImage:
   - {fileID: 21300000, guid: 607bbb7f72248884bbee42d06a698dc4, type: 3}

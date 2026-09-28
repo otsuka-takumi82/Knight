@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     public bool _shieldOne = true;
     public bool _noCombo;
     public bool _isSkill;
+    bool _yesSkill = true;
     Animator _anim;
     public AudioSource _audio;
     [SerializeField] Animator _animShield;
@@ -106,7 +107,7 @@ public class Player : MonoBehaviour
             }
             else if (_gameManager._wepon[_gameManager._currentEquipped]._weponState == WeponEnum.Mace)
             {
-                _anim.speed *= 0.5f;
+                _anim.speed *= 0.75f;
             }
         }
         _currentWepon.sprite = _gameManager._swordImage[_gameManager._currentEquipped];
@@ -138,6 +139,11 @@ public class Player : MonoBehaviour
         {
             if(SkillMax())
             {
+                if(_yesSkill)
+                {
+                    _events[3].Invoke();
+                    _yesSkill = false;
+                }
                 if (Input.GetKeyDown(KeyCode.Z))
                 {
                     _skill.Invoke();
@@ -206,11 +212,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ModifyStamina(float num = 1)
+    public void ModifyStamina(float pile = 1)
     {
         if(!_isSkill)
         {
-            _currentStamina += _enemy._damage * num;
+            _currentStamina += _enemy._damage * pile;
             _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
             ShowStamina();
         }
@@ -323,6 +329,7 @@ public class Player : MonoBehaviour
             _skillTimer += Time.deltaTime;
             yield return null;
         }
+        _yesSkill = true;
         _attackCoolTime = _saveCoolTime;
         _skillTimer = 0f;
         _events[1].Invoke();
