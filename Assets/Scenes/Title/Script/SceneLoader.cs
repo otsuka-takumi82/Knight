@@ -28,7 +28,9 @@ public class SceneLoader : MonoBehaviour
     }
     public void LoadRoom()
     {
+        _gameManager._currentFight = _gameManager._saveFight;
         LoadElseScene("RoomScene");
+
     }
     public void LoadTalk()
     {
@@ -65,6 +67,7 @@ public class SceneLoader : MonoBehaviour
 
     public void Goat()
     {
+        FindFirstObjectByType<RoomManager>()._goat = true;
         StartCoroutine(NoTimeSceneLoad("BattleScene"));
     }
     public IEnumerator SceneLoad(int num)
@@ -90,6 +93,7 @@ public class SceneLoader : MonoBehaviour
     {
         _gameManager.BrackOut();
         yield return new WaitForSeconds(1);
+        _gameManager._saveFight = _gameManager._currentFight;
         _gameManager._currentFight = 5;
         LoadElseScene(scene);
     }

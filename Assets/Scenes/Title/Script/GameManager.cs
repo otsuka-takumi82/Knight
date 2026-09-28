@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     public int _currentEquipped = 0;
     public int _currentMake = 0;
     public int _currentFight = 0;
+    public int _saveFight = 0;
     public int _prayLevel;
     public float[] _prayPile;
     public int _harb;

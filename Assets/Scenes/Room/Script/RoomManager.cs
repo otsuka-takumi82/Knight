@@ -1,9 +1,10 @@
 using System;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class RoomManager : MonoBehaviour
@@ -27,6 +28,7 @@ public class RoomManager : MonoBehaviour
 
     GameManager _gameManager;
     public bool _isNight;
+    public bool _goat;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -65,7 +67,13 @@ public class RoomManager : MonoBehaviour
             {
                 _gameManager._noPrayDay++;
             }
-            _gameManager._currentDayNum++;
+            if(!_goat)
+            {
+                Debug.Log("Nomal");
+                _gameManager._currentDayNum++;
+            }
+            _goat = false;
+
         }
     }
 
