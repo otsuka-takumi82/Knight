@@ -15,11 +15,13 @@ public class Player : MonoBehaviour
     public SpriteRenderer _currentWepon;
     [SerializeField, Header("バフ画像")] public Sprite[] _buffSprite;
     [SerializeField, Header("プレイヤーバフ")] public Image _buff;
+    [SerializeField, Header("兜")] public GameObject _armored;
     [SerializeField]
     public float _maxHp;
     [SerializeField]
     public Text _combo;
     public float _getPile = 1;
+    public float _armorPile = 1;
     public float _skillPile = 1;
     [SerializeField]
     public float _maxStamina;
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour
     public bool _shieldOne = true;
     public bool _noCombo;
     public bool _isSkill;
+
     bool _yesSkill = true;
     Animator _anim;
     public AudioSource _audio;
@@ -115,6 +118,11 @@ public class Player : MonoBehaviour
             _canAttack = true;
         _save = _anim.speed;
 
+        if(_gameManager._isArmored)
+        {
+            _armorPile = 0.5f;
+            _armored.SetActive(true);
+        }
     }
     void OnEnable()
     {
@@ -130,6 +138,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_armorPile);
         if(_isSkill)
         {
             AddStamina(10);
@@ -189,7 +198,7 @@ public class Player : MonoBehaviour
 
     public void PlayerModifyHelth(float pile = 1)
     {
-        float damage = _enemy._damage * pile * _getPile * _staggerPile;
+        float damage = _enemy._damage * pile * _getPile * _staggerPile * _armorPile;
         _currentHp += damage;
         _currentHp = Mathf.Clamp(_currentHp, 0, _maxHp);
         ShowHP();
@@ -216,7 +225,7 @@ public class Player : MonoBehaviour
     {
         if(!_isSkill)
         {
-            _currentStamina += _enemy._damage * pile;
+            _currentStamina += _enemy._damage * pile * _armorPile;
             _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
             ShowStamina();
         }

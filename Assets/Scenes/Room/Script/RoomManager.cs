@@ -19,6 +19,7 @@ public class RoomManager : MonoBehaviour
     Text _dayText;
     [SerializeField,Header("Sister")]GameObject _sister;
     [SerializeField,Header("GoatButton")]GameObject _goatButton;
+    [SerializeField,Header("報酬たち")]GameObject[] _killObj;
     [SerializeField]
     GameObject _stageSelect;
     [SerializeField]
@@ -59,6 +60,29 @@ public class RoomManager : MonoBehaviour
             _goatButton.SetActive(true);
         }
         AllCheck();
+        if (_gameManager._killEnemy[3] == true)
+        {
+            if (!_killObj[3].activeSelf)
+            {
+                _killObj[3].SetActive(true);
+            }
+
+        }
+        if (_gameManager._killEnemy[4] == true )
+        {
+            if(!_killObj[4].activeSelf)
+            {
+                _killObj[4].SetActive(true);
+            }
+            
+        }
+        if (_gameManager._killEnemy[5] == true)
+        {
+            if(!_killObj[5].activeSelf)
+            {
+                _killObj[5].SetActive(true);
+            }
+        }
     }
     private void OnDestroy()
     {
@@ -130,6 +154,18 @@ public class RoomManager : MonoBehaviour
         else
         {
             _equipment[0].SetActive(true);
+        }
+    }
+    public void OnEquipmentArmored()
+    {
+        _events[0].Invoke();
+        if (_equipment[1].activeSelf)
+        {
+            _equipment[1].SetActive(false);
+        }
+        else
+        {
+            _equipment[1].SetActive(true);
         }
     }
     public void ChangeMorning()

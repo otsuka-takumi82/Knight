@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
     public List<int> _stageNum;
     [SerializeField, Header("武器画像")]
     public Sprite[] _swordImage;
+    [SerializeField, Header("鎧画像")]
+    public Sprite[] _armorImage;
     [SerializeField, Header("ステージ画像")]
     public Sprite[] _stageImage;
     [SerializeField, Header("時間の画像")]
@@ -75,6 +77,8 @@ public class GameManager : MonoBehaviour
     public int _currentFight = 0;
     public int _saveFight = 0;
     public int _prayLevel;
+    public bool[] _killEnemy = new bool[10];
+    public bool _isArmored;
     public float[] _prayPile;
     public int _harb;
     public int _highHarb;

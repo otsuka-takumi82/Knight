@@ -36,6 +36,8 @@ public class TalkManager : MonoBehaviour
     private string[] _makerMessage;
     [SerializeField]
     GameObject _makeWepon;
+
+    [SerializeField,Header("兜")] GameObject _equipmentArmor;
     [SerializeField]
     GameObject _equipBox;
     [SerializeField]
@@ -157,6 +159,18 @@ public class TalkManager : MonoBehaviour
         else
         {
             _makeWepon.SetActive(true);
+        }
+    }
+    public void OnEquipmentArmored()
+    {
+        _event[1].Invoke();
+        if (_equipmentArmor.activeSelf)
+        {
+            _equipmentArmor.SetActive(false);
+        }
+        else
+        {
+            _equipmentArmor.SetActive(true);
         }
     }
     public void OnEquipSelect()

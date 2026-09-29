@@ -5,8 +5,8 @@ public class WeponBox : MonoBehaviour
 {
     
 
-    Image _wepon;
-    GameManager _gameManager;
+    public Image _wepon;
+    public GameManager _gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +16,7 @@ public class WeponBox : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         _wepon.sprite = _gameManager._swordImage[_gameManager._currentEquipped];
     }

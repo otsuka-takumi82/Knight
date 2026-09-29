@@ -61,6 +61,23 @@ public class EnemyHelth : MonoBehaviour
         ShowHP();
         if ( _currentHp <= 0 )
         {
+            if (FindFirstObjectByType<GameManager>()._isArmored)
+            {
+                GameObject.FindGameObjectWithTag("Armor").GetComponent<Animator>().SetTrigger("Open");
+            }
+            GameManager gm = FindFirstObjectByType<GameManager>();
+            if(FindFirstObjectByType<Enemy3Hit>() != null)
+            {
+                gm._killEnemy[3] = true;
+            }
+            else if (FindFirstObjectByType<Enemy4Hit>() != null)
+            {
+                gm._killEnemy[4] = true;
+            }
+            else if (FindFirstObjectByType<Enemy5Hit>() != null)
+            {
+                gm._killEnemy[5] = true;
+            }
             _anim.Play("Died");
             StartCoroutine(StartResult());
         }

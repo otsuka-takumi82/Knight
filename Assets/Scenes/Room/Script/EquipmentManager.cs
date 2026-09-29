@@ -58,4 +58,27 @@ public class EquipmentManager : MonoBehaviour
             _gameManager.UnCreated();
         }
     }
+    public void EquipArmor()
+    {
+        _events[0].Invoke();
+        if (_gameManager._killEnemy[3] == true)
+        {
+            if(_gameManager._isArmored)
+            {
+                _gameManager._isArmored = false;
+                _gameManager.EquipUI();
+            }
+            else
+            {
+                _gameManager._isArmored = true;
+                _gameManager.EquipUI();
+            }
+
+        }
+        else
+        {
+            Debug.LogWarningFormat("まだ作成していない！");
+            _gameManager.UnCreated();
+        }
+    }
 }
