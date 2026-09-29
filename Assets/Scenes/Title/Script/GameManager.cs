@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
+using System.Collections;
 #region 武器構造体
 public enum WeponEnum
 {
@@ -37,6 +38,8 @@ public class GameManager : MonoBehaviour
         HighHarb,
         Meat
     }
+    [SerializeField,Header("データマネ")]DataManager _dM;
+    [SerializeField,Header("データマネ")]SaveData _sD;
     [SerializeField, Header("プレイヤー状態")]
     public PlayerState _playerState;
     /// <summary>
@@ -255,5 +258,60 @@ public class GameManager : MonoBehaviour
     public float GetPrayPile()
     {
         return _prayPile[0] + _prayPile[1];
+    }
+    public void GetSave()
+    {
+        SaveData save = _sD;
+        save._wepon = new List<Wepon>(_wepon);
+        save._stageNum = new List<int>(_stageNum);
+        save._item = new List<Item>(_item);
+        save._currentDayNum = _currentDayNum;
+        save._noPrayDay = _noPrayDay;
+        save._currentEquipped = _currentEquipped;
+        save._prayLevel = _prayLevel;
+        save._money = _money;
+        save._killEnemy = (bool[])_killEnemy.Clone();
+        save._isArmored = _isArmored;
+        save._prayPile = (float[])_prayPile.Clone();
+        save._harb =_harb;
+        save._highHarb = _highHarb;
+        save._meat =_meat;
+        _dM.Save(save);
+        Debug.Log("セーブ");
+    }
+    public void SetLoad()
+    {
+        SaveData save = _sD;
+        if (save == null) return;
+        _wepon = new List<Wepon>(save._wepon);
+        _stageNum = new List<int>(save._stageNum);
+        _item = new List<Item>(save._item);
+        _currentDayNum = save._currentDayNum;
+        _noPrayDay = save._noPrayDay;
+        _currentEquipped = save._currentEquipped;
+        _prayLevel = save._prayLevel;
+        _money = save._money;
+        if (save._killEnemy != null) _killEnemy = (bool[])save._killEnemy.Clone();
+        _isArmored = save._isArmored;
+        if (save._prayPile != null) _prayPile = (float[])save._prayPile.Clone();
+        _harb = save._harb;
+        _highHarb = save._highHarb;
+        _meat = save._meat;
+        Debug.Log("ロード");
+    }
+    public void QuitGame()
+    {
+        StartCoroutine(QuitCol());
+    }
+
+    public IEnumerator QuitCol()
+    {
+        yield return new WaitForSeconds(1);
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else 
+    Application.Quit();
+#endif
+        Debug.Log("終わり！ｗ");
     }
 }
