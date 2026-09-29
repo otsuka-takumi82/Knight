@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     public bool _stagging;
     public bool _canAttack;
     public bool _isDead;
-    public bool _isShield = true;
+    public bool _isShield;
     public bool _shieldOne = true;
     public bool _noCombo;
     public bool _isSkill;

@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using static UnityEngine.Rendering.DebugUI;
 
 public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandler, IBeginDragHandler, IPointerUpHandler
 {
+    [SerializeField, Header("Event")] UnityEvent[] _events;
     [SerializeField]
     int _porchIndex;
     [SerializeField]
@@ -73,6 +75,7 @@ public class ItemSelectManager : MonoBehaviour, IDragHandler, IPointerDownHandle
     }
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
+        _events[0].Invoke();
         GameObject gameObject = eventData.pointerCurrentRaycast.gameObject;
         if (gameObject != null)
         {

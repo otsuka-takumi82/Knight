@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
 public class RoomManager : MonoBehaviour
 {
+    [SerializeField, Header("Event")] UnityEvent[] _events;
     [SerializeField]
     int _stageNum;
     [SerializeField]
@@ -84,6 +86,7 @@ public class RoomManager : MonoBehaviour
     }
     public void OnStageSelect()
     {
+        _events[0].Invoke();
         if(_stageSelect.activeSelf)
         {
             _stageSelect.SetActive(false);
@@ -95,6 +98,7 @@ public class RoomManager : MonoBehaviour
     }
     public void OnItemSelect()
     {
+        _events[0].Invoke();
         if (_itemSelect.activeSelf)
         {
             _itemSelect.SetActive(false);
@@ -106,6 +110,7 @@ public class RoomManager : MonoBehaviour
     }
     public void OnEquipmentSelect()
     {
+        _events[0].Invoke();
         if (_equipmentSelect.activeSelf)
         {
             _equipmentSelect.SetActive(false);
@@ -117,6 +122,7 @@ public class RoomManager : MonoBehaviour
     }
     public void OnEquipmentSword()
     {
+        _events[0].Invoke();
         if (_equipment[0].activeSelf)
         {
             _equipment[0].SetActive(false);
@@ -141,7 +147,7 @@ public class RoomManager : MonoBehaviour
     }
     public void ChangeStage(int num)
     {
-        
+        _events[0].Invoke();
         _gameManager._stageNum[num]++;
         if (_gameManager._stageNum[num] == 4)
         {

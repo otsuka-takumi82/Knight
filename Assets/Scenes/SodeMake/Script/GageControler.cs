@@ -1,5 +1,6 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GageControler : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GageControler : MonoBehaviour
     [SerializeField, Header("当たりゲージ")] GameObject _hit;
     [SerializeField, Header("火花")] GameObject _hibana;
     [SerializeField, Header("ハンマー")] GameObject _hummer;
+    [SerializeField, Header("打った時")] UnityEvent[] _events;
 
 
     private Rigidbody2D _rb;
@@ -119,6 +121,7 @@ public class GageControler : MonoBehaviour
         {
             if (_isHit)
             {
+                _events[0].Invoke();
                 _hummer.transform.position = new Vector3(transform.position.x + 8, transform.position.y, transform.position.z);
                 Debug.Log("Hit");
                 Instantiate(_hibana, this.transform.position, Quaternion.identity);
@@ -131,6 +134,7 @@ public class GageControler : MonoBehaviour
             }
             else
             {
+                _events[1].Invoke();
                 _hummer.transform.position = new Vector3(transform.position.x + 8, transform.position.y, transform.position.z);
                 _hm.Hummer();
                 _sw.Out();

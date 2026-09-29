@@ -2493,7 +2493,7 @@ MonoBehaviour:
   _stagging: 0
   _canAttack: 181
   _isDead: 0
-  _isShield: 1
+  _isShield: 0
   _shieldOne: 1
   _noCombo: 0
   _isSkill: 0
@@ -6353,6 +6353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffbb1e0c646bce9449cb43dc99829ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _events: []
 --- !u!4 &1198275389
 Transform:
   m_ObjectHideFlags: 0

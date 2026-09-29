@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EquipmentManager : MonoBehaviour
 {
+    [SerializeField, Header("Event")] UnityEvent[] _events;
     GameManager _gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,7 +18,7 @@ public class EquipmentManager : MonoBehaviour
     }
     public void EquipDefaultSword()
     {
-        
+        _events[0].Invoke();
         if (_gameManager._wepon[0]._isCrafted)
         {
             _gameManager._currentEquipped = 0;
@@ -30,7 +32,7 @@ public class EquipmentManager : MonoBehaviour
     }
     public void EquipSword()
     {
-
+        _events[0].Invoke();
         if (_gameManager._wepon[1]._isCrafted)
         {
             _gameManager._currentEquipped = 1;
@@ -44,7 +46,7 @@ public class EquipmentManager : MonoBehaviour
     }
     public void EquipMeis()
     {
-
+        _events[0].Invoke();
         if (_gameManager._wepon[2]._isCrafted)
         {
             _gameManager._currentEquipped = 2;
