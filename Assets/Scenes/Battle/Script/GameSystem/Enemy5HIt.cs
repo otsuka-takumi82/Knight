@@ -50,6 +50,7 @@ public class Enemy5Hit : HitSponer, ICounter
                     _attack = AttackState.Damage;
                     _anim.SetTrigger("Right");
                     Instantiate(_fastSphire, new Vector3(transform.position.x + 3, transform.position.y, transform.position.z), Quaternion.identity);
+                    Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y, transform.position.z), Quaternion.identity);
 
                 }
                 else if (num == 1)
@@ -57,7 +58,8 @@ public class Enemy5Hit : HitSponer, ICounter
                     //左
                     _attack = AttackState.Damage;
                     _anim.SetTrigger("Left");
-                    Instantiate(_fastSphire, new Vector3(transform.position.x + -3, transform.position.y, transform.position.z), Quaternion.identity);
+                    Instantiate(_hitSphere, new Vector3(transform.position.x + 0, transform.position.y + 2, transform.position.z), Quaternion.identity);
+                    Instantiate(_fastSphire, new Vector3(transform.position.x + 0, transform.position.y - 1, transform.position.z), Quaternion.identity);
 
                 }
                 else if (num == 2)
@@ -85,7 +87,7 @@ public class Enemy5Hit : HitSponer, ICounter
                 }
                 else
                 {
-                    _diley = 2;
+                    _diley = 3;
                 }
                 float waitNum = _diley;
                 _waitNum = waitNum;
@@ -157,10 +159,25 @@ public class Enemy5Hit : HitSponer, ICounter
                 else if (num == 2)
                 {
                     //クロス
-                    _attack = AttackState.Stamina;
-                    _anim.SetTrigger("Combo3");
-                    Instantiate(_fastSphire, new Vector3(0, 0, 0), Quaternion.identity);
-                    _saveAttack = 0;
+                    if(_saveAttack == 4)
+                    {
+                        _attack = AttackState.Stamina;
+                        _anim.SetTrigger("Combo3");
+                        Instantiate(_fastSphire, new Vector3(0, 0, 0), Quaternion.identity);
+                        Instantiate(_fastSphire, new Vector3(3, -2, 0), Quaternion.identity);
+                        Instantiate(_hitSphere, new Vector3(-3, -2, 0), Quaternion.identity);
+                        _saveAttack = 0;
+                    }
+                    else
+                    {
+                        _attack = AttackState.Stamina;
+                        _anim.SetTrigger("Combo3");
+                        Instantiate(_fastSphire, new Vector3(0, 0, 0), Quaternion.identity);
+                        Instantiate(_hitSphere, new Vector3(3, -2, 0), Quaternion.identity);
+                        Instantiate(_fastSphire, new Vector3(-3, -2, 0), Quaternion.identity);
+                        _saveAttack = 0;
+                    }
+                    
                 }
                 else if (num == 3)
                 {
@@ -248,6 +265,8 @@ public class Enemy5Hit : HitSponer, ICounter
         _anim.SetTrigger("CounterAttack");
         Instantiate(_fastSphire, new Vector3(transform.position.x + 3, transform.position.y + 2, transform.position.z), Quaternion.identity);
         Instantiate(_fastSphire, new Vector3(transform.position.x + -3, transform.position.y + -2, transform.position.z), Quaternion.identity);
+        Instantiate(_hitSphere, new Vector3(transform.position.x + -3, transform.position.y + 2, transform.position.z), Quaternion.identity);
+        Instantiate(_hitSphere, new Vector3(transform.position.x + 3, transform.position.y + -2, transform.position.z), Quaternion.identity);
     }
     public override void Agree()
     {

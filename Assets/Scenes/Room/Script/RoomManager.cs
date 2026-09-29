@@ -60,13 +60,13 @@ public class RoomManager : MonoBehaviour
             _goatButton.SetActive(true);
         }
         AllCheck();
-        if (_gameManager._killEnemy[3] == true)
+        if (_gameManager._killEnemy[3] == true && !_gameManager._isArmored)
         {
-            if (!_killObj[3].activeSelf)
-            {
-                _killObj[3].SetActive(true);
-            }
-
+            _killObj[3].SetActive(true);
+        }
+        else
+        {
+            _killObj[3].SetActive(false);
         }
         if (_gameManager._killEnemy[4] == true )
         {
@@ -106,7 +106,14 @@ public class RoomManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (_gameManager._killEnemy[3] == true && !_gameManager._isArmored)
+        {
+            _killObj[3].SetActive(true);
+        }
+        else
+        {
+            _killObj[3].SetActive(false);
+        }
     }
     public void OnStageSelect()
     {

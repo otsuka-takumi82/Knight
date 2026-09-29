@@ -143,6 +143,18 @@ public class Player : MonoBehaviour
         {
             AddStamina(10);
         }
+        if(_commboNum >= 20)
+        {
+            _combo.color = Color.red;
+        }
+        else if (_commboNum >= 5)
+        {
+            _combo.color = Color.yellow;
+        }
+        else
+        {
+            _combo.color = Color.green;
+        }
         _combo.text = $"{_commboNum.ToString("0")}combo";
         if (! _stagging )
         {

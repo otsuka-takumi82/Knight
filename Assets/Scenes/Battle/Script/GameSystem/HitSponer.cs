@@ -67,9 +67,13 @@ public class HitSponer : MonoBehaviour
     void Start()
     {
         _sphereCor = StartCoroutine(Sphere());
-        if (_enemyNum == 5)
+
+        if (_enemyNum != 0 && _enemyNum != 1 && _enemyNum != 2)
         {
-            _backGround.SetActive(false);
+            if(_enemyNum == 5)
+            {
+                _backGround.SetActive(false);
+            }
             AudioSource audio = GameObject.FindFirstObjectByType<BattleUIManager>().GetComponent<AudioSource>();
             audio.clip = _se[0];
             audio.Play();

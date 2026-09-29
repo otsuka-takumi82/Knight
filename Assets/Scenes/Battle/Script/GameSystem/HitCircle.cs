@@ -82,7 +82,7 @@ GameManager _gameManager;
         }
         if (_text != null)
         {
-            _text.text = _hp.ToString();
+            _text.text = _hp.ToString("0");
         }
         
         if (!_paused)
