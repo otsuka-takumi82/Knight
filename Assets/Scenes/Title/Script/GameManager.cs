@@ -77,6 +77,7 @@ public class GameManager : MonoBehaviour
     public int _currentFight = 0;
     public int _saveFight = 0;
     public int _prayLevel;
+    public int _money;
     public bool[] _killEnemy = new bool[10];
     public bool _isArmored;
     public float[] _prayPile;

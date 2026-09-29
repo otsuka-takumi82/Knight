@@ -42,6 +42,7 @@ public class HitSponer : MonoBehaviour
     public float _powerPile = 2;
     float _save;
     private bool _isOne;
+    private bool _isHitStop;
     bool _one = true;
     bool _isComment = true;
     public bool _isPause;
@@ -84,11 +85,13 @@ public class HitSponer : MonoBehaviour
     {
         _gm._pauseReseum += PauseReseum;
         _player._skill += Skill;
+        _player._hitStop += HitStop;
     }
     private void OnDisable()
     {
         _gm._pauseReseum -= PauseReseum;
         _player._skill -= Skill;
+        _player._hitStop -= HitStop;
     }
     // Update is called once per frame
     void Update()
@@ -262,5 +265,21 @@ public class HitSponer : MonoBehaviour
     public void Skill()
     {
         StartCoroutine(SkillCol());
+    }
+    public IEnumerator HitStopCol()
+    {
+        if(!_isHitStop)
+        {
+            _save = _anim.speed;
+        }
+        _isHitStop = true;
+        _anim.speed *= 0.5f;
+        yield return new WaitForSecondsRealtime(0.2f);
+        _anim.speed = _save;
+        _isHitStop = false;
+    }
+    public void HitStop()
+    {
+        StartCoroutine(HitStopCol());
     }
 }

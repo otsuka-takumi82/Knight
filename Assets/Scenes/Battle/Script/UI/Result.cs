@@ -16,6 +16,7 @@ public class Result : MonoBehaviour
     Text _addScore;
     [SerializeField]
     Text _name;
+    [SerializeField,Header("金")] Text _moneyText;
     [SerializeField]
     Image _enemy;
     [SerializeField]
@@ -24,9 +25,14 @@ public class Result : MonoBehaviour
     AudioSource _audio;
     [SerializeField] AudioSource _elseAudio;
     float _addScoreNum;
+    int _money = 0;
+    GameManager _gm;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        _gm =  FindFirstObjectByType<GameManager>();
+        _moneyText.text = @$":合計金額
+{_gm._money.ToString()}";
         _audio = GetComponent<AudioSource>();
         _elseAudio.resource = _bgm;
         _audio.PlayOneShot(_bgm);
@@ -57,18 +63,22 @@ public class Result : MonoBehaviour
 
     public IEnumerator TimeAdd()
     {
+        
         yield return new WaitForSeconds(1);
         while (_addScoreNum > 0)
         {
-            _addScoreNum -= Time.deltaTime * 60;
+            _addScoreNum -= Time.deltaTime * 100;
             _addScoreNum = Mathf.Max(0f, _addScoreNum);
             _addScore.text = $@"コンボボーナス+
 {_addScoreNum.ToString("0")}";
             _eH._enemyScore += Time.deltaTime * 100;
-            _score.text = _eH._enemyScore.ToString("0");
+            _money = Mathf.FloorToInt(_eH._enemyScore);
+            _score.text = _money.ToString("0");
             yield return null;
         }
-        
+        _gm._money += _money;
+        _moneyText.text = @$":合計金額
+{_gm._money.ToString()}";
     }
 
     // Update is called once per frame

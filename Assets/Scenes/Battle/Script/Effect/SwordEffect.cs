@@ -7,7 +7,7 @@ using UnityEngine;
 public class SwordEffect : MonoBehaviour
 {
     [SerializeField, UnitHeaderInspectable("火花")]
-    GameObject _hibana;
+    GameObject[] _hibana;
     AudioSource _audio;
     [SerializeField,Header("効果音")]AudioClip[] _se;
     float[] _fibo = new float[2];
@@ -52,7 +52,8 @@ public class SwordEffect : MonoBehaviour
             
             _enemyHelth.PlayerDamage();
             _enemyHelth.PlayerStamina();
-            Hibana(transform.position);
+            Vector2 vec = collision.transform.position + transform.position;
+            Hibana(vec / 2);
             _audio.PlayOneShot(_se[0]);
         }
         if (collision.gameObject.CompareTag("GoodBall"))
@@ -81,6 +82,11 @@ public class SwordEffect : MonoBehaviour
             _enemyHelth.Knock();
             _enemyHelth.PlayerDamage();
             _enemyHelth.PlayerStamina(2);
+            if(_player._commboNum >= 20)
+            {
+                Instantiate(_hibana[1], transform.position, Quaternion.identity);
+                _player._hitStop.Invoke();
+            }
             Hibana(transform.position);
             _audio.PlayOneShot(_se[1]);
             Destroy(collision.gameObject);
@@ -141,7 +147,7 @@ public class SwordEffect : MonoBehaviour
     }
     public void Hibana(Vector3 hibanapos)
     {
-        Instantiate(_hibana, hibanapos, Quaternion.identity);
+        Instantiate(_hibana[0], hibanapos, Quaternion.identity);
     }
 
     public void GetFibo()

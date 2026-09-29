@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     private EnemyHelth _enemy;
     private GameManager _gameManager;
     public Action _skill;
+    public Action _hitStop;
     public bool _stagging;
     public bool _canAttack;
     public bool _isDead;
@@ -61,6 +62,7 @@ public class Player : MonoBehaviour
     public bool _shieldOne = true;
     public bool _noCombo;
     public bool _isSkill;
+    public bool _isHitStop;
 
     bool _yesSkill = true;
     Animator _anim;
@@ -128,11 +130,13 @@ public class Player : MonoBehaviour
     {
         _gameManager._pauseReseum += PauseReseum;
         _skill += Skill;
+        _hitStop += HitStop;
     }
     void OnDisable()
     {
         _gameManager._pauseReseum -= PauseReseum;
         _skill -= Skill;
+        _hitStop -= HitStop;
     }
 
     // Update is called once per frame
@@ -354,12 +358,29 @@ public class Player : MonoBehaviour
         _attackCoolTime = _saveCoolTime;
         _skillTimer = 0f;
         _events[1].Invoke();
-        _isSkill = false;
         yield return new WaitForSeconds(1);
+        _isSkill = false;
         _anim.speed = _save;
     }
     public void Skill()
     {
         StartCoroutine(SkillCol());
+    }
+    public void HitStop()
+    {
+        StartCoroutine(HitStopCol());
+    }
+    public IEnumerator HitStopCol()
+    {
+        if(!_isHitStop && !_isSkill)
+        {
+            _save = _anim.speed;
+        }
+        _isHitStop = true;
+        _anim.speed *= 0.5f;
+        yield return new WaitForSecondsRealtime(0.2f);
+        _anim.speed = _save;
+        _isHitStop = false;
+        
     }
 }
