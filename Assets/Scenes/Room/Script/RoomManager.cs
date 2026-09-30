@@ -227,4 +227,8 @@ public class RoomManager : MonoBehaviour
     {
         _dayText.text = "日数：" + _gameManager._currentDayNum;
     }
+    public void Save()
+    {
+        _gameManager.GetSave();
+    }
 }

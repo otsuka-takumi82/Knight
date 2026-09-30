@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         Meat
     }
     [SerializeField,Header("データマネ")]DataManager _dM;
-    [SerializeField,Header("データマネ")]SaveData _sD;
+    [SerializeField,Header("セーブデータ")]SaveData _sD;
     [SerializeField, Header("プレイヤー状態")]
     public PlayerState _playerState;
     /// <summary>
@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public int _currentTimeNum;
     public int _currentDayNum;
+    public bool _isSave;
     public int _noPrayDay;
     public int _currentEquipped = 0;
     public int _currentMake = 0;
@@ -266,6 +267,7 @@ public class GameManager : MonoBehaviour
         save._stageNum = new List<int>(_stageNum);
         save._item = new List<Item>(_item);
         save._currentDayNum = _currentDayNum;
+        save._currentTimeNum = _currentTimeNum;
         save._noPrayDay = _noPrayDay;
         save._currentEquipped = _currentEquipped;
         save._prayLevel = _prayLevel;
@@ -277,31 +279,39 @@ public class GameManager : MonoBehaviour
         save._highHarb = _highHarb;
         save._meat =_meat;
         _dM.Save(save);
+        _isSave = true;
         Debug.Log("セーブ");
     }
-    public void SetLoad()
+    public void SetLoad(bool start = true)
     {
-        SaveData save = _sD;
-        if (save == null) return;
-        _wepon = new List<Wepon>(save._wepon);
-        _stageNum = new List<int>(save._stageNum);
-        _item = new List<Item>(save._item);
-        _currentDayNum = save._currentDayNum;
-        _noPrayDay = save._noPrayDay;
-        _currentEquipped = save._currentEquipped;
-        _prayLevel = save._prayLevel;
-        _money = save._money;
-        if (save._killEnemy != null) _killEnemy = (bool[])save._killEnemy.Clone();
-        _isArmored = save._isArmored;
-        if (save._prayPile != null) _prayPile = (float[])save._prayPile.Clone();
-        _harb = save._harb;
-        _highHarb = save._highHarb;
-        _meat = save._meat;
+         //_sD = _dM._data;
+        SaveData data = _sD;
+        //if (save == null) return;
+        _wepon = new List<Wepon>(data._wepon);
+        _stageNum = new List<int>(data._stageNum);
+        _item = new List<Item>(data._item);
+        _currentDayNum = data._currentDayNum;
+        _currentTimeNum = data._currentTimeNum;
+        _noPrayDay = data._noPrayDay;
+        _currentEquipped = data._currentEquipped;
+        _prayLevel = data._prayLevel;
+        _money = data._money;
+        if (data._killEnemy != null) _killEnemy = (bool[])data._killEnemy.Clone();
+        _isArmored = data._isArmored;
+        if (data._prayPile != null) _prayPile = (float[])data._prayPile.Clone();
+        _harb = data._harb;
+        _highHarb = data._highHarb;
+        _meat = data._meat;
         Debug.Log("ロード");
     }
     public void QuitGame()
     {
         StartCoroutine(QuitCol());
+    }
+    public void NewGame()
+    {
+        _sD = new SaveData();
+        SetLoad(false);
     }
 
     public IEnumerator QuitCol()

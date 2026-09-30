@@ -4,12 +4,17 @@ using System.Collections;
 
 public class TitleManager : MonoBehaviour
 {
+    GameManager _gm;
     [SerializeField]
     UnityEvent[] _event;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        _gm = FindFirstObjectByType<GameManager>();
+        if (_gm._isSave)
+        {
+            _event[1].Invoke();
+        }
     }
 
     // Update is called once per frame
@@ -29,5 +34,14 @@ public class TitleManager : MonoBehaviour
         }
         yield return new WaitForSeconds(1);
         FindFirstObjectByType<SceneLoader>().LoadElseScene(scenename);
+    }
+
+    public void SetLoad()
+    {
+        _gm.SetLoad();
+    }
+    public void NewGame()
+    {
+        _gm.NewGame();
     }
 }

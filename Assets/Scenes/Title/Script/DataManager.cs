@@ -8,6 +8,9 @@ public class DataManager : MonoBehaviour
     string fileName = "Data.json";             
     void Awake()
     {
+        
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "Data.json")))
+            File.Delete(Path.Combine(Application.persistentDataPath, "Data.json"));
         // パス名取得
         _filepath = Path.Combine(Application.persistentDataPath, fileName);
         if(!File.Exists(_filepath))

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using static GameManager;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.Events;
+using System.Xml;
 
 public class Player : MonoBehaviour
 {
@@ -303,7 +304,10 @@ public class Player : MonoBehaviour
         
         if (paused)
         {
-            _save = _anim.speed;
+            if(!_isHitStop && !_isSkill)
+            {
+                _save = _anim.speed;
+            }
             _anim.speed = 0;
             _animShield.speed = 0;
         }
