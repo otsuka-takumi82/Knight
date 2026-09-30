@@ -264,7 +264,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: (Reseum[Esc])
+  m_Text: (Reseum[Ctrl])
 --- !u!222 &116755296
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1800,7 +1800,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5fa716dac9384fd47b2e4372885c9eb1, type: 3}
-    m_FontSize: 31
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1811,7 +1811,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u4E00\u6642\u505C\u6B62\u3001\u64CD\u4F5C\u65B9\u6CD5\u3001[Esc]"
+  m_Text: "\u4E00\u6642\u505C\u6B62\u3001\u64CD\u4F5C\u65B9\u6CD5\u3001[Ctrl]"
 --- !u!222 &659640612
 CanvasRenderer:
   m_ObjectHideFlags: 0
