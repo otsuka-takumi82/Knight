@@ -282,10 +282,32 @@ public class GameManager : MonoBehaviour
         _isSave = true;
         Debug.Log("セーブ");
     }
-    public void SetLoad(bool start = true)
+    public void SetLoad()
     {
          //_sD = _dM._data;
         SaveData data = _sD;
+        //if (save == null) return;
+        _wepon = new List<Wepon>(data._wepon);
+        _stageNum = new List<int>(data._stageNum);
+        _item = new List<Item>(data._item);
+        _currentDayNum = data._currentDayNum;
+        _currentTimeNum = data._currentTimeNum;
+        _noPrayDay = data._noPrayDay;
+        _currentEquipped = data._currentEquipped;
+        _prayLevel = data._prayLevel;
+        _money = data._money;
+        if (data._killEnemy != null) _killEnemy = (bool[])data._killEnemy.Clone();
+        _isArmored = data._isArmored;
+        if (data._prayPile != null) _prayPile = (float[])data._prayPile.Clone();
+        _harb = data._harb;
+        _highHarb = data._highHarb;
+        _meat = data._meat;
+        Debug.Log("ロード");
+    }
+    public void NewGame()
+    {
+         //_sD = _dM._data;
+        SaveData data = new SaveData();
         //if (save == null) return;
         _wepon = new List<Wepon>(data._wepon);
         _stageNum = new List<int>(data._stageNum);
@@ -308,11 +330,11 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(QuitCol());
     }
-    public void NewGame()
-    {
-        _sD = new SaveData();
-        SetLoad(false);
-    }
+    //public void NewGame()
+    //{
+    //    _sD = new SaveData();
+    //    SetLoad();
+    //}
 
     public IEnumerator QuitCol()
     {

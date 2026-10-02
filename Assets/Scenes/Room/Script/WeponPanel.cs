@@ -53,20 +53,20 @@ public class WeponPanel : MonoBehaviour
 
     public void CheckWepon()
     {
-        _weponPower.text = "攻撃力: " + Mathf.Abs(_savePower).ToString("0.0") ;
+        _weponPower.text = "攻撃力：" + Mathf.Abs(_savePower).ToString("0.0") ;
         if (_gameManager._wepon[_weponNum]._isCrafted)
         {
             if (_gameManager._wepon[_weponNum]._repairPal == 0)
             {
-                _weonRepair.text = $"耐久度: {_repairStr[0]}({_gameManager._wepon[_weponNum]._repairPal})";
+                _weonRepair.text = $"耐久度:{_repairStr[0]}({_gameManager._wepon[_weponNum]._repairPal})";
             }
             else if (_gameManager._wepon[_weponNum]._repairPal == 1)
             {
-                _weonRepair.text = $"耐久度: {_repairStr[1]}({_gameManager._wepon[_weponNum]._repairPal})";
+                _weonRepair.text = $"耐久度:{_repairStr[1]}({_gameManager._wepon[_weponNum]._repairPal})";
             }
             else if (_gameManager._wepon[_weponNum]._repairPal >= 2)
             {
-                _weonRepair.text = $"耐久度: {_repairStr[2]}({_gameManager._wepon[_weponNum]._repairPal})";
+                _weonRepair.text = $"耐久度:{_repairStr[2]}({_gameManager._wepon[_weponNum]._repairPal})";
             }
         }
         else

@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public float _currentHp;
     public float _currentStamina;
     float _save;
+    float _hitSpeed = 1;
     public int _currentHarb;
     public int _commboNum;
     public int _saveCommbo;
@@ -364,6 +365,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1);
         _isSkill = false;
         _anim.speed = _save;
+        _save = _anim.speed;
     }
     public void Skill()
     {
@@ -375,7 +377,8 @@ public class Player : MonoBehaviour
     }
     public IEnumerator HitStopCol()
     {
-        if(!_isHitStop && !_isSkill)
+        float speed = _save;
+        if(!_isHitStop)
         {
             _save = _anim.speed;
         }
@@ -383,6 +386,7 @@ public class Player : MonoBehaviour
         _anim.speed *= 0.5f;
         yield return new WaitForSecondsRealtime(0.2f);
         _anim.speed = _save;
+        _save = speed;
         _isHitStop = false;
         
     }
